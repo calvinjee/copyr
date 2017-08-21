@@ -1,52 +1,52 @@
 ## Component Hierarchy
 
 **AuthFormContainer**
- - AuthForm
+  - AuthForm
 
 **Dashboard**
- - NavContainer
-  + SearchContainer
-  + ActivityInfoContainer
- - PostFormContainer
- - PostIndexContainer
- - RecommendedBlogContainer
- - RadarContainer
+  - NavContainer
+    + SearchContainer
+    + ActivityInfoContainer
+  - PostFormContainer
+  - PostIndexContainer
+  - RecommendedBlogContainer
+  - RadarContainer
 
 **NavContainer**
- - NavBar
-  + Search
- - AccountInfoContainer
-  + AccountInfo
+  - NavBar
+    + Search
+  - AccountInfoContainer
+    + AccountInfo
 
 **PostFormContainer**
- - PostFormBar
-  + TextPostForm
-  + ImagePostForm
-  + QuotePostForm
-  + LinkPostForm
-  + ChatPostForm
-  + MusicPostForm
-  + VideoPostForm
+  - PostFormBar
+    + TextPostForm
+    + ImagePostForm
+    + QuotePostForm
+    + LinkPostForm
+    + ChatPostForm
+    + MusicPostForm
+    + VideoPostForm
 
 **PostIndexContainer**
- - PostIndex
-  + PostIndexItem
-    + PostIndexItemDetail
+  - PostIndex
+    + PostIndexItem
+      + PostIndexItemDetail
 
 **RecommendedBlogContainer**
- - RecommmendedBlogIndex
-  + BlogItem
+  - RecommmendedBlogIndex
+    + BlogItem
 
 **RadarContainer**
- - Radar
-  + BlogItem
-  + PostIndexItemDetail
+  - Radar
+    + BlogItem
+    + PostIndexItemDetail
 
 **AccountInfoContainer**
- - AccountInfo
+  - AccountInfo
 
 **SearchContainer**
- - SearchResults
+  - SearchResults
 
 
 ## Routes
