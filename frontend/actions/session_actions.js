@@ -13,7 +13,7 @@ export const receiveCurrentUser = (currentUser) => {
 export const receiveErrors = (errors) => {
   return {
     type: RECEIVE_ERRORS,
-    errors: errors
+    errors: errors.responseJSON
   };
 };
 
@@ -47,12 +47,12 @@ export const logout = () => {
   };
 };
 
-export const updateUser = (currentUser) => {
-  return (dispatch) => {
-    return APIUtil.updateUser(currentUser)
-      .then(
-        (updatedUser) => { return dispatch(receiveCurrentUser(updatedUser)); },
-        (errors) => { return dispatch(receiveErrors(errors)); }
-      );
-  };
-};
+// export const updateUser = (currentUser) => {
+//   return (dispatch) => {
+//     return APIUtil.updateUser(currentUser)
+//       .then(
+//         (updatedUser) => { return dispatch(receiveCurrentUser(updatedUser)); },
+//         (errors) => { return dispatch(receiveErrors(errors)); }
+//       );
+//   };
+// };
