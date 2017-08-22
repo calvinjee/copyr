@@ -9,10 +9,13 @@
 ## JSON API
 
 ### Users
-- `GET /api/users`
 - `POST /api/users`
 - `GET /api/users/:id`
 - `PATCH /api/users`
+
+### Users/Follows
+- `POST /api/users/:followeeId/follows`
+- `DELETE /api/users/:followeeId/follows`
 
 ### Session
 
@@ -27,12 +30,7 @@
 - `PATCH /api/posts/:id`
 - `DELETE /api/posts/:id`
 
-### Follows
-
-- `POST /api/follows/:followeeId`
-- `DELETE /api/follows/:followeeId`
-
-### Likes
+### Posts/Likes
 
 - `POST /api/posts/:postId/likes`
 - `DELETE /api/posts/:postId/likes`
