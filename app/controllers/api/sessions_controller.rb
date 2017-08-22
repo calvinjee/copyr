@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-
   def create
     @user = User.find_by_credentials(
       params[:user][:email],
