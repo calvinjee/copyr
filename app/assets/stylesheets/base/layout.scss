@@ -1,0 +1,29 @@
+@import 'base/colors.scss';
+
+body {
+  font-family: 'Pragati Narrow', sans-serif;
+}
+
+h2 {
+  font-size: 68px;
+  font-weight: 1600;
+}
+
+.home-desc {
+  font-size: 24px;
+}
+
+.home-butt {
+  width: 300px;
+  height: 30px;
+
+}
+
+.signup {
+  background-color: $sky-blue;
+  color: white;
+}
+
+.login {
+  color: $charcoal;
+}

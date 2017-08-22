@@ -8,7 +8,6 @@ import { AuthRoute } from '../util/route_util';
 const App = (props) => {
   return (
     <div>
-      <h1>copyr</h1>
       <AuthRoute exact path ="/" component={HomeContainer} />
       <Route path ="/dashboard" component={DashboardContainer} />
     </div>
