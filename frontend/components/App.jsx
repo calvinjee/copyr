@@ -9,7 +9,7 @@ const App = (props) => {
   return (
     <div>
       <h1>copyr</h1>
-      <Route exact path ="/" component={HomeContainer} />
+      <AuthRoute exact path ="/" component={HomeContainer} />
       <Route path ="/dashboard" component={DashboardContainer} />
     </div>
   );

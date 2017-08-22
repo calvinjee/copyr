@@ -18,7 +18,6 @@ class SessionForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
     let user = this.state;
-
     this.props.processForm(user);
   }
 

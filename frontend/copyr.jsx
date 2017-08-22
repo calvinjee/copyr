@@ -13,8 +13,8 @@ window.openModal = openModal;
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
-  if (window.CurrentUser) {
-    let preloadedState = { session: { currentUser: window.CurrentUser } };
+  if (window.currentUser) {
+    let preloadedState = { session: { currentUser: window.currentUser } };
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {
