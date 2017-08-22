@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import configureStore from './store/store';
+import Root from './components/root';
 //testing
 import * as APIUtil from './util/session_api_util';
 import { signup, login, logout } from './actions/session_actions';
-import configureStore from './store/store';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -17,5 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.login = login;
   window.logout = logout;
 
-  ReactDOM.render(<h1>copyr</h1>, root);
+  ReactDOM.render(<Root store={store} />, root);
 });
