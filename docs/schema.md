@@ -6,20 +6,22 @@ column name     | data type | details
 id              | integer   | not null, primary key
 username        | string    | not null, indexed, unique
 email           | string    | not null, indexed, unique
-profile_pic     | link      | not null, set default
 bio             | string    | can be null
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
+[paperclip_img] | link      | not null, set default
 
 ## posts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | can be null
-content     | text      | not null
-caption     | string    | can be null
-type        | string    | not null, included in [txt, img, quote, link, chat, audio, video ]
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+author_id       | integer   | not null, foreign key (references users), indexed
+title           | string    | can be null
+caption         | string    | can be null
+content_type    | string    | not null, included in [txt, img, quote, link, chat, audio, video ]
+[paperclip_img] | link      | can be null
+[paperclip_vid] | link      | can be null
+[paperclip_aud] | link      | can be null
 
 ## follows
 column name | data type | details
