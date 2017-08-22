@@ -117,6 +117,11 @@ GEM
       loofah (~> 2.0)
     rails-ujs (0.1.0)
       railties (>= 3.1)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.9)
       actionpack (= 4.2.9)
       activesupport (= 4.2.9)
@@ -180,6 +185,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.9)
   rails-ujs
+  rails_12factor
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
@@ -187,4 +193,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

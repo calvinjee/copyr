@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    debugger
+    // debugger
     if (this.props.currentUser) {
       return (
         <div>
