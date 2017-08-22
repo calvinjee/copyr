@@ -17,8 +17,42 @@ export const receiveErrors = (errors) => {
   };
 };
 
-export const signup = (currentUser) => {
+export const signup = (user) => {
   return (dispatch) => {
-    return
-  }
-}
+    return APIUtil.signup(user)
+      .then(
+        (currentUser) => { return dispatch(receiveCurrentUser(currentUser)); },
+        (errors) => { return dispatch(receiveErrors(errors)); }
+      );
+  };
+};
+
+export const login = (user) => {
+  return (dispatch) => {
+    return APIUtil.login(user)
+      .then(
+        (currentUser) => { return dispatch(receiveCurrentUser(currentUser)); },
+        (errors) => { return dispatch(receiveErrors(errors)); }
+      );
+  };
+};
+
+export const logout = () => {
+  return (dispatch) => {
+    return APIUtil.logout()
+      .then(
+        () => { return dispatch(receiveCurrentUser(null)); },
+        (errors) => { return dispatch(receiveErrors(errors)); }
+      );
+  };
+};
+
+export const updateUser = (currentUser) => {
+  return (dispatch) => {
+    return APIUtil.updateUser(currentUser)
+      .then(
+        (updatedUser) => { return dispatch(receiveCurrentUser(updatedUser)); },
+        (errors) => { return dispatch(receiveErrors(errors)); }
+      );
+  };
+};
