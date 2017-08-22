@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import SessionForm from './session_form';
 
 const mapStateToProps = (state, ownProps) => {
-  let formType = ownProps.location.pathname === '/login' ? 'Log In' : 'Sign Up';
+  let formType = ownProps.form === 'login' ? 'Log In' : 'Sign Up';
   return {
     errors: state.session.errors,
     formType: formType,
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  let action = ownProps.location.pathname === '/login' ? login : signup;
+  let action = ownProps.form === 'login' ? login : signup;
   return {
     processForm: (user) => dispatch(action(user)),
   };

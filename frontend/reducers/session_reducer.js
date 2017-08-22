@@ -3,7 +3,7 @@ import {
   RECEIVE_ERRORS } from '../actions/session_actions';
 import { merge } from 'lodash';
 
-const defaultState = { currentUser: {}, errors: [] };
+const defaultState = { currentUser: null, errors: [] };
 
 const sessionReducer = (state = defaultState, action) => {
   Object.freeze(state);
