@@ -1,5 +1,5 @@
 import React from 'react';
-import { signup, login } from '../actions/session_actions';
+import { signup, login, resetErrors } from '../actions/session_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SessionForm from './session_form';
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   let action = ownProps.form === 'login' ? login : signup;
   return {
     processForm: (user) => dispatch(action(user)),
+    resetErrors: () => dispatch(resetErrors())
   };
 };
 

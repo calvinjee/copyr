@@ -6,6 +6,7 @@ import Root from './components/root';
 import * as APIUtil from './util/session_api_util';
 import { signup, login, logout } from './actions/session_actions';
 import { openModal } from './actions/modal_actions';
+import { merge } from 'lodash';
 
 
 window.openModal = openModal;
@@ -27,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.login = login;
   window.logout = logout;
+  window.merge = merge;
+
   //
 
   ReactDOM.render(<Root store={store} />, root);

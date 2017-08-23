@@ -31,7 +31,19 @@ class Post < ActiveRecord::Base
     message: "%{value} is not a valid content type"
   }
 
-  
+  has_attached_file :image
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  # validates_attachment :image,
+  #   content_type: { content_type: /\Aimage\/.*\z/ },
+  #   size: { in: 0..10.kilobytes }
+
+
+  has_attached_file :video
+  validates_attachment_content_type :video, content_type: /\Aimage\/.*\z/
+
+  has_attached_file :audio
+  validates_attachment_content_type :audio, content_type: /\Aimage\/.*\z/
+  validates_attachment_file_name :avatar, matches: [/mp3\z/]
 
   belongs_to :author,
     class_name: :User,
