@@ -7,6 +7,8 @@ class Home extends React.Component {
     super(props);
     this.state = { form: '' };
     this.handleClick = this.handleClick.bind(this);
+    this.handleGuestLogin = this.handleGuestLogin.bind(this);
+
   }
 
   handleClick(form) {
@@ -15,6 +17,10 @@ class Home extends React.Component {
       this.setState({ form: form });
       // this.props.openModal();
     };
+  }
+
+  handleGuestLogin(e) {
+    this.props.login({email: 'calvin', password: 'password'});
   }
 
   render () {
@@ -32,6 +38,10 @@ class Home extends React.Component {
       form = null;
     }
 
+    const errors = this.props.errors.map((error, idx) => {
+      return (<p key={idx}>{error}</p>);
+    });
+
     return (
       <div className="home-main">
         <div className="nav-logo"><h3>c</h3></div>
@@ -48,6 +58,11 @@ class Home extends React.Component {
             className={`home-butt login ${loginChange}`}
             onClick={this.handleClick('login')}>
             <span>Log In</span></button>
+          <button
+            className="home-butt guest-login"
+            onClick={this.handleGuestLogin}>
+            <span>Demo</span></button>
+          { errors }
         </div>
       </div>
     );

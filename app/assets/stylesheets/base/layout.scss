@@ -59,6 +59,7 @@ body {
   font-size: 18px;
   cursor: pointer;
   font-family: 'Asap Condensed', sans-serif;
+  margin-top: 10px;
 }
 
 button span {
@@ -68,13 +69,20 @@ button span {
 
 .signup {
   background-color: $sky-blue;
-  margin-top: 20px;
+  // margin-top: 10px;
 }
 
 .login {
   background-color: white;
   color: $charcoal;
-  margin-top: 15px;
+  // margin-top: 10px;
+}
+
+.guest-login {
+  background-color: $purple-rain;
+  color: white;
+  // margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 input::placeholder {
@@ -125,11 +133,57 @@ input::placeholder {
   color: $charcoal;
 }
 
-// .slide {
-//     position: absolute;
-//     left: -100px;
-//     width: 100px;
-//     height: 100px;
-//     background: blue;
-//     transition: 1s;
-// }
+.slideLeft{
+	animation-name: 'slideLeft';
+	-webkit-animation-name: 'slideLeft';
+
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+
+	animation-timing-function: ease-in-out;
+	-webkit-animation-timing-function: ease-in-out;
+
+	visibility: visible !important;
+}
+
+@keyframes slideLeft {
+	0% {
+		transform: translateX(150%);
+	}
+	50%{
+		transform: translateX(-8%);
+	}
+	65%{
+		transform: translateX(4%);
+	}
+	80%{
+		transform: translateX(-4%);
+	}
+	95%{
+		transform: translateX(2%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+@-webkit-keyframes slideLeft {
+	0% {
+		-webkit-transform: translateX(150%);
+	}
+	50%{
+		-webkit-transform: translateX(-8%);
+	}
+	65%{
+		-webkit-transform: translateX(4%);
+	}
+	80%{
+		-webkit-transform: translateX(-4%);
+	}
+	95%{
+		-webkit-transform: translateX(2%);
+	}
+	100% {
+		-webkit-transform: translateX(0%);
+	}
+}

@@ -37,19 +37,21 @@ class SessionForm extends React.Component {
     }
 
     return (
-      <form className="slide">
+      <form>
         <ul className="form-list">
-        <input
-          className="auth-input auth-email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleChange('email')} />
-        <input
-          className={`auth-input auth-pw ${pwBord}`}
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleChange('password')} />
-        { usernameInput }
+        <div className="form-list slideLeft">
+          <input
+            className="auth-input auth-email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleChange('email')} />
+          <input
+            className={`auth-input auth-pw ${pwBord}`}
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleChange('password')} />
+          { usernameInput }
+        </div>
         <button
           className="home-butt signup"
           onClick={this.handleClick}>{this.props.formType}</button>
