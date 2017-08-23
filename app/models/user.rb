@@ -26,6 +26,12 @@ class User < ActiveRecord::Base
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "pizza_1x.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
+  has_many :posts,
+    class_name: :Post,
+    primary_key: :id,
+    foreign_key: :author_id,
+    dependent: :destroy
+
   attr_reader :password
 
   after_initialize :ensure_session_token
