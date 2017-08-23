@@ -48,7 +48,7 @@ export const requestAllPosts = () => {
 
 export const requestSinglePost = (id) => {
   return (dispatch) => {
-    return APIUtil.fetchSinglePosts(id)
+    return APIUtil.fetchSinglePost(id)
       .then(
         (post) => { return dispatch(receiveSinglePost(post)); },
         (errors) => { return dispatch(receiveErrors(errors)); }

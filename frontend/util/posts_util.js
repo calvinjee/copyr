@@ -31,7 +31,8 @@ export const createPost = (post) => {
 export const updatePost = (post) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/posts/${post.id}`
+    url: `api/posts/${post.id}`,
+    data: { post: post }
   });
 };
 
