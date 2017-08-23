@@ -38,11 +38,14 @@ class Post < ActiveRecord::Base
   #   size: { in: 0..10.kilobytes }
 
   has_attached_file :video
-  # validates_attachment_content_type :video, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :video, content_type: /\Avideo\/.*\z/
 
   has_attached_file :audio
-  # validates_attachment_content_type :audio, content_type: /\Aimage\/.*\z/
+  # validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\z/
   # validates_attachment_file_name :audio, matches: [/mp3\z/]
+  validates_attachment :audio,
+    content_type: { content_type: ["audio/mpeg", "audio/mp3"] },
+    file_name: { matches: [/mp3\Z/] }
 
   belongs_to :author,
     class_name: :User,
