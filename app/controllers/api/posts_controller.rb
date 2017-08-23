@@ -1,48 +1,50 @@
-class Api::UsersController < ApplicationController
+class Api::PostsController < ApplicationController
   def index
+    @posts = Posts.all
+    render 'api/posts/show'
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      login(@user)
-      render 'api/users/show'
+    @post = Post.new(post_params)
+    if @post.save
+      render 'api/posts/show'
     else
-      render json: @user.errors.full_messages, status: 422
+      render json: @post.errors.full_messages, status: 422
     end
   end
 
   def show
-    @user = User.find(params[:id])
-    render 'api/users/show'
+    @post = Post.find(params[:id])
+    render 'api/posts/show'
   end
 
   def update
-    if current_user
-      if current_user.update(user_params)
-        render json: current_user
-      else
-        render json: current_user.errors.full_messages, status: 422
-      end
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      render 'api/posts/show'
     else
-      render json: ['Need to be logged in to update'], status: 422
+      render json: @post.errors.full_messages, status: 422
     end
   end
 
-  def delete
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    render json: @post
   end
-
 
   private
 
   def post_params
     params.require(:post).permit(
-      :username,
-      :email,
-      :password,
-      :first_name,
-      :last_name,
-      :bio
+      :author_id,
+      :title,
+      :caption,
+      :content_type,
+      :text_content,
+      :image,
+      :video,
+      :audio
     )
   end
 

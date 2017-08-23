@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/copyr-dev/users/images/000/000/008/original/tools-for-motivation-301199.jpg"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "https://s3.amazonaws.com/copyr-dev/users/images/000/000/008/thumb/pizza_1x.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_many :posts,
