@@ -47,6 +47,7 @@ class SessionForm extends React.Component {
             onChange={this.handleChange('email')} />
           <input
             className={`auth-input auth-pw ${pwBord}`}
+            type="password"
             placeholder="Password"
             value={this.state.password}
             onChange={this.handleChange('password')} />
