@@ -4,7 +4,7 @@ export const fetchAllPosts = () => {
     url: 'api/posts'
   });
 };
-//
+
 // export const receiveFivePosts = () => {
 //   return $.ajax({
 //     method: 'GET',
@@ -25,5 +25,19 @@ export const createPost = (post) => {
     method: 'POST',
     url: 'api/posts',
     data: { post: post }
+  });
+};
+
+export const updatePost = (post) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/posts/${post.id}`
+  });
+};
+
+export const destroyPost = (id) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `api/posts/${id}`
   });
 };

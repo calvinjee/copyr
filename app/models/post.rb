@@ -31,16 +31,16 @@ class Post < ActiveRecord::Base
     message: "%{value} is not a valid content type"
   }
 
-  has_attached_file :image
+  has_attached_file :image, default_url: nil
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_attachment :image,
   #   content_type: { content_type: /\Aimage\/.*\z/ },
   #   size: { in: 0..10.kilobytes }
 
-  has_attached_file :video
+  has_attached_file :video, default_url: nil
   validates_attachment_content_type :video, content_type: /\Avideo\/.*\z/
 
-  has_attached_file :audio
+  has_attached_file :audio, default_url: nil
   # validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\z/
   # validates_attachment_file_name :audio, matches: [/mp3\z/]
   validates_attachment :audio,

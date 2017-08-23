@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Posts.all
-    render 'api/posts/show'
+    @posts = Post.all
+    render 'api/posts/index'
   end
 
   def create
@@ -30,7 +30,7 @@ class Api::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    render json: @post
+    render 'api/posts/show'
   end
 
   private
