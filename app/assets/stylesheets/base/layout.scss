@@ -1,14 +1,19 @@
 @import 'base/colors.scss';
 
+// font-family: 'Pragati Narrow', sans-serif;
+// font-family: 'Asap Condensed', sans-serif;
+// font-family: 'Alfa Slab One', cursive;
+
 body {
   font-family: 'Pragati Narrow', sans-serif;
 }
 
 .nav-logo {
   color: white;
-  font-size: 55px;
+  font-size: 40px;
   position: fixed;
   left: 160px;
+  font-family: 'Alfa Slab One', cursive;
 }
 
 .home-main {
@@ -36,9 +41,10 @@ body {
 }
 
 .home-logo {
-  font-size: 82px;
-  font-weight: 2400;
-  margin-bottom: 10px;
+  font-size: 55px;
+  // font-weight: 400;
+  margin-bottom: 15px;
+  font-family: 'Alfa Slab One', cursive;
 }
 
 .home-desc {
@@ -51,6 +57,7 @@ body {
   border-radius: 5px;
   font-size: 20px;
   cursor: pointer;
+  font-family: 'Asap Condensed', sans-serif;
 }
 
 button span {
@@ -66,5 +73,5 @@ button span {
 .login {
   background-color: white;
   color: $charcoal;
-  margin-top: 10px;
+  margin-top: 15px;
 }
