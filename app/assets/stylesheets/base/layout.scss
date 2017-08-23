@@ -4,26 +4,67 @@ body {
   font-family: 'Pragati Narrow', sans-serif;
 }
 
-h2 {
-  font-size: 68px;
-  font-weight: 1600;
+.nav-logo {
+  color: white;
+  font-size: 55px;
+  position: fixed;
+  left: 160px;
+}
+
+.home-main {
+  background-image: image-url('tools-for-motivation-301199.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.home-mid {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  // position: fixed;
+  // margin: 50% 50%;
+}
+
+.home-logo {
+  font-size: 82px;
+  font-weight: 2400;
+  margin-bottom: 10px;
 }
 
 .home-desc {
-  font-size: 24px;
+  font-size: 19px;
 }
 
 .home-butt {
   width: 300px;
-  height: 30px;
+  height: 50px;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
 
+button span {
+  // display: block;
+  // padding: 10px 0;
 }
 
 .signup {
   background-color: $sky-blue;
-  color: white;
+  margin-top: 20px;
 }
 
 .login {
+  background-color: white;
   color: $charcoal;
+  margin-top: 10px;
 }

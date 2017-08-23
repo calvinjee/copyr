@@ -27,12 +27,22 @@ class Home extends React.Component {
     }
 
     return (
-      <div>
-        <h2>copyr.</h2>
-        <p className="home-desc">Come for what you love. Stay for what you discover.</p>
-        { form }
-        <button className="home-butt signup" onClick={this.handleClick('signup')}>Get Started</button>
-        <button className="home-butt login" onClick={this.handleClick('login')}>Log In</button>
+      <div className="home-main">
+        <div className="nav-logo"><h3>c</h3></div>
+        <div className="home-mid">
+          <h2 className="home-logo">copyr.</h2>
+          <p className="home-desc">Come for what you love.</p>
+          <p className="home-desc">Stay for what you hate.</p>
+          { form }
+          <button
+            className="home-butt signup"
+            onClick={this.handleClick('signup')}>
+            <span>Get Started</span></button>
+          <button
+            className="home-butt login"
+            onClick={this.handleClick('login')}>
+            <span>Log In</span></button>
+        </div>
       </div>
     );
   }
