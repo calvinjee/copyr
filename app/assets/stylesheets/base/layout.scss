@@ -11,7 +11,8 @@ body {
 .nav-logo {
   color: white;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
+  top: 5px;
   left: 160px;
   font-family: 'Alfa Slab One', cursive;
 }
@@ -29,7 +30,7 @@ body {
   align-items: center;
   justify-content: center;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -53,9 +54,9 @@ body {
 
 .home-butt {
   width: 300px;
-  height: 50px;
+  min-height: 45px;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
   font-family: 'Asap Condensed', sans-serif;
 }
@@ -75,3 +76,60 @@ button span {
   color: $charcoal;
   margin-top: 15px;
 }
+
+input::placeholder {
+  color: $very-lightgray;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input {
+  color: $charcoal;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 10px;
+  border: none;
+  width: 300px;
+}
+
+.auth-email {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-top: 15px;
+}
+
+.auth-pw {
+  border-top: 1px solid $very-very-lightgray;
+}
+
+.auth-username {
+  border-top: 1px solid $very-very-lightgray;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.pw-bot-bord {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.white-butt {
+  background-color: white;
+  color: $charcoal;
+}
+
+// .slide {
+//     position: absolute;
+//     left: -100px;
+//     width: 100px;
+//     height: 100px;
+//     background: blue;
+//     transition: 1s;
+// }

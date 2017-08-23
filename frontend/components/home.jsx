@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { form: 'login' };
+    this.state = { form: '' };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -13,15 +13,21 @@ class Home extends React.Component {
     return (e) => {
       e.preventDefault();
       this.setState({ form: form });
-      this.props.openModal();
+      // this.props.openModal();
     };
   }
 
   render () {
     // debugger
-    let form;
-    if (this.props.modalOpen) {
+    let form, signupChange, signupColor, loginChange;
+    if (this.state.form !== '') {
       form = <SessionFormContainer form={this.state.form} />;
+      if (this.state.form === 'signup') {
+        signupChange = 'hidden';
+      } else {
+        loginChange = 'hidden';
+        signupChange = 'white-butt';
+      }
     } else {
       form = null;
     }
@@ -31,15 +37,15 @@ class Home extends React.Component {
         <div className="nav-logo"><h3>c</h3></div>
         <div className="home-mid">
           <h2 className="home-logo">copyr.</h2>
-          <p className="home-desc">Come for what you love.</p>
-          <p className="home-desc">Stay for what you hate.</p>
+          <p className="home-desc">Put some text here.</p>
+          <p className="home-desc">And some more text down here.</p>
           { form }
           <button
-            className="home-butt signup"
+            className={`home-butt signup ${signupChange}`}
             onClick={this.handleClick('signup')}>
             <span>Get Started</span></button>
           <button
-            className="home-butt login"
+            className={`home-butt login ${loginChange}`}
             onClick={this.handleClick('login')}>
             <span>Log In</span></button>
         </div>

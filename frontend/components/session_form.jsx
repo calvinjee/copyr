@@ -22,35 +22,38 @@ class SessionForm extends React.Component {
   }
 
   render () {
-    let usernameInput;
+    let usernameInput, pwBord;
     if (this.props.formType === 'Sign Up') {
       usernameInput =
-        (<label>Username
-          <input
+        (<input
+            className="auth-input auth-username"
+            placeholder="Username"
             value={this.state.username}
             onChange={this.handleChange('username')} />
-        </label>);
+        );
     } else {
       usernameInput = null;
+      pwBord = 'pw-bot-bord';
     }
 
     return (
-      <form>
-        <label>Email
-          <input
-            value={this.state.email}
-            onChange={this.handleChange('email')} />
-        </label>
-
-        <label>Password
-          <input
-            value={this.state.password}
-            onChange={this.handleChange('password')} />
-        </label>
-
+      <form className="slide">
+        <ul className="form-list">
+        <input
+          className="auth-input auth-email"
+          placeholder="Email"
+          value={this.state.email}
+          onChange={this.handleChange('email')} />
+        <input
+          className={`auth-input auth-pw ${pwBord}`}
+          placeholder="Password"
+          value={this.state.password}
+          onChange={this.handleChange('password')} />
         { usernameInput }
-
-        <button onClick={this.handleClick}>{this.props.formType}</button>
+        <button
+          className="home-butt signup"
+          onClick={this.handleClick}>{this.props.formType}</button>
+        </ul>
       </form>
     );
   }
