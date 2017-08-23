@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  validates_attachment_content_type :imagae, content_type: /\Aimage\/.*\z/
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "pizza_1x.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   attr_reader :password
 

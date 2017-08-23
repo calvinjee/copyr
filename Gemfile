@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails-ujs'
 gem 'rails_12factor'
 gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
