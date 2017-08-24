@@ -24,7 +24,7 @@ export const resetErrors = () => {
   };
 };
 
-
+//thunk actions
 export const signup = (user) => {
   return (dispatch) => {
     return APIUtil.signup(user)

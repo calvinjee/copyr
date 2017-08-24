@@ -11,11 +11,9 @@ class MainNav extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick(form) {
-    return (e) => {
-      e.preventDefault();
-      // TODO: put something here
-    };
+  handleClick(e) {
+    e.preventDefault();
+    this.props.logout().then(this.props.history.push("/"));
   }
 
   handleChange(input) {
@@ -38,13 +36,13 @@ class MainNav extends React.Component {
             placeholder="Search Copyr"
             value={this.state.search}
             onChange={this.handleChange('search')} />
-          <Link to="/dashboard">
-            <button className="home-dashboard" />
+        <Link to="/dashboard">
+          <button className="home-dashboard">Home</button>
           </Link>
-          <RecentActivity />
-          <AccountInfo />
-          <button className="compose" />
-          <button onClick={this.handleClick}>Logout</button>
+        <RecentActivity />
+        <AccountInfo />
+        <button className="compose">Compose</button>
+        <button onClick={this.handleClick}>Logout</button>
       </div>
     );
   }
