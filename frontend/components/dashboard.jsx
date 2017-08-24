@@ -6,7 +6,6 @@ import PostIndexContainer from './feed/post_index_container';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   render () {

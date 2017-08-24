@@ -1,5 +1,5 @@
 import React from 'react';
-import PostDetailOptionsContainer from 'post_detail_options_container';
+import PostDetailOptionsContainer from './post_detail_options_container';
 
 class PostDetail extends React.Component {
   constructor(props) {

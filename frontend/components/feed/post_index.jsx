@@ -5,8 +5,6 @@ class PostIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = { search: '' };
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -21,7 +19,7 @@ class PostIndex extends React.Component {
   render () {
     // will be mapping over of array of user_followed_post_ids instead
     const posts = this.props.posts.map((post) => {
-      return (<li><PostIndexItem post={post} /></li>);
+      return (<li><PostIndexItem key={post.id} post={post} /></li>);
     });
 
     return (

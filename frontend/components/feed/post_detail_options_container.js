@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import PostDetailOptions from './post_detail_options';
 import { deletePost, revisePost  } from '../../actions/post_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
-    post: ownProps.post
   };
 };
 
@@ -18,6 +17,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(PostDetailOptions);

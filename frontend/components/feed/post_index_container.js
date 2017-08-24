@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestAllPosts } from '../..post_actions';
+import { requestAllPosts } from '../../actions/post_actions';
 import PostIndex from './post_index';
 import { postsArray } from '../../reducers/selectors';
 
