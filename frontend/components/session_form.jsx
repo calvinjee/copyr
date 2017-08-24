@@ -55,7 +55,8 @@ class SessionForm extends React.Component {
         </div>
         <button
           className="home-butt signup"
-          onClick={this.handleClick}>{this.props.formType}</button>
+          onClick={this.handleClick}>
+          {this.props.formType}</button>
         </ul>
       </form>
     );
