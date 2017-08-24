@@ -19,23 +19,16 @@ class PostIndex extends React.Component {
   }
 
   render () {
-    const posts = this.
+    // will be mapping over of array of user_followed_post_ids instead
+    const posts = this.props.posts.map((post) => {
+      return (<li><PostIndexItem post={post} /></li>);
+    });
 
     return (
-      <div className="main-nav">
-        <h3 className="nav-logo main-nav-logo">c</h3>
-        <input
-            className="search"
-            placeholder="Search Copyr"
-            value={this.state.search}
-            onChange={this.handleChange('search')} />
-        <Link to="/dashboard">
-          <button className="home-dashboard">Home</button>
-          </Link>
-        <RecentActivity />
-        <AccountInfo />
-        <button className="compose">Compose</button>
-        <button onClick={this.handleClick}>Logout</button>
+      <div>
+        <ul>
+          { posts }
+        </ul>
       </div>
     );
   }

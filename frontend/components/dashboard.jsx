@@ -1,17 +1,12 @@
 import React from 'react';
 import MainNavContainer from './main_nav_container';
 import PostButtonsContainer from './post_forms/post_buttons_container';
-import TextForm from './post_forms/text_form';
+import PostIndexContainer from './feed/post_index_container';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    this.props.logout();
   }
 
   render () {
@@ -21,6 +16,7 @@ class Dashboard extends React.Component {
         <h2>Hey {this.props.currentUser.username}</h2>
         <MainNavContainer />
         <PostButtonsContainer />
+        <PostIndexContainer />
       </div>
     );
   }
