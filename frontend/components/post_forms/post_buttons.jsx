@@ -7,32 +7,24 @@ class PostButtons extends React.Component {
     super(props);
   }
 
-  handleClick(postType) {
-    let postModalAction;
-    switch(postType) {
-      case 'text':
-        postModalAction = this.props.textModal;
-    }
-
+  showForm(postType) {
     return (e) => {
       e.preventDefault();
-      postModalAction();
+      this.props.postFormModal(postType);
     };
   }
 
   render() {
-    let form;
+    let form = null;
     switch(this.props.postType) {
       case 'text':
         form = <TextForm />;
-      default:
-        form = null;
     }
 
     return(
       <ul>
         <li>
-          <button onClick={this.handleClick('text')}>
+          <button onClick={this.showForm('text')}>
             <i>Aa</i>
             <span>Text</span>
           </button>

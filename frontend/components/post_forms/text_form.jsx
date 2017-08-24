@@ -4,11 +4,11 @@ import PostFormContainer from './post_form_container';
 class TextForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state({
-      title: null,
-      text_content: null,
+    this.state = {
+      title: '',
+      text_content: '',
       content_type: 'text'
-    });
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -24,7 +24,9 @@ class TextForm extends React.Component {
     let post = this.state;
     return (e) => {
       e.preventDefault();
-      // formAction === 'post' ? this.props.addPost(post) : 'close modal';
+      formAction === 'post' ?
+        this.props.addPost(post).then(this.props.closeModal()) :
+        this.props.closeModal();
     };
   }
 
@@ -45,11 +47,11 @@ class TextForm extends React.Component {
         <div className="form-footer">
           <button
             className="form-close-butt"
-            handleClick={this.handleClick('close')}>
+            onClick={this.handleClick('close')}>
             Close</button>
           <button
             className="form-post-butt"
-            handleClick={this.handleClick('post')}>
+            onClick={this.handleClick('post')}>
             Post</button>
         </div>
       </div>

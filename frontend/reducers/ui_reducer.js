@@ -1,5 +1,5 @@
 import { CLOSE_MODAL,
-  TEXT_MODAL } from '../actions/modal_actions';
+  POST_FORM_MODAL } from '../actions/modal_actions';
 import { merge } from 'lodash';
 
 
@@ -10,10 +10,10 @@ const uiReducer = (state = defaultState, action ) => {
   switch(action.type) {
     case CLOSE_MODAL:
       return { modalOpen: false };
-    case TEXT_MODAL:
+    case POST_FORM_MODAL:
       return {
         modalOpen: true,
-        postType: 'text'
+        postType: action.postType
       };
     default: return state;
   }

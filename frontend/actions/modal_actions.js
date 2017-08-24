@@ -1,5 +1,5 @@
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const TEXT_MODAL = 'OPEN_MODAL';
+export const POST_FORM_MODAL = 'POST_FORM_MODAL';
 
 export const closeModal = () => {
   return {
@@ -7,8 +7,9 @@ export const closeModal = () => {
   };
 };
 
-export const textModal = () => {
+export const postFormModal = (postType) => {
   return {
-    type: TEXT_MODAL,
+    type: POST_FORM_MODAL,
+    postType: postType
   };
 };
