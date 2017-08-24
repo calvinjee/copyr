@@ -44,7 +44,7 @@ class Home extends React.Component {
 
     return (
       <div className="home-main">
-        <div className="nav-logo"><h3>c</h3></div>
+        <div><h3 className="nav-logo">c</h3></div>
         <div className="home-mid">
           <h2 className="home-logo">copyr.</h2>
           <p className="home-desc">Put some text here.</p>

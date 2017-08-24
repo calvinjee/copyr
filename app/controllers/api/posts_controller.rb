@@ -47,5 +47,4 @@ class Api::PostsController < ApplicationController
       :audio
     )
   end
-
 end

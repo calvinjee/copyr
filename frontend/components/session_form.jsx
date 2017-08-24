@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
     return (
       <form>
         <ul className="form-list">
-        <div className="form-list slideLeft">
+        <div className="form-list stretchLeft">
           <input
             className="auth-input auth-email"
             placeholder="Email"

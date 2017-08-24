@@ -1,4 +1,5 @@
 import React from 'react';
+import MainNavContainer from './main_nav_container';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -12,17 +13,13 @@ class Dashboard extends React.Component {
   }
 
   render () {
-    // debugger
-    if (this.props.currentUser) {
-      return (
-        <div>
-          <h2>Hey {this.props.currentUser.username}</h2>
-          <button onClick={this.handleClick}>Logout</button>
-        </div>
-      );
-    } else {
-      return null;
-    }
+
+    return (
+      <div className="everywhere">
+        <h2>Hey {this.props.currentUser.username}</h2>
+        <MainNavContainer />
+      </div>
+    );
   }
 }
 
