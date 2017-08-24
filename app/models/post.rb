@@ -26,6 +26,7 @@
 
 class Post < ActiveRecord::Base
   validates :author_id, :content_type, presence: true
+  validates :text_content, length: { minimum: 1 }
   validates :content_type, inclusion: {
     in: %w(text image quote link chat audio video),
     message: "%{value} is not a valid content type"

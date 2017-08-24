@@ -7,7 +7,8 @@ class TextForm extends React.Component {
     this.state = {
       title: '',
       text_content: '',
-      content_type: 'text'
+      content_type: 'text',
+      author_id: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -25,7 +26,7 @@ class TextForm extends React.Component {
     return (e) => {
       e.preventDefault();
       formAction === 'post' ?
-        this.props.addPost(post).then(this.props.closeModal()) :
+        this.props.addPost(post).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
