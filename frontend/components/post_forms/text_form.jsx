@@ -33,27 +33,27 @@ class TextForm extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="form text-form">
         <p className="username-head">{this.props.currentUser.username}</p>
         <textarea
-          className="auth-input auth-email"
+          className="text-box text-title"
           placeholder="Title"
           value={this.state.title}
           onChange={this.handleChange('title')} />
         <textarea
-          className="auth-input auth-email"
+          className="text-box text-body"
           placeholder="Body"
           value={this.state.text_content}
           onChange={this.handleChange('text_content')} />
         <div className="form-footer">
           <button
-            className="form-close-butt"
+            className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
-            Close</button>
+            <span>Close</span></button>
           <button
-            className="form-post-butt"
+            className="form-butt form-post-butt"
             onClick={this.handleClick('post')}>
-            Post</button>
+            <span>Post</span></button>
         </div>
       </div>
     );

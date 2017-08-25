@@ -1,6 +1,6 @@
 json.extract! post, :id, :author_id, :title, :caption, :content_type
 case post.content_type
-when 'text' || 'quote' || 'link'
+when 'text' || 'quote' || 'chat'
   json.text_content post.text_content
   # json.image_url nil
   # json.video_url nil

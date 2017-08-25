@@ -1,5 +1,54 @@
 @import 'base/colors.scss';
 
-// font-family: 'Pragati Narrow', sans-serif;
-// font-family: 'Asap Condensed', sans-serif;
-// font-family: 'Alfa Slab One', cursive;
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 546px;
+}
+
+.text-box {
+  font-size: 36px;
+  width: auto;
+  min-height: 47px;
+  margin-top: 15px;
+}
+
+.text-body {
+  font-size: 14px;
+  min-height: 80px;
+}
+
+input::placeholder {
+  color: $placeholder-color;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-butt {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Asap Condensed', sans-serif;
+  width: 50px;
+  height: 30px;
+}
+
+.form-close-butt {
+  background-color: $gray-butt;
+  color: white;
+}
+
+.form-post-butt {
+  background-color: $sky-blue;
+  color: white;
+}

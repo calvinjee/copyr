@@ -26,22 +26,25 @@
 
 class Post < ActiveRecord::Base
   validates :author_id, :content_type, presence: true
-  validates :text_content, length: { minimum: 1 }
   validates :content_type, inclusion: {
     in: %w(text image quote link chat audio video),
     message: "%{value} is not a valid content type"
   }
 
-  has_attached_file :image, default_url: nil
+  # custom validation for requiring a file if they click on img/audio/video
+  # custom validation for text... require at least 1 character when content type is text
+  # rails conditional validation
+
+  has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_attachment :image,
   #   content_type: { content_type: /\Aimage\/.*\z/ },
   #   size: { in: 0..10.kilobytes }
 
-  has_attached_file :video, default_url: nil
+  has_attached_file :video
   validates_attachment_content_type :video, content_type: /\Avideo\/.*\z/
 
-  has_attached_file :audio, default_url: nil
+  has_attached_file :audio
   # validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\z/
   # validates_attachment_file_name :audio, matches: [/mp3\z/]
   validates_attachment :audio,

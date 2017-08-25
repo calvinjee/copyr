@@ -10,13 +10,7 @@ class PostDetail extends React.Component {
     e.preventDefault();
   }
 
-  render () {
-
-    switch(this.props.post.content_type) {
-      case 'text':
-
-    }
-
+  renderTextPost() {
     return (
       <div className="post">
         <p className="username-head">username</p>
@@ -25,6 +19,30 @@ class PostDetail extends React.Component {
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
     );
+  }
+
+  renderImagePost() {
+    return (
+      <div className="post">
+        <p className="username-head">username</p>
+        <h4 className="title">{this.props.post.title}</h4>
+        <img src={this.props.post.image_url} />
+        <p className="text-post">{this.props.post.caption}</p>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
+  render () {
+
+    switch(this.props.post.content_type) {
+      case 'text':
+        return this.renderTextPost();
+      case 'image':
+        return this.renderImagePost();
+    }
+
+
   }
 }
 

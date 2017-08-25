@@ -1,5 +1,6 @@
 import React from 'react';
 import TextForm from './text_form';
+import ImageForm from './image_form';
 
 
 class PostButtons extends React.Component {
@@ -15,16 +16,24 @@ class PostButtons extends React.Component {
   }
 
   render() {
-    let form = null;
+    let form, barDisplay = null;
     switch(this.props.postType) {
       case 'text':
         form = <TextForm />;
+        break;
+      case 'image':
+        form = <ImageForm />;
+        break;
+    }
+
+    if (form) {
+      return form;
     }
 
     return(
-
       <ul className="post-buttons">
-        <li>
+
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>Aa</i>
@@ -32,15 +41,15 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li>
-          <button onClick={this.showForm('text')}>
+        <li id={`${barDisplay}`}>
+          <button onClick={this.showForm('image')}>
             <div>
               <i>IMG</i>
               <span>Photo</span>
             </div>
             </button>
         </li>
-        <li>
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -48,7 +57,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li>
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -56,7 +65,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li>
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -64,7 +73,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li>
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -72,7 +81,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li>
+        <li id={`${barDisplay}`}>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -80,7 +89,6 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        { form }
       </ul>
     );
   }

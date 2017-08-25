@@ -20,19 +20,23 @@ export const fetchSinglePost = (id) => {
   });
 };
 
-export const createPost = (post) => {
+export const createPost = (postData) => {
   return $.ajax({
     method: 'POST',
     url: 'api/posts',
-    data: { post: post }
+    contentType: false,
+    processData: false,
+    data: postData
   });
 };
 
-export const updatePost = (post) => {
+export const updatePost = (postData) => {
   return $.ajax({
     method: 'PATCH',
-    url: `api/posts/${post.id}`,
-    data: { post: post }
+    url: `api/posts/${postData.id}`,
+    contentType: false,
+    processData: false,
+    data: { post: postData }
   });
 };
 

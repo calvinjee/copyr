@@ -69,8 +69,18 @@ button::-moz-focus-inner {
     padding: 0;
 }
 
-input[type="submit"],
-  {
-    font: inherit;
-    
-  }
+input[type="submit"] {
+  font: inherit;
+}
+
+textarea {
+  resize: none;
+  margin: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font: inherit;
+  border: none;
+  box-sizing: border-box;
+
+}
