@@ -6,13 +6,8 @@ class PostDetail extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.requestAllPosts();
-  }
-
   handleClick(e) {
     e.preventDefault();
-    this.props.logout().then(this.props.history.push("/"));
   }
 
   render () {

@@ -22,16 +22,62 @@ class PostButtons extends React.Component {
     }
 
     return(
-      <ul>
+      <ul className="post-buttons">
         <li>
           <button onClick={this.showForm('text')}>
-            <i>Aa</i>
-            <span>Text</span>
-          </button>
-          <button>
-            <i>""</i>
-            <span>Quote</span>
-          </button>
+            <div>
+              <i>Aa</i>
+              <span>Text</span>
+            </div>
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Photo</span>
+            </div>  
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Quote</span>
+            </div>
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Link</span>
+            </div>
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Chat</span>
+            </div>
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Audio</span>
+            </div>
+            </button>
+        </li>
+        <li>
+          <button onClick={this.showForm('text')}>
+            <div>
+              <i>IMG</i>
+              <span>Video</span>
+            </div>
+            </button>
         </li>
         { form }
       </ul>

@@ -8,10 +8,10 @@ class PostIndexItem extends React.Component {
 
   render () {
     return (
-      <div>
+      <li>
         <p>PP</p>
         <PostDetail post={this.props.post} />
-      </div>
+      </li>
     );
   }
 

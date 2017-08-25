@@ -12,10 +12,17 @@ class Dashboard extends React.Component {
 
     return (
       <div className="everywhere">
-        <h2>Hey {this.props.currentUser.username}</h2>
         <MainNavContainer />
-        <PostButtonsContainer />
-        <PostIndexContainer />
+        <div className="main-content">
+          <div className="feed">
+            <PostButtonsContainer />
+            <PostIndexContainer />
+          </div>
+          <div className="side-bar">
+            <p>Recommended Blogs</p>
+            <p>Radar</p>
+          </div>
+        </div>
       </div>
     );
   }

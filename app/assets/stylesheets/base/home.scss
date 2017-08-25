@@ -11,10 +11,15 @@ body {
 .nav-logo {
   color: white;
   font-size: 40px;
+  font-family: 'Alfa Slab One', cursive;
   position: absolute;
   top: 5px;
   left: 160px;
-  font-family: 'Alfa Slab One', cursive;
+}
+
+.home-logo {
+  font-size: 55px;
+  margin-bottom: 15px
 }
 
 .home-main {

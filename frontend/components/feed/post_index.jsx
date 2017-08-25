@@ -19,11 +19,11 @@ class PostIndex extends React.Component {
   render () {
     // will be mapping over of array of user_followed_post_ids instead
     const posts = this.props.posts.map((post) => {
-      return (<li><PostIndexItem key={post.id} post={post} /></li>);
+      return (<PostIndexItem key={post.id} post={post} />);
     });
 
     return (
-      <div>
+      <div className="posts">
         <ul>
           { posts }
         </ul>

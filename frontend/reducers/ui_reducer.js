@@ -1,5 +1,7 @@
-import { CLOSE_MODAL,
-  POST_FORM_MODAL } from '../actions/modal_actions';
+import {
+  CLOSE_MODAL,
+  POST_FORM_MODAL,
+  DROPDOWN_MODAL } from '../actions/modal_actions';
 import { merge } from 'lodash';
 
 
@@ -14,6 +16,11 @@ const uiReducer = (state = defaultState, action ) => {
       return {
         modalOpen: true,
         postType: action.postType
+      };
+    case DROPDOWN_MODAL:
+      return {
+        modalOpen: true,
+        dropdown: action.dropdown
       };
     default: return state;
   }

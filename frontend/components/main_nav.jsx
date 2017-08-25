@@ -1,6 +1,6 @@
 import React from 'react';
 import RecentActivity from './recent_activity';
-import AccountInfo from './account_info';
+import AccountInfo from './nav/account_info';
 import { Link } from 'react-router-dom';
 
 class MainNav extends React.Component {
@@ -24,25 +24,24 @@ class MainNav extends React.Component {
   }
 
   render () {
-    // const errors = this.props.errors.map((error, idx) => {
-    //   return (<p key={idx}>{error}</p>);
-    // });
-
     return (
       <div className="main-nav">
-        <h3 className="nav-logo main-nav-logo">c</h3>
+        <h3 className="nav-logo main-logo">c</h3>
+        <p>icon</p>
         <input
+            type="text"
             className="search"
             placeholder="Search Copyr"
             value={this.state.search}
             onChange={this.handleChange('search')} />
-        <Link to="/dashboard">
-          <button className="home-dashboard">Home</button>
-          </Link>
-        <RecentActivity />
-        <AccountInfo />
-        <button className="compose">Compose</button>
-        <button onClick={this.handleClick}>Logout</button>
+        <div className="main-nav-icons">
+          <Link to="/dashboard">
+            <p>Home</p>
+            </Link>
+          <RecentActivity />
+          <AccountInfo />
+          <p>compose</p>
+        </div>
       </div>
     );
   }

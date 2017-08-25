@@ -1,0 +1,100 @@
+@import 'base/colors.scss';
+
+// font-family: 'Pragati Narrow', sans-serif;
+// font-family: 'Asap Condensed', sans-serif;
+// font-family: 'Alfa Slab One', cursive;
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  padding: 10px 20px;
+  z-index: 10;
+  background-color: $dark-blue;
+  width: 100%;
+}
+
+.main-logo {
+  margin-right: 15px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.search {
+  max-width: 475px;
+  border: none;
+  background-color: $search-blue;
+  color: $very-very-lightgray;
+  height: 30px;
+  padding: 1;
+  text-indent: 5px;
+  font-size: 14px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.search:focus {
+  background-color: white;
+  color: black;
+}
+
+.main-nav-icons {
+  display: flex;
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+
+.account-info {
+  position: relative;
+  top: 20px;
+  left: 40px;
+  background-color: white;
+  width: 215px;
+  border-radius: 4px;
+}
+
+.account-info li {
+  height: 30px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+
+.aiheader {
+  display: flex;
+  align-items: center;
+  background-color: $lightest-gray;
+  color: lightgray;
+  padding: 5px;
+  color: $charcoal;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.aiheader p {
+  color: darkgray;
+}
+
+.aiheader button {
+  position: absolute;
+  right: 15px;
+  color: $very-lightgray;
+}
+
+.hidden {
+  display: none;
+}
+
+.ai {
+  min-width: 10px;
+}
+
+.posts {
+  margin-top: 20px;
+}
+
+.posts li {
+  
+}
