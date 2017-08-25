@@ -14,10 +14,10 @@
 .main-content {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   top: 60px;
   // margin: auto;
-  border-top: .5px solid #4C4C4D;
+  // border-top: .5px solid #4C4C4D;
   padding-top: 30px;
   // width: 546px;
 }
@@ -25,8 +25,8 @@
 .feed {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin: auto;
+  // align-items: flex-end;
+  // margin: auto;
 }
 
 .post-bar {
@@ -94,16 +94,40 @@
   box-sizing: border-box;
   background-color: white;
   border-radius: 4px;
-  padding: 15px;
+  padding: 25px;
   width: 546px;
 }
 
+
 .username-head {
-  font-weight: 700;
+  font-family: 'Biryani', sans-serif;
+  font-size: 11px;
   margin-bottom: 13px;
+
 }
 
+
+
 .title {
-  font-size: 22px;
+  font-size: 24px;
   margin-bottom: 10px;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10px 0;
+  display: inline-block;
+}
+
+.text-post {
+  font-size: 15px;
+}
+
+.post-options {
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.post-options p {
+
+  padding-top: 10px;
+  padding-left: 10px
 }

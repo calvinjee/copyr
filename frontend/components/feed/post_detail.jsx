@@ -21,7 +21,7 @@ class PostDetail extends React.Component {
       <div className="post">
         <p className="username-head">username</p>
         <h4 className="title">{this.props.post.title}</h4>
-        <p>{this.props.post.text_content}</p>
+        <p className="text-post">{this.props.post.text_content}</p>
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
     );

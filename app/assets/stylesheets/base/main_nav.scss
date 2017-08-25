@@ -46,10 +46,17 @@
   top: 20px;
 }
 
+.ai {
+  min-width: 10px;
+}
+
+.ai-dropdown {
+  position: absolute;
+  top: 30px;
+  left: -70px;
+}
+
 .account-info {
-  position: relative;
-  top: 20px;
-  left: 40px;
   background-color: white;
   width: 215px;
   border-radius: 4px;
@@ -60,7 +67,6 @@
   box-sizing: border-box;
   padding: 15px;
 }
-
 
 .aiheader {
   display: flex;
@@ -85,8 +91,4 @@
 
 .hidden {
   display: none;
-}
-
-.ai {
-  min-width: 10px;
 }

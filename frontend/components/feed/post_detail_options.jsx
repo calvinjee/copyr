@@ -20,7 +20,7 @@ class PostDetailOptions extends React.Component {
     }
 
     return (
-      <div>
+      <div className="post-options">
         <p>b1</p>
         <p>b2</p>
         <p>b3</p>

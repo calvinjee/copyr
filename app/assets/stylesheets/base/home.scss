@@ -1,11 +1,26 @@
 @import 'base/colors.scss';
 
-// font-family: 'Pragati Narrow', sans-serif;
-// font-family: 'Asap Condensed', sans-serif;
+// logo
 // font-family: 'Alfa Slab One', cursive;
+// font-family: 'Kadwa', serif;
+
+// rounded
+// font-family: 'Quicksand', sans-serif;
+// font-family: 'Nunito', sans-serif;
+
+// reg
+// font-family: 'PT Sans', sans-serif;
+// font-family: 'Hind', sans-serif;
+
+// home butt
+// font-family: 'Asap Condensed', sans-serif;
+
+// font-family: 'Yantramanav', sans-serif;
+
+
 
 body {
-  font-family: 'Pragati Narrow', sans-serif;
+  font-family: 'Yantramanav', sans-serif;
 }
 
 .nav-logo {
@@ -54,7 +69,7 @@ body {
 }
 
 .home-desc {
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .home-butt {
@@ -62,14 +77,13 @@ body {
   min-height: 45px;
   border-radius: 5px;
   font-size: 18px;
-  cursor: pointer;
+
   font-family: 'Asap Condensed', sans-serif;
   margin-top: 10px;
 }
 
-button span {
-  // display: block;
-  // padding: 10px 0;
+button {
+  cursor: pointer;
 }
 
 .signup {
