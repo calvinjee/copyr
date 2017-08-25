@@ -1,7 +1,5 @@
 @import 'base/colors.scss';
 
-
-
 .form {
   display: flex;
   flex-direction: column;
@@ -51,4 +49,25 @@ input::placeholder {
 .form-post-butt {
   background-color: $sky-blue;
   color: white;
+}
+
+.image-prev {
+
+}
+
+.upload-box {
+  height: 175px;
+  border-top: 1px dashed lightgray;
+  border-bottom: 1px dashed lightgray;
+  background-color: $lightest-gray;
+}
+
+.upload-file {
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+  height: 175px;
+  border: none;
+  cursor: pointer;
+  // -webkit-appearance:
 }

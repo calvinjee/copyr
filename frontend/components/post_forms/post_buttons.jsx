@@ -86,7 +86,7 @@ class PostButtons extends React.Component {
             </button>
         </li>
         <li id={`${barDisplay}`}>
-          <button onClick={this.showForm('text')}>
+          <button onClick={this.showForm('video')}>
             <div>
               <i>IMG</i>
               <span>Video</span>

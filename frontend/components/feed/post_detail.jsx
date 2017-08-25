@@ -26,7 +26,19 @@ class PostDetail extends React.Component {
       <div className="post">
         <p className="username-head">username</p>
         <h4 className="title">{this.props.post.title}</h4>
-        <img src={this.props.post.image_url} />
+        <img className="image-post" src={this.props.post.image_url} />
+        <p className="text-post">{this.props.post.caption}</p>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
+  renderVideoPost() {
+    return (
+      <div className="post">
+        <p className="username-head">username</p>
+        <h4 className="title">{this.props.post.title}</h4>
+        <video controls src={this.props.post.video_url} />
         <p className="text-post">{this.props.post.caption}</p>
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
@@ -40,6 +52,8 @@ class PostDetail extends React.Component {
         return this.renderTextPost();
       case 'image':
         return this.renderImagePost();
+      case 'video':
+        return this.renderVideoPost();
     }
 
 

@@ -5,7 +5,6 @@ class ImageForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
       imageFile: null,
       imageUrl: null,
       caption: '',
@@ -26,7 +25,6 @@ class ImageForm extends React.Component {
 
   handleClick(formAction) {
     const postData = new FormData();
-    postData.append("post[title]", this.state.title);
     postData.append("post[image]", this.state.imageFile);
     postData.append("post[caption]", this.state.caption);
     postData.append("post[content_type]", this.state.contentType);
@@ -56,14 +54,21 @@ class ImageForm extends React.Component {
     return(
       <div className="form text-form">
         <p className="username-head">{this.props.currentUser.username}</p>
-        <textarea
-          className="text-box text-title"
-          placeholder="Title"
-          value={this.state.title}
-          onChange={this.handleChange('title')} />
 
-        <img src={this.state.imageUrl} />
-        <input type="file" onChange={this.updateFile} />
+        <img className="image-prev"src={this.state.imageUrl} />
+
+        <div className="upload-box">
+          <button
+            for="file"
+            className="upload-image"
+            onChange={this.updateFile}>
+            <input
+              type="file"
+              className="upload-file"
+              name="file"
+              id="file" />
+          </button>
+        </div>
 
         <textarea
           className="text-box text-body"
