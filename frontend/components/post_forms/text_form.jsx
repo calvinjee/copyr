@@ -22,11 +22,11 @@ class TextForm extends React.Component {
   }
 
   handleClick(formAction) {
-    let post = this.state;
+    let postData = { post: this.state };
     return (e) => {
       e.preventDefault();
       formAction === 'post' ?
-        this.props.addPost(post).then(() => this.props.closeModal()) :
+        this.props.addPost(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
@@ -60,5 +60,4 @@ class TextForm extends React.Component {
   }
 }
 
-// TODO: ask if this is okay
 export default PostFormContainer(TextForm);

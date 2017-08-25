@@ -21,22 +21,36 @@ export const fetchSinglePost = (id) => {
 };
 
 export const createPost = (postData) => {
+  let contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+  let processData = true;
+  if (postData instanceof FormData) {
+    contentType = false;
+    processData = false;
+    }
+
   return $.ajax({
     method: 'POST',
     url: 'api/posts',
-    contentType: false,
-    processData: false,
+    contentType: contentType,
+    processData: processData,
     data: postData
   });
 };
 
 export const updatePost = (postData) => {
+  let contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+  let processData = true;
+  if (postData instanceof FormData) {
+    contentType = false;
+    processData = false;
+    }
+
   return $.ajax({
     method: 'PATCH',
     url: `api/posts/${postData.id}`,
     contentType: false,
     processData: false,
-    data: { post: postData }
+    data: postData
   });
 };
 

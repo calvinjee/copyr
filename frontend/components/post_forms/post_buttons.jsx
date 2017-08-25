@@ -1,6 +1,7 @@
 import React from 'react';
 import TextForm from './text_form';
 import ImageForm from './image_form';
+import VideoForm from './video_form';
 
 
 class PostButtons extends React.Component {
@@ -23,6 +24,9 @@ class PostButtons extends React.Component {
         break;
       case 'image':
         form = <ImageForm />;
+        break;
+      case 'video':
+        form = <VideoForm />;
         break;
     }
 

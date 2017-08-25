@@ -25,17 +25,17 @@ class ImageForm extends React.Component {
   }
 
   handleClick(formAction) {
-    const imagePostData = new FormData();
-    imagePostData.append("post[title]", this.state.title);
-    imagePostData.append("post[image]", this.state.imageFile);
-    imagePostData.append("post[caption]", this.state.caption);
-    imagePostData.append("post[content_type]", this.state.contentType);
-    imagePostData.append("post[author_id]", this.state.authorId);
-    
+    const postData = new FormData();
+    postData.append("post[title]", this.state.title);
+    postData.append("post[image]", this.state.imageFile);
+    postData.append("post[caption]", this.state.caption);
+    postData.append("post[content_type]", this.state.contentType);
+    postData.append("post[author_id]", this.state.authorId);
+
     return (e) => {
       e.preventDefault();
       formAction === 'post' ?
-        this.props.addPost(imagePostData).then(() => this.props.closeModal()) :
+        this.props.addPost(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
@@ -85,5 +85,4 @@ class ImageForm extends React.Component {
   }
 }
 
-// TODO: ask if this is okay
 export default PostFormContainer(ImageForm);

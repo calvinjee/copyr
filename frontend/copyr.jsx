@@ -4,13 +4,10 @@ import configureStore from './store/store';
 import Root from './components/root';
 //testing
 import * as APIUtil from './util/session_api_util';
-// import { signup, login, logout } from './actions/session_actions';
+import { signup, login, logout } from './actions/session_actions';
 // import { openModal } from './actions/modal_actions';
 import { requestAllPosts, requestSinglePost, deletePost, addPost, revisePost } from './actions/post_actions';
 import { merge } from 'lodash';
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -28,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
   // window.signup = signup;
   // window.login = login;
-  // window.logout = logout;
+  window.logout = logout;
   // window.openModal = openModal;
   window.merge = merge;
   window.requestAllPosts = requestAllPosts;
