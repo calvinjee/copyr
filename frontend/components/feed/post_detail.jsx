@@ -18,7 +18,7 @@ class PostDetail extends React.Component {
     }
 
     return (
-      <div>
+      <div className="post">
         <p className="username-head">username</p>
         <h4>{this.props.post.title}</h4>
         <p>{this.props.post.text_content}</p>

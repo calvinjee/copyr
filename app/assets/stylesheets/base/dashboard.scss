@@ -6,27 +6,35 @@
 
 .everywhere {
   background-color: $dark-blue;
-  height: 100vh;
+  height: 100%;
+  background-size: cover;
 
 }
 
 .main-content {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   top: 60px;
-  margin: auto;
+  // margin: auto;
   border-top: .5px solid #4C4C4D;
   padding-top: 30px;
-  width: 546px;
+  // width: 546px;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: auto;
 }
 
 .post-buttons {
   background-color: white;
   border-radius: 4px;
   display: flex;
-  justify-content: space-between;
-  width: 546px;
+  justify-content: flex-end;
+  // width: 546px;
   height: 100px;
 }
 
@@ -53,5 +61,36 @@
   padding: 5px;
   justify-content: center;
   align-items: center;
+}
 
+.posts {
+  color: $charcoal;
+}
+
+.posts li {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  position: sticky;
+  top: 64px;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.post {
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 4px;
+  padding: 15px;
+  width: 546px;
+}
+
+.username {
+  font-weight: 500;
 }

@@ -22,6 +22,7 @@ class PostButtons extends React.Component {
     }
 
     return(
+
       <ul className="post-buttons">
         <li>
           <button onClick={this.showForm('text')}>
@@ -36,7 +37,7 @@ class PostButtons extends React.Component {
             <div>
               <i>IMG</i>
               <span>Photo</span>
-            </div>  
+            </div>
             </button>
         </li>
         <li>
