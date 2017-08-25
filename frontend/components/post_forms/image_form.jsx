@@ -39,7 +39,7 @@ class ImageForm extends React.Component {
   }
 
   updateFile (e) {
-    const file = e.currentTarget.files[0];
+    const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({ imageFile: file, imageUrl: fileReader.result });
@@ -55,11 +55,11 @@ class ImageForm extends React.Component {
       <div className="form text-form">
         <p className="username-head">{this.props.currentUser.username}</p>
 
-        <img className="image-prev"src={this.state.imageUrl} />
+        <img className="image-prev" src={this.state.imageUrl} />
 
         <div className="upload-box">
           <button
-            for="file"
+            htmlFor="file"
             className="upload-image"
             onChange={this.updateFile}>
             <input
