@@ -9,7 +9,7 @@ class PostIndexItem extends React.Component {
   render () {
     return (
       <li>
-        <div className="avatar">pp</div>
+        <div className="avatar sticky-avatar">pp</div>
         <PostDetail post={this.props.post} />
       </li>
     );

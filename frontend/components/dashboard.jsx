@@ -15,8 +15,10 @@ class Dashboard extends React.Component {
         <MainNavContainer />
         <div className="main-content">
           <div className="feed">
-            <div className="avatar">pp</div>
-            <PostButtonsContainer />
+            <div className="post-bar">
+              <div className="avatar">pp</div>
+              <PostButtonsContainer />
+            </div>
             <PostIndexContainer />
           </div>
           <div className="side-bar">

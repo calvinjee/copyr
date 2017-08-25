@@ -29,6 +29,18 @@
   margin: auto;
 }
 
+.post-bar {
+  display: flex;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
 .post-buttons {
   background-color: white;
   border-radius: 4px;
@@ -73,14 +85,9 @@
   margin-top: 20px;
 }
 
-.avatar {
-  width: 64px;
-  height: 64px;
+.sticky-avatar {
   position: sticky;
   top: 64px;
-  background-color: white;
-  border-radius: 4px;
-  margin-right: 20px;
 }
 
 .post {
@@ -91,6 +98,12 @@
   width: 546px;
 }
 
-.username {
-  font-weight: 500;
+.username-head {
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+
+.title {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
