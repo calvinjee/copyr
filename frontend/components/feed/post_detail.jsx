@@ -1,5 +1,7 @@
 import React from 'react';
 import PostDetailOptionsContainer from './post_detail_options_container';
+import renderHTML from 'react-render-html';
+
 
 class PostDetail extends React.Component {
   constructor(props) {
@@ -11,11 +13,14 @@ class PostDetail extends React.Component {
   }
 
   renderTextPost() {
+    // <p className="text-post">{this.props.post.text_content}</p>
     return (
       <div className="post">
         <p className="username-head">username</p>
         <h4 className="title">{this.props.post.title}</h4>
-        <p className="text-post">{this.props.post.text_content}</p>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
     );

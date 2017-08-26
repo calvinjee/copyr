@@ -1,6 +1,6 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
-import theme from 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill';
 
 class TextForm extends React.Component {
   constructor(props) {
@@ -12,6 +12,7 @@ class TextForm extends React.Component {
       author_id: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -20,6 +21,10 @@ class TextForm extends React.Component {
       // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
+  }
+
+  handleEditor(value) {
+    this.setState({ text_content: value });
   }
 
   handleClick(formAction) {
@@ -33,6 +38,13 @@ class TextForm extends React.Component {
   }
 
   render() {
+    // ORIGINAL BODY FORM
+    // <textarea
+    //   className="text-box text-body"
+    //   placeholder="Body"
+    //   value={this.state.text_content}
+    //   onChange={this.handleChange('text_content')} />
+
     return(
       <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>
@@ -41,11 +53,15 @@ class TextForm extends React.Component {
           placeholder="Title"
           value={this.state.title}
           onChange={this.handleChange('title')} />
-        <textarea
-          className="text-box text-body"
-          placeholder="Body"
-          value={this.state.text_content}
-          onChange={this.handleChange('text_content')} />
+
+        <div className="text-body">
+          <ReactQuill
+            theme="bubble"
+            placeholder="Body"
+            defaultValue={this.state.text_content}
+            onChange={this.handleEditor} />
+        </div>
+
         <div className="form-footer">
           <button
             className="form-butt form-close-butt"

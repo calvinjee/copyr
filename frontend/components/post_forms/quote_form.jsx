@@ -12,6 +12,7 @@ class QuoteForm extends React.Component {
       author_id: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -20,6 +21,10 @@ class QuoteForm extends React.Component {
       // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
+  }
+
+  handleEditor(value) {
+    this.setState({ text_content: value });
   }
 
   handleClick(formAction) {
@@ -32,16 +37,8 @@ class QuoteForm extends React.Component {
     };
   }
 
-  render() {
-    let options = {
-      // debug: 'info',
-      // modules: {
-      //   toolbar: '#toolbar'
-      // },
-      placeholder: 'Compose an epic...',
-      theme: 'bubble'
-    };
 
+  render() {
     return(
       <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>
@@ -54,8 +51,8 @@ class QuoteForm extends React.Component {
         <ReactQuill
           theme="bubble"
           placeholder="Body"
-          value={this.state.text_content}
-          onChange={this.handleChange('text_content')} />
+          defaultValue={this.state.text_content}
+          onChange={this.handleEditor} />
 
         <div className="form-footer">
           <button
