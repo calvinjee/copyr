@@ -6,7 +6,7 @@
   background-color: white;
   border-radius: 4px;
   box-sizing: border-box;
-  padding: 20px;
+  // padding: 20px;
   width: 546px;
 }
 
@@ -15,11 +15,13 @@
   width: auto;
   min-height: 47px;
   margin-top: 15px;
+  padding: 0 20px;
 }
 
 .text-body {
   font-size: 14px;
   min-height: 80px;
+  padding: 0 20px
 }
 
 input::placeholder {
@@ -29,6 +31,7 @@ input::placeholder {
 .form-footer {
   display: flex;
   justify-content: space-between;
+  padding: 0 20px 20px 20px;
 }
 
 .form-butt {
@@ -51,8 +54,9 @@ input::placeholder {
   color: white;
 }
 
-.image-prev {
-
+.file-prev {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .upload-box {
@@ -69,5 +73,4 @@ input::placeholder {
   height: 175px;
   border: none;
   cursor: pointer;
-  // -webkit-appearance:
 }

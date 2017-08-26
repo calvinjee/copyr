@@ -9,6 +9,7 @@ class Dashboard extends React.Component {
   }
 
   render () {
+    const avatar = { backgroundImage: `url(${this.props.currentUser.image_url})` };
 
     return (
       <div className="everywhere">
@@ -16,7 +17,10 @@ class Dashboard extends React.Component {
         <div className="main-content">
           <div className="feed">
             <div className="post-bar">
-              <div className="avatar">pp</div>
+              <div className="avatar">
+                <div className="avatar-img"
+                  style={avatar} />
+              </div>
               <PostButtonsContainer />
             </div>
             <PostIndexContainer />

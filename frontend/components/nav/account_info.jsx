@@ -27,9 +27,9 @@ class AccountInfo extends React.Component {
           <button
             className="logout"
             onClick={this.handleLogout}>
-            Logout</button>
+            Log out</button>
         </div>
-        <ul>
+        <ul className="ai-list">
           <li><span>Likes</span></li>
           <li><span>Following</span></li>
           <li><span>My Posts</span></li>

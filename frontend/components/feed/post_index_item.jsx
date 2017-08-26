@@ -7,9 +7,14 @@ class PostIndexItem extends React.Component {
   }
 
   render () {
+    const avatar = { backgroundImage: `url(${this.props.user.avatar_url})` };
+
     return (
       <li>
-        <div className="avatar sticky-avatar">pp</div>
+        <div className="avatar sticky-avatar">
+          <div className="avatar-img"
+            style={avatar} />
+        </div>
         <PostDetail post={this.props.post} />
       </li>
     );

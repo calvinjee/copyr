@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.includes(:author).order(created_at: :desc)
     render 'api/posts/index'
   end
 
@@ -14,7 +14,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:author).find(params[:id])
     render 'api/posts/show'
   end
 

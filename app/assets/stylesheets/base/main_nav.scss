@@ -12,6 +12,7 @@
   z-index: 10;
   background-color: $dark-blue;
   width: 100%;
+  border-bottom: 1px solid #6D7480;
 }
 
 .main-logo {
@@ -23,6 +24,7 @@
 
 .search {
   max-width: 475px;
+  width: 475px;
   border: none;
   background-color: $search-blue;
   color: $very-very-lightgray;
@@ -62,31 +64,50 @@
   border-radius: 4px;
 }
 
-.account-info li {
-  height: 30px;
-  box-sizing: border-box;
-  padding: 15px;
-}
-
 .aiheader {
   display: flex;
   align-items: center;
   background-color: $lightest-gray;
   color: lightgray;
-  padding: 5px;
+  padding: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid gray;
   color: $charcoal;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
+  font-family: 'Yantramanav', sans-serif;
 }
 
 .aiheader p {
   color: darkgray;
+  font-weight: 600;
 }
 
 .aiheader button {
   position: absolute;
   right: 15px;
   color: $very-lightgray;
+}
+
+.logout {
+  font-size: 13px;
+}
+
+.account-info li {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  box-sizing: border-box;
+  padding: 15px 20px 15px 20px;
+  font-size: 15px;
+}
+
+.ai-list > :first-child {
+  padding-top: 20px;
+}
+
+.ai-list > :last-child {
+  padding-bottom: 20px;
 }
 
 .hidden {

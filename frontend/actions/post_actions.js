@@ -7,10 +7,11 @@ export const RECEIVE_SINGLE_POST = 'RECEIVE_SINGLE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
 
 // regular actions
-export const receiveAllPosts = (posts) => {
+export const receiveAllPosts = (payLoad) => {
   return {
     type: RECEIVE_ALL_POSTS,
-    posts: posts,
+    posts: payLoad.posts,
+    users: payLoad.users,
   };
 };
 
@@ -21,10 +22,11 @@ export const receiveAllPosts = (posts) => {
 //   };
 // };
 
-export const receiveSinglePost = (post) => {
+export const receiveSinglePost = (payLoad) => {
   return {
     type: RECEIVE_SINGLE_POST,
-    post: post,
+    post: payLoad.post,
+    user: payLoad.user,
   };
 };
 

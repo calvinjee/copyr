@@ -55,7 +55,7 @@ class ImageForm extends React.Component {
       <div className="form text-form">
         <p className="username-head">{this.props.currentUser.username}</p>
 
-        <img className="image-prev" src={this.state.imageUrl} />
+        <img className="file-prev" src={this.state.imageUrl} />
 
         <div className="upload-box">
           <button

@@ -34,11 +34,35 @@
 }
 
 .avatar {
+  width: auto;
+  height: auto;
+  background: $dark-blue 50% 50% no-repeat;
+  margin-right: 20px;
+  border-radius: 4px;
+  border-collapse: separate;
+  overflow: hidden;
+  position: relative;
+}
+
+.sticky-avatar {
+  position: sticky;
+  top: 64px;
+}
+
+.avatar-img {
   width: 64px;
   height: 64px;
-  background-color: white;
+  background-size: cover;
+  overflow: visible;
+  background: $dark-blue 50% 50% no-repeat;
   border-radius: 4px;
-  margin-right: 20px;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // width: 100%;
+  // height: 100%;
+  // border-radius: 4px;
 }
 
 .post-buttons {
@@ -85,43 +109,39 @@
   margin-top: 20px;
 }
 
-.sticky-avatar {
-  position: sticky;
-  top: 64px;
-}
-
 .post {
   box-sizing: border-box;
   background-color: white;
   border-radius: 4px;
-  padding: 25px;
+  // padding: 20px;
   width: 546px;
 }
-
 
 .username-head {
   font-family: 'Biryani', sans-serif;
   font-size: 11px;
+  padding: 20px 20px 0 20px;
   margin-bottom: 13px;
-
 }
 
 .title {
   font-size: 24px;
   margin-bottom: 10px;
   font-family: 'Quicksand', sans-serif;
-  padding: 10px 0;
+  padding: 10px 20px 10px 20px;
   display: inline-block;
 }
 
 .text-post {
   font-size: 15px;
+  margin-top: 10px;
+  padding: 0 20px;
 }
 
 .post-options {
   display: flex;
   justify-content: flex-end;
-
+  padding: 0 20px 20px 20px;
 }
 
 .post-options p {
@@ -132,4 +152,9 @@
 
 .hidden {
   display: none;
+}
+
+.file-post {
+  height: 100%;
+  width: 100%;
 }
