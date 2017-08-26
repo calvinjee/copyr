@@ -8,7 +8,6 @@
   background-color: $dark-blue;
   height: 100%;
   background-size: cover;
-
 }
 
 .main-content {
@@ -42,6 +41,11 @@
   border-collapse: separate;
   overflow: hidden;
   position: relative;
+}
+
+.cu-avatar {
+  z-index: 7;
+  height: 64px;
 }
 
 .sticky-avatar {

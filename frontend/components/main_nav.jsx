@@ -46,8 +46,10 @@ class MainNav extends React.Component {
   }
 
   render () {
+    const formOpen = this.props.formOpen ? 'nav-nofix' : null;
+
     return (
-      <div className="main-nav">
+      <div className={`main-nav ${formOpen}`}>
         <h3 className="nav-logo main-logo">c</h3>
         <p>icon</p>
         <input

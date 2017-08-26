@@ -17,7 +17,7 @@ class PostButtons extends React.Component {
   }
 
   render() {
-    let form, barDisplay = null;
+    let form = null;
     switch(this.props.postType) {
       case 'text':
         form = <TextForm />;
@@ -31,13 +31,17 @@ class PostButtons extends React.Component {
     }
 
     if (form) {
-      return form;
+      return  (
+        <div>
+          {form};
+          <div className="form-modal" />
+        </div>
+      );
     }
 
     return(
       <ul className="post-buttons">
-
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('text')}>
             <div>
               <i>Aa</i>
@@ -45,7 +49,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('image')}>
             <div>
               <i>IMG</i>
@@ -53,7 +57,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -61,7 +65,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -69,7 +73,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -77,7 +81,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('text')}>
             <div>
               <i>IMG</i>
@@ -85,7 +89,7 @@ class PostButtons extends React.Component {
             </div>
             </button>
         </li>
-        <li id={`${barDisplay}`}>
+        <li>
           <button onClick={this.showForm('video')}>
             <div>
               <i>IMG</i>

@@ -33,7 +33,7 @@ class TextForm extends React.Component {
 
   render() {
     return(
-      <div className="form text-form">
+      <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>
         <textarea
           className="text-box text-title"

@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
         <div className="main-content">
           <div className="feed">
             <div className="post-bar">
-              <div className="avatar">
+              <div className="avatar cu-avatar">
                 <div className="avatar-img"
                   style={avatar} />
               </div>

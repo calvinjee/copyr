@@ -6,7 +6,8 @@ import MainNav from './main_nav';
 
 const mapStateToProps = (state) => {
   return {
-    dropdown: state.ui.dropdown
+    dropdown: state.ui.dropdown,
+    formOpen: state.ui.postType,
   };
 };
 
