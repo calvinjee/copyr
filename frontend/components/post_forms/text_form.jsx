@@ -1,5 +1,6 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
+import theme from 'react-quill/dist/quill.snow.css';
 
 class TextForm extends React.Component {
   constructor(props) {
