@@ -14,7 +14,7 @@ class PostDetailOptions extends React.Component {
     return (e) => {
       if (option === 'delete') {
         this.props.deletePost(this.props.post.id).then(() => {
-          document.addEventListener('click', this.closeModal);
+          document.removeEventListener('click', this.closeModal);
         });
       } else {
         console.log('need to edit');
