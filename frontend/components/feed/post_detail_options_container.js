@@ -8,8 +8,8 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
     dropdown: state.ui.dropdown,
+    postType: state.ui.postType,
     editPostId: state.ui.editPostId,
-    editForm: state.ui.editForm,
   };
 };
 
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     revisePost: (post) => dispatch(revisePost(post)),
     dropdownModal: (dropdown, editPostId) => dispatch(dropdownModal(dropdown, editPostId)),
     closeModal: (dropdown) => dispatch(closeModal(dropdown)),
-    postFormModal: (postType, editForm) => dispatch(postFormModal(postType, editForm)),
+    postFormModal: (postType, editPostId) => dispatch(postFormModal(postType, editPostId)),
   };
 };
 

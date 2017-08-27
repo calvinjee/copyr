@@ -25,7 +25,7 @@ class PostIndex extends React.Component {
           post={post}
           user={this.props.users[post.author_id]}
           postType={this.props.postType}
-          editForm={this.props.editForm}
+          editPostId={this.props.editPostId}
           />
       );
     });

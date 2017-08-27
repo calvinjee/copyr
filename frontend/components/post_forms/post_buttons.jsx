@@ -38,7 +38,7 @@ class PostButtons extends React.Component {
         break;
     }
 
-    if (form) {
+    if (form && !this.props.editPostId) {
       return  (
         <div>
           {form};

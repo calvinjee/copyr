@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
   return {
     modalOpen: state.ui.modalOpen,
     postType: state.ui.postType,
+    editPostId: state.ui.editPostId,
   };
 };
 

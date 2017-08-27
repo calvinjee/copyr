@@ -13,11 +13,10 @@ class PostDetailOptions extends React.Component {
   handleOption(option) {
     return (e) => {
       if (option === 'delete') {
-        this.props.deletePost(this.props.post.id).then(() => {
-          document.removeEventListener('click', this.closeModal);
-        });
+        this.props.deletePost(this.props.post.id);
+        document.removeEventListener('click', this.closeModal);
       } else {
-        this.props.postFormModal(this.props.post.content_type);
+        this.props.postFormModal(this.props.post.content_type, this.props.post.id);
       }
     };
   }
@@ -30,6 +29,7 @@ class PostDetailOptions extends React.Component {
   }
 
   closeModal(e) {
+    // debugger
     if (this.node.contains(e.target)) {
       return;
     }
@@ -57,9 +57,10 @@ class PostDetailOptions extends React.Component {
         <p>b2</p>
         <p>b3</p>
         { lastButton }
-        <div className="options-dropdown">
+        <div
+          className="options-dropdown"
+          ref={node => { this.node = node; }}>
           <ul
-            ref={node => { this.node = node; }}
             className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
               "edit-options" :
               "hidden"}>

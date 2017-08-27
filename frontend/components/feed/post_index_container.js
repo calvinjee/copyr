@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
     posts: postsArray(state.entities.posts),
     users: state.entities.users,
     postType: state.ui.postType,
-    editForm: state.ui.editForm,
+    editPostId: state.ui.editPostId,
   };
 };
 

@@ -8,11 +8,11 @@ export const closeModal = () => {
   };
 };
 
-export const postFormModal = (postType, editForm) => {
+export const postFormModal = (postType, editPostId) => {
   return {
     type: POST_FORM_MODAL,
     postType: postType,
-    editForm: editForm,
+    editPostId: editPostId,
   };
 };
 
