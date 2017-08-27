@@ -1,27 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { logout } from '../../actions/session_actions';
 import { dropdownModal, closeModal } from '../../actions/modal_actions';
 
 class AccountInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { search: '' };
     this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogout(e) {
     e.preventDefault();
-    this.props.logout().then(this.props.history.push("/"));
+    this.props.logout().then(() => {
+      // clear state;
+      this.props.history.push("/");
+    });
   }
 
   render () {
     return (
       <div
         className={this.props.dropdown === 'accountinfo' ?
-        "account-info" :
-        "hidden"}>
+          "account-info" :
+          "hidden"}>
         <div className="aiheader">
           <p>ACCOUNT</p>
           <button
@@ -46,7 +48,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AccountInfo);
+export default withRouter(connect(null, mapDispatchToProps)(AccountInfo));
 
 // import React from 'react';
 // import { connect } from 'react-redux';

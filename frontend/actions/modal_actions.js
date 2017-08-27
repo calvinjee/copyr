@@ -11,13 +11,15 @@ export const closeModal = () => {
 export const postFormModal = (postType) => {
   return {
     type: POST_FORM_MODAL,
-    postType: postType
+    postType: postType,
   };
 };
 
-export const dropdownModal = (dropdown) => {
+export const dropdownModal = (dropdown, editPostId, editForm) => {
   return {
     type: DROPDOWN_MODAL,
     dropdown: dropdown,
+    editPostId: editPostId,
+    editForm: editForm,
   };
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import PostDetail from './post_detail';
+import PostDetailOptionsContainer from './post_detail_options_container';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class PostIndexItem extends React.Component {
           <div className="avatar-img"
             style={avatar} />
         </div>
-        <PostDetail post={this.props.post} />
+          <PostDetail post={this.props.post} />
       </li>
     );
   }

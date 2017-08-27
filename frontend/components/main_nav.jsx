@@ -7,15 +7,9 @@ class MainNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = { search: '' };
-    this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.closeModal = this.closeModal.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    this.props.logout().then(this.props.history.push("/"));
   }
 
   handleChange(input) {
@@ -74,7 +68,6 @@ class MainNav extends React.Component {
             <AccountInfo dropdown={this.props.dropdown} />
           </div>
           <p>compose</p>
-
         </div>
 
       </div>

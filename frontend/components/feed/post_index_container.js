@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     currentUser: state.session.currentUser,
     posts: postsArray(state.entities.posts),
     users: state.entities.users,
+    editForm: state.ui.editForm,
   };
 };
 
