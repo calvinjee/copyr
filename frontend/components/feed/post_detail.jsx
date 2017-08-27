@@ -13,7 +13,6 @@ class PostDetail extends React.Component {
   }
 
   renderTextPost() {
-    // <p className="text-post">{this.props.post.text_content}</p>
     return (
       <div className="post">
         <p className="username-head">username</p>
@@ -31,7 +30,35 @@ class PostDetail extends React.Component {
       <div className="post">
         <p className="username-head">username</p>
         <img className="file-post" src={this.props.post.image_url} />
-        <p className="text-post">{this.props.post.caption}</p>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
+  renderQuotePost() {
+    // <p className="text-post">{this.props.post.text_content}</p>
+    return (
+      <div className="post">
+        <p className="username-head">username</p>
+        <h4 className="title">{this.props.post.title}</h4>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
+  renderChatPost() {
+    return (
+      <div className="post">
+        <p className="username-head">username</p>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
     );
@@ -42,14 +69,15 @@ class PostDetail extends React.Component {
       <div className="post">
         <p className="username-head">username</p>
         <video className="file-post" controls src={this.props.post.video_url} />
-        <p className="text-post">{this.props.post.caption}</p>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
         <PostDetailOptionsContainer post={this.props.post} />
       </div>
     );
   }
 
   render () {
-
     switch(this.props.post.content_type) {
       case 'text':
         return this.renderTextPost();
@@ -57,9 +85,11 @@ class PostDetail extends React.Component {
         return this.renderImagePost();
       case 'video':
         return this.renderVideoPost();
+      case 'quote':
+        return this.renderQuotePost();
+      case 'chat':
+        return this.renderChatPost();
     }
-
-
   }
 }
 

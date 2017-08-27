@@ -1,5 +1,6 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
+import ReactQuill from 'react-quill';
 
 class ImageForm extends React.Component {
   constructor(props) {
@@ -7,11 +8,12 @@ class ImageForm extends React.Component {
     this.state = {
       imageFile: null,
       imageUrl: null,
-      caption: '',
+      textContent: '',
       contentType: 'image',
       authorId: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.updateFile = this.updateFile.bind(this);
   }
@@ -23,10 +25,14 @@ class ImageForm extends React.Component {
     };
   }
 
+  handleEditor(value) {
+    this.setState({ textContent: value });
+  }
+
   handleClick(formAction) {
     const postData = new FormData();
     postData.append("post[image]", this.state.imageFile);
-    postData.append("post[caption]", this.state.caption);
+    postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
     postData.append("post[author_id]", this.state.authorId);
 
@@ -70,11 +76,13 @@ class ImageForm extends React.Component {
           </button>
         </div>
 
-        <textarea
-          className="text-box text-body"
-          placeholder="Caption"
-          value={this.state.caption}
-          onChange={this.handleChange('caption')} />
+        <div className="text-body">
+          <ReactQuill
+            theme="bubble"
+            placeholder="Caption"
+            defaultValue={this.state.textContent}
+            onChange={this.handleEditor} />
+        </div>
         <div className="form-footer">
           <button
             className="form-butt form-close-butt"

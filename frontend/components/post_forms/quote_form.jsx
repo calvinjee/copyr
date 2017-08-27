@@ -8,12 +8,13 @@ class QuoteForm extends React.Component {
     this.state = {
       title: '',
       text_content: '',
-      content_type: 'text',
+      content_type: 'quote',
       author_id: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    // this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(input) {
@@ -37,22 +38,41 @@ class QuoteForm extends React.Component {
     };
   }
 
+  // handleReset(e) {
+  //   this.setState({ title: '' });
+  // }
 
   render() {
+    // ORIGINAL BODY FORM
+    // <textarea
+    //   className="text-box text-body"
+    //   placeholder="Body"
+    //   value={this.state.text_content}
+    //   onChange={this.handleChange('text_content')} />
+    // <div className="quote-box">
+    // <span>{"\u0022"}</span>
+    // </div>
+
     return(
       <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>
-        <textarea
-          className="text-box text-title"
-          placeholder="Title"
+
+      <textarea
+          className="text-box quote-title"
+          placeholder='"Quote"'
           value={this.state.title}
           onChange={this.handleChange('title')} />
 
-        <ReactQuill
-          theme="bubble"
-          placeholder="Body"
-          defaultValue={this.state.text_content}
-          onChange={this.handleEditor} />
+        <div className="text-body quote-body">
+          <p className="quote-caption">{"\u2014"}</p>
+          <div className="quote-editor">
+            <ReactQuill
+              theme="bubble"
+              placeholder="Source"
+              defaultValue={this.state.text_content}
+              onChange={this.handleEditor} />
+          </div>
+        </div>
 
         <div className="form-footer">
           <button

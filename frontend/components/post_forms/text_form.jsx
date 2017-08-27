@@ -44,7 +44,6 @@ class TextForm extends React.Component {
     //   placeholder="Body"
     //   value={this.state.text_content}
     //   onChange={this.handleChange('text_content')} />
-
     return(
       <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>

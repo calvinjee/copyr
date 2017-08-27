@@ -1,11 +1,11 @@
 json.set! :post do
-  json.extract! post, :id, :author_id, :title, :caption, :content_type
+  json.extract! post, :id, :author_id, :title, :text_content, :content_type
   case post.content_type
-  when 'text' || 'quote' || 'chat'
-    json.text_content post.text_content
-    # json.image_url nil
-    # json.video_url nil
-    # json.audio_url nil
+  # when 'text', 'quote', 'link'
+  #   json.text_content post.text_content
+  #   # json.image_url nil
+  #   # json.video_url nil
+  #   # json.audio_url nil
   when 'image'
     # json.text_content nil
     json.image_url asset_path(post.image.url)

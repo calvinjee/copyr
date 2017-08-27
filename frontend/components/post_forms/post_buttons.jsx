@@ -3,6 +3,7 @@ import TextForm from './text_form';
 import ImageForm from './image_form';
 import VideoForm from './video_form';
 import QuoteForm from './quote_form';
+import ChatForm from './chat_form';
 
 
 class PostButtons extends React.Component {
@@ -31,6 +32,9 @@ class PostButtons extends React.Component {
         break;
       case 'quote':
         form = <QuoteForm />;
+        break;
+      case 'chat':
+        form = <ChatForm />;
         break;
     }
 
@@ -78,7 +82,7 @@ class PostButtons extends React.Component {
             </button>
         </li>
         <li>
-          <button onClick={this.showForm('text')}>
+          <button onClick={this.showForm('chat')}>
             <div>
               <i>IMG</i>
               <span>Chat</span>

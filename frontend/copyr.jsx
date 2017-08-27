@@ -5,6 +5,7 @@ import Root from './components/root';
 //testing
 import * as APIUtil from './util/session_api_util';
 import { signup, login, logout } from './actions/session_actions';
+import { values } from 'lodash';
 // import { openModal } from './actions/modal_actions';
 import { requestAllPosts, requestSinglePost, deletePost, addPost, revisePost } from './actions/post_actions';
 import { merge } from 'lodash';
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.deletePost = deletePost;
   window.addPost = addPost;
   window.revisePost = revisePost;
+  window.lodashvalues = values;
   //
 
   ReactDOM.render(<Root store={store} />, root);
