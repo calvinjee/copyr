@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 class PostDetailOptions extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class PostDetailOptions extends React.Component {
           document.removeEventListener('click', this.closeModal);
         });
       } else {
-        console.log('need to edit');
+        this.props.postFormModal(this.props.post.content_type);
       }
     };
   }
@@ -49,6 +49,8 @@ class PostDetailOptions extends React.Component {
       );
     }
 
+    // <li onClick={this.handleOption('edit')}><span>Edit</span></li>
+
     return (
       <div className="post-options">
         <p>b1</p>
@@ -61,7 +63,7 @@ class PostDetailOptions extends React.Component {
             className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
               "edit-options" :
               "hidden"}>
-            <li onClick={this.handleOption('edit')}><span>Edit</span></li>
+            <Link to={`/edit/${this.props.post.id}`} onClick={this.handleOption('edit')}><li><span>Edit</span></li></Link>
             <li onClick={this.handleOption('delete')}><span>Delete</span></li>
           </ul>
         </div>

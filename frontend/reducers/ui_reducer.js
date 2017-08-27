@@ -16,13 +16,13 @@ const uiReducer = (state = defaultState, action ) => {
       return {
         modalOpen: true,
         postType: action.postType,
+        editForm: action.editForm,
       };
     case DROPDOWN_MODAL:
       return {
         modalOpen: true,
         dropdown: action.dropdown,
         editPostId: action.editPostId,
-        editForm: action.editForm,
       };
     default: return state;
   }

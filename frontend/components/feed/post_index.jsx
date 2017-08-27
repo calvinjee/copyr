@@ -19,7 +19,15 @@ class PostIndex extends React.Component {
   render () {
     // will be mapping over of array of user_followed_post_ids instead
     const posts = this.props.posts.map((post) => {
-      return (<PostIndexItem key={post.id} post={post} user={this.props.users[post.author_id]}/>);
+      return (
+        <PostIndexItem
+          key={post.id}
+          post={post}
+          user={this.props.users[post.author_id]}
+          postType={this.props.postType}
+          editForm={this.props.editForm}
+          />
+      );
     });
 
     return (

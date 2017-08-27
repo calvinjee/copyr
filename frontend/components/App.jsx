@@ -10,6 +10,7 @@ const App = (props) => {
     <div>
       <AuthRoute exact path ="/" component={HomeContainer} />
       <Route path ="/dashboard" component={DashboardContainer} />
+      <Route path="/edit/:id" component={DashboardContainer} />
     </div>
   );
 };

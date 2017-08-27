@@ -8,18 +8,18 @@ export const closeModal = () => {
   };
 };
 
-export const postFormModal = (postType) => {
+export const postFormModal = (postType, editForm) => {
   return {
     type: POST_FORM_MODAL,
     postType: postType,
+    editForm: editForm,
   };
 };
 
-export const dropdownModal = (dropdown, editPostId, editForm) => {
+export const dropdownModal = (dropdown, editPostId) => {
   return {
     type: DROPDOWN_MODAL,
     dropdown: dropdown,
     editPostId: editPostId,
-    editForm: editForm,
   };
 };

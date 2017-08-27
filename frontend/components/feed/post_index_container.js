@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
 import { requestAllPosts } from '../../actions/post_actions';
 import PostIndex from './post_index';
 import { postsArray } from '../../reducers/selectors';
@@ -9,6 +10,7 @@ const mapStateToProps = (state) => {
     currentUser: state.session.currentUser,
     posts: postsArray(state.entities.posts),
     users: state.entities.users,
+    postType: state.ui.postType,
     editForm: state.ui.editForm,
   };
 };

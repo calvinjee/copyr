@@ -7,13 +7,13 @@ import { postFormModal } from '../../actions/modal_actions';
 const mapStateToProps = (state) => {
   return {
     modalOpen: state.ui.modalOpen,
-    postType: state.ui.postType
+    postType: state.ui.postType,
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    postFormModal: (postType) => dispatch(postFormModal(postType))
+    postFormModal: (postType) => dispatch(postFormModal(postType)),
   };
 };
 
