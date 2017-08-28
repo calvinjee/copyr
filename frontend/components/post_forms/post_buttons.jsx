@@ -25,10 +25,10 @@ class PostButtons extends React.Component {
         form = <TextForm contentType='text' />;
         break;
       case 'image':
-        form = <ImageForm />;
+        form = <ImageForm contentType='image' />;
         break;
       case 'video':
-        form = <VideoForm />;
+        form = <ImageForm contentType='video' />;
         break;
       case 'quote':
         form = <TextForm contentType='quote' />;

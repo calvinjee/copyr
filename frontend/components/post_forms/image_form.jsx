@@ -6,12 +6,21 @@ import ReactQuill from 'react-quill';
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
+    let url;
+    switch(this.props.contentType) {
+      case 'image':
+        url = this.props.imageUrl;
+        break;
+      case 'video':
+        url = this.props.videoUrl;
+        break;
+    }
     this.state = {
       id: this.props.id,
-      imageFile: null,
-      imageUrl: this.props.imageUrl,
+      file: null,
+      url: url,
       textContent: this.props.textContent,
-      contentType: 'image',
+      contentType: this.props.contentType,
       authorId: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
@@ -34,8 +43,8 @@ class ImageForm extends React.Component {
   handleClick(formAction) {
     const postData = new FormData();
 
-    if (this.state.imageFile) {
-      postData.append("post[image]", this.state.imageFile);
+    if (this.state.file) {
+      postData.append(`post[${this.state.contentType}]`, this.state.file);
     }
     postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
@@ -54,7 +63,7 @@ class ImageForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result });
+      this.setState({ file: file, url: fileReader.result });
     };
 
     if (file) {
@@ -63,13 +72,23 @@ class ImageForm extends React.Component {
   }
 
   render() {
-    // const pull = this.props.pullUp ? 'pullUp' : 'pullDown';
+    let prev;
+    if (this.state.url) {
+      switch(this.state.contentType) {
+        case 'image':
+          prev = ( <img className="file-prev" src={this.state.url} /> );
+          break;
+        case 'video':
+          prev = ( <video className="video-prev" controls src={this.state.url} /> );
+          break;
+      }
+    }
 
     return(
       <div className={`form text-form ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
 
-        <img className="file-prev" src={this.state.imageUrl} />
+        { prev }
 
         <div className="upload-box">
           <button

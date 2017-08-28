@@ -1,15 +1,16 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
+import { withRouter } from 'react-router-dom';
 
 class VideoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      id: this.props.id,
       videoFile: null,
-      videoUrl: null,
-      textContent: '',
+      videoUrl: this.props.videoUrl,
+      textContent: this.props.textContent,
       contentType: 'video',
       authorId: this.props.currentUser.id
     };
@@ -32,7 +33,6 @@ class VideoForm extends React.Component {
 
   handleClick(formAction) {
     const postData = new FormData();
-    postData.append("post[title]", this.state.title);
     postData.append("post[video]", this.state.videoFile);
     postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
@@ -62,11 +62,6 @@ class VideoForm extends React.Component {
     return(
       <div className="form text-form">
         <p className="username-head">{this.props.currentUser.username}</p>
-        <textarea
-          className="text-box text-title"
-          placeholder="Title"
-          value={this.state.title}
-          onChange={this.handleChange('title')} />
 
         <video controls src={this.state.videoUrl} />
         <input type="file" onChange={this.updateFile} />
@@ -93,4 +88,4 @@ class VideoForm extends React.Component {
   }
 }
 
-export default PostFormContainer(VideoForm);
+export default withRouter(PostFormContainer(VideoForm));
