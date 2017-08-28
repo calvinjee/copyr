@@ -52,10 +52,10 @@ class ChatForm extends React.Component {
           <ReactQuill
             theme="bubble"
             placeholder={
-              `Musa: “Yo bitch what is that?”
-Julian: “They're chips, you want some?""
-Anthony: “Julian has the best snacks, damn.”
-Musa: “Fucking gimps.”`
+              `Muhammad: “Hey, what you got there?”
+Jules: “They're chips, you want some?"
+Tony: “Jules has the best snacks, damn.”
+Muhammad: “No thanks.”`
             }
             defaultValue={this.state.text_content}
             onChange={this.handleEditor} />

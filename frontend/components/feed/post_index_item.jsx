@@ -24,19 +24,19 @@ class PostIndexItem extends React.Component {
 
       switch(this.props.postType) {
         case 'text':
-          editForm = <TextForm post={this.props.post} pullUp='pullUp' />;
+          editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='text' />;
           break;
         case 'image':
           editForm = <ImageForm post={this.props.post} pullUp='pullUp' />;
           break;
         case 'quote':
-          editForm = <QuoteForm post={this.props.post} />;
+          editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='quote'/>;
           break;
         case 'link':
           editForm = <LinkForm post={this.props.post} />;
           break;
         case 'chat':
-          editForm = <ChatForm post={this.props.post} />;
+          editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='chat'/>;
           break;
         case 'audio':
           editForm = <AudioForm post={this.props.post} />;

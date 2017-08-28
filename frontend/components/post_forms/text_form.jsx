@@ -10,7 +10,7 @@ class TextForm extends React.Component {
       id: this.props.id,
       title: this.props.title,
       text_content: this.props.textContent,
-      content_type: 'text',
+      content_type: this.props.contentType,
       author_id: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
@@ -40,24 +40,65 @@ class TextForm extends React.Component {
   }
 
   render() {
-    // const pull = this.props.pullUp ? 'pullUp' : 'pullDown';
+    let titleClass, titlePlaceholder, bodyInput;
+    switch(this.state.content_type) {
+      case 'text':
+        titleClass = 'text-title';
+        titlePlaceholder = 'Title';
+        bodyInput = (
+          <div className="text-body">
+            <ReactQuill
+              theme="bubble"
+              placeholder="Body"
+              defaultValue={this.state.text_content}
+              onChange={this.handleEditor} />
+          </div>
+        );
+        break;
+      case 'quote':
+        titleClass = 'quote-title';
+        titlePlaceholder = '"Quote"';
+        bodyInput = (
+          <div className="text-body quote-body">
+            <p className="quote-caption">{"\u2014"}</p>
+            <div className="quote-editor">
+              <ReactQuill
+                theme="bubble"
+                placeholder="Source"
+                defaultValue={this.state.text_content}
+                onChange={this.handleEditor} />
+            </div>
+          </div>
+        );
+        break;
+      case 'chat':
+        titleClass = 'hidden';
+        titlePlaceholder = '';
+        bodyInput = (<div className="text-body">
+          <ReactQuill
+            theme="bubble"
+            placeholder={
+              `Muhammad: “Hey, what you got there?”
+Jules: “They're chips, you want some?"
+Tony: “Jules has the best snacks, damn.”
+Muhammad: “No thanks.”`
+            }
+            defaultValue={this.state.text_content}
+            onChange={this.handleEditor} />
+        </div>);
+    }
+
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
         <textarea
-          className="text-box text-title"
-          placeholder="Title"
+          className={`text-box ${titleClass}`}
+          placeholder={`${titlePlaceholder}`}
           value={this.state.title}
           onChange={this.handleChange('title')} />
 
-        <div className="text-body">
-          <ReactQuill
-            theme="bubble"
-            placeholder="Body"
-            defaultValue={this.state.text_content}
-            onChange={this.handleEditor} />
-        </div>
+        { bodyInput }
 
         <div className="form-footer">
           <button

@@ -22,7 +22,7 @@ class PostButtons extends React.Component {
     let form = null;
     switch(this.props.postType) {
       case 'text':
-        form = <TextForm />;
+        form = <TextForm contentType='text' />;
         break;
       case 'image':
         form = <ImageForm />;
@@ -31,12 +31,30 @@ class PostButtons extends React.Component {
         form = <VideoForm />;
         break;
       case 'quote':
-        form = <QuoteForm />;
+        form = <TextForm contentType='quote' />;
         break;
       case 'chat':
-        form = <ChatForm />;
+        form = <TextForm contentType='chat' />;
         break;
     }
+
+    // switch(this.props.postType) {
+    //   case 'text':
+    //     form = <TextForm contentType='text' />;
+    //     break;
+    //   case 'image':
+    //     form = <ImageForm />;
+    //     break;
+    //   case 'video':
+    //     form = <VideoForm />;
+    //     break;
+    //   case 'quote':
+    //     form = <QuoteForm contentType='text' />;
+    //     break;
+    //   case 'chat':
+    //     form = <ChatForm contentType='text' />;
+    //     break;
+    // }
 
     if (form && !this.props.editPostId) {
       return  (

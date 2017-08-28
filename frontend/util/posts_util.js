@@ -40,14 +40,16 @@ export const createPost = (postData) => {
 export const updatePost = (postData) => {
   let contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
   let processData = true;
+  let id = postData.post.id;
   if (postData instanceof FormData) {
     contentType = false;
     processData = false;
+    id = parseInt(postData.get('post[id]'));
     }
 
   return $.ajax({
     method: 'PATCH',
-    url: `api/posts/${parseInt(postData.get('post[id]'))}`,
+    url: `api/posts/${id}`,
     contentType: contentType,
     processData: processData,
     data: postData
