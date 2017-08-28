@@ -1,13 +1,15 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
+import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 
 class TextForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      text_content: '',
+      id: this.props.id,
+      title: this.props.title,
+      text_content: this.props.textContent,
       content_type: 'text',
       author_id: this.props.currentUser.id
     };
@@ -31,19 +33,13 @@ class TextForm extends React.Component {
     let postData = { post: this.state };
     return (e) => {
       e.preventDefault();
-      formAction === 'post' ?
-        this.props.addPost(postData).then(() => this.props.closeModal()) :
+      formAction === 'action' ?
+        this.props.action(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
 
   render() {
-    // ORIGINAL BODY FORM
-    // <textarea
-    //   className="text-box text-body"
-    //   placeholder="Body"
-    //   value={this.state.text_content}
-    //   onChange={this.handleChange('text_content')} />
     return(
       <div className="form text-form stretchDown">
         <p className="username-head">{this.props.currentUser.username}</p>
@@ -68,7 +64,7 @@ class TextForm extends React.Component {
             <span>Close</span></button>
           <button
             className="form-butt form-post-butt"
-            onClick={this.handleClick('post')}>
+            onClick={this.handleClick('action')}>
             <span>Post</span></button>
         </div>
       </div>
@@ -76,4 +72,4 @@ class TextForm extends React.Component {
   }
 }
 
-export default PostFormContainer(TextForm);
+export default withRouter(PostFormContainer(TextForm));

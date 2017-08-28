@@ -8,26 +8,35 @@ const mapStateToProps = (state, ownProps) => {
     return {
       currentUser: state.session.currentUser,
       modalOpen: state.ui.modalOpen,
-      id: ownProps.post.id,
-      authorId: ownProps.post.author_id,
-      contentType: ownProps.content_type,
+      id: parseInt(ownProps.match.params.id),
       title: ownProps.post.title,
       textContent: ownProps.post.text_content,
-      content_url: ownProps.post.content_url,
+      imageUrl: ownProps.post.image_url,
+      videoUrl: ownProps.post.video_url,
+      audioUrl: ownProps.post.audio_url,
     };
   } else {
     return {
       currentUser: state.session.currentUser,
       modalOpen: state.ui.modalOpen,
+      id: null,
+      title: '',
+      textContent: '',
+      imageUrl: null,
+      videoUrl: null,
+      audioUrl: null,
     };
   }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  let action = ownProps.post ? revisePost : addPost;
+
   return {
-    addPost: (post) => dispatch(addPost(post)),
-    revisePost: (post) => dispatch(revisePost(post)),
-    closeModal: () => dispatch(closeModal())
+    // addPost: (post) => dispatch(addPost(post)),
+    // revisePost: (post) => dispatch(revisePost(post)),
+    action: (post) => dispatch(action(post)),
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

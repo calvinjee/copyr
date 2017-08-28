@@ -26,7 +26,7 @@ export const createPost = (postData) => {
   if (postData instanceof FormData) {
     contentType = false;
     processData = false;
-    }
+  }
 
   return $.ajax({
     method: 'POST',
@@ -47,9 +47,9 @@ export const updatePost = (postData) => {
 
   return $.ajax({
     method: 'PATCH',
-    url: `api/posts/${postData.id}`,
-    contentType: false,
-    processData: false,
+    url: `api/posts/${parseInt(postData.get('post[id]'))}`,
+    contentType: contentType,
+    processData: processData,
     data: postData
   });
 };

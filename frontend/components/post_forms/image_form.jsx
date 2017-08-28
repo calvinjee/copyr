@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
 
@@ -6,9 +7,10 @@ class ImageForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: this.props.id,
       imageFile: null,
-      imageUrl: null,
-      textContent: '',
+      imageUrl: this.props.imageUrl,
+      textContent: this.props.textContent,
       contentType: 'image',
       authorId: this.props.currentUser.id
     };
@@ -31,15 +33,20 @@ class ImageForm extends React.Component {
 
   handleClick(formAction) {
     const postData = new FormData();
-    postData.append("post[image]", this.state.imageFile);
+
+    if (this.state.imageFile) {
+      postData.append("post[image]", this.state.imageFile);
+    }
     postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
     postData.append("post[author_id]", this.state.authorId);
+    postData.append("post[id]", this.state.id);
+    debugger
 
     return (e) => {
       e.preventDefault();
-      formAction === 'post' ?
-        this.props.addPost(postData).then(() => this.props.closeModal()) :
+      formAction === 'action' ?
+        this.props.action(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
@@ -90,7 +97,7 @@ class ImageForm extends React.Component {
             <span>Close</span></button>
           <button
             className="form-butt form-post-butt"
-            onClick={this.handleClick('post')}>
+            onClick={this.handleClick('action')}>
             <span>Post</span></button>
         </div>
       </div>
@@ -98,4 +105,4 @@ class ImageForm extends React.Component {
   }
 }
 
-export default PostFormContainer(ImageForm);
+export default withRouter(PostFormContainer(ImageForm));
