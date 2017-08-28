@@ -17,23 +17,26 @@ class PostDetailOptions extends React.Component {
         document.removeEventListener('click', this.closeModal);
       } else {
         this.props.postFormModal(this.props.post.content_type, this.props.post.id);
+        document.removeEventListener('click', this.closeModal);
       }
     };
   }
 
   showDropdown(dropdown) {
     return (e) => {
+      e.stopPropagation();
       this.props.dropdownModal(dropdown, this.props.post.id);
+      debugger
       document.addEventListener('click', this.closeModal);
     };
   }
 
   closeModal(e) {
     // debugger
-    if (this.node.contains(e.target)) {
-      return;
-    }
-
+    // if (this.node.contains(e.target)) {
+    //   return;
+    // }
+    debugger
     this.props.closeModal();
     document.removeEventListener('click', this.closeModal);
   }
@@ -58,9 +61,11 @@ class PostDetailOptions extends React.Component {
           <i className="fa fa-retweet" aria-hidden="true"></i>
           { lastButton }
           <div
-            className="options-dropdown"
-            ref={node => { this.node = node; }}>
+            className="options-dropdown">
             <ul
+              onClick={(e) => {
+                debugger
+                e.stopPropagation()}}
               className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
                 "edit-options" :
                 "hidden"}>
