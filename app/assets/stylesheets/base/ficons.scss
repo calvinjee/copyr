@@ -2362,23 +2362,30 @@
 .fa-envelope {
   text-decoration: none;
   color: $very-lightgray;
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
 .fa-user {
   color: $very-lightgray;
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 .fa-bolt {
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: $very-lightgray;
+  font-weight: bold;
 }
 
-.fa-pencil-square {
-  font-size: 2.3em;
-  background-color: $dark-blue;
-  color: $sky-blue;
+.fa-pencil {
+  font-size: 1.5em;
+  color: $dark-blue;
+  background-color: $sky-blue;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 5px 4px;
+  border-radius: 3px;
+
 }
 
 .main-nav-icons i:hover {

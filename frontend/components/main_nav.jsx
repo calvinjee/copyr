@@ -71,7 +71,7 @@ class MainNav extends React.Component {
             className="ai-dropdown">
             <AccountInfo dropdown={this.props.dropdown} />
           </div>
-          <i className="fa fa-pencil-square" aria-hidden="true"></i>
+          <i className="fa fa-pencil" aria-hidden="true"></i>
         </div>
 
       </div>
