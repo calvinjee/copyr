@@ -16,18 +16,18 @@ class PostIndexItem extends React.Component {
   render () {
     const avatar = { backgroundImage: `url(${this.props.user.avatar_url})` };
 
-    let editForm, formModal, hideDetail;
+    let editForm, avatarLift, formModal, hideDetail;
     if (this.props.postType && this.props.editPostId === this.props.post.id) {
-      // editForm = React.cloneElement(this.props.editForm, {post: this.props.post });
-      // formModal = 'form-modal';
+      formModal = 'form-modal';
+      avatarLift = 'cu-avatar';
       hideDetail = 'hidden';
 
       switch(this.props.postType) {
         case 'text':
-          editForm = <TextForm post={this.props.post} />;
+          editForm = <TextForm post={this.props.post} pullUp='pullUp' />;
           break;
         case 'image':
-          editForm = <ImageForm post={this.props.post} />;
+          editForm = <ImageForm post={this.props.post} pullUp='pullUp' />;
           break;
         case 'quote':
           editForm = <QuoteForm post={this.props.post} />;
@@ -47,19 +47,20 @@ class PostIndexItem extends React.Component {
       }
     }
 
-    
+
     // <PostDetail post={this.props.post} hideDetail={hideDetail} />
-    // <div className={formModal} />
+
 
     return (
       <li>
-        <div className="avatar sticky-avatar">
+        <div className={`avatar sticky-avatar ${avatarLift}`}>
           <div className="avatar-img"
             style={avatar} />
         </div>
         <Route path="/dashboard" component={(props) => <PostDetail post={this.props.post} />} />
         <Route path="/edit/:id" component={(props) => <PostDetail post={this.props.post} hideDetail={hideDetail} />} />
         { editForm }
+        <div className={formModal} />
       </li>
     );
   }

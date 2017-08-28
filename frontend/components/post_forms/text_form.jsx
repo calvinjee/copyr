@@ -40,8 +40,10 @@ class TextForm extends React.Component {
   }
 
   render() {
+    // const pull = this.props.pullUp ? 'pullUp' : 'pullDown';
+
     return(
-      <div className="form text-form stretchDown">
+      <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
         <textarea
           className="text-box text-title"
