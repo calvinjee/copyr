@@ -3,25 +3,16 @@ json.set! :posts do
     json.set!(post.id) do
       json.extract! post, :id, :author_id, :text_content, :title, :content_type
       case post.content_type
-      # when 'text', 'quote', 'link'
-      #   json.text_content post.text_content
-      #   # json.image_url nil
-      #   # json.video_url nil
-      #   # json.audio_url nil
+      when 'link'
+        json.link_url post.link_url
+        json.image_url post.image_file_name
+        json.link_host post.link_host
+        json.caption post.caption
       when 'image'
-        # json.text_content nil
         json.image_url asset_path(post.image.url)
-        # json.video_url nil
-        # json.audio_url nil
       when 'video'
-        # json.text_content nil
-        # json.image_url nil
         json.video_url asset_path(post.video.url)
-        # json.audio_url nil
       when 'audio'
-        # json.text_content nil
-        # json.image_url nil
-        # json.video_url nil
         json.audio_url asset_path(post.audio.url)
       end
     end

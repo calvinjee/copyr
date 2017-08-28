@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
       imageUrl: null,
       videoUrl: null,
       audioUrl: null,
-      linkUrl: null,
+      linkUrl: '',
       contentType: ownProps.contentType,
     };
   }

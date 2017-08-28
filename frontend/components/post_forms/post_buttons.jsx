@@ -4,6 +4,7 @@ import ImageForm from './image_form';
 import VideoForm from './video_form';
 import QuoteForm from './quote_form';
 import ChatForm from './chat_form';
+import LinkForm from './link_form';
 
 
 class PostButtons extends React.Component {

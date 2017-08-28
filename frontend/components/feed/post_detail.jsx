@@ -55,11 +55,13 @@ class PostDetail extends React.Component {
   renderLinkPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
-        <img className="file-post" src={this.props.post.image_url} />
-        <h4 className="title">{this.props.post.link_host}</h4>
-        <h4 className="title">{this.props.post.title}</h4>
-        <h4 className="text-post">{this.props.post.caption}</h4>
+        <a className="post-link link-bg" href={this.props.post.link_url} target="_blank">
+          <p className="username-head">username</p>
+          <p className="link-host">{this.props.post.link_host.slice(4)}</p>
+          <img className="file-post" src={this.props.post.image_url} />
+          <h4 className="title link-bg">{this.props.post.title}</h4>
+          <div className="text-post link-bg">{this.props.post.caption}</div>
+        </a>
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
         </div>

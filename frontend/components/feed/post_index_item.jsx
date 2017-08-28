@@ -7,6 +7,7 @@ import ImageForm from '../post_forms/image_form';
 import VideoForm from '../post_forms/video_form';
 import QuoteForm from '../post_forms/quote_form';
 import ChatForm from '../post_forms/chat_form';
+import LinkForm from '../post_forms/link_form';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
