@@ -74,7 +74,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('text')}>
             <div>
-              <i>Aa</i>
+              <i className="fa fa-font" aria-hidden="true"></i>
               <span>Text</span>
             </div>
             </button>
@@ -82,7 +82,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('image')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-camera fa-camera-btn" aria-hidden="true"></i>
               <span>Photo</span>
             </div>
             </button>
@@ -90,7 +90,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('quote')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-quote-left" aria-hidden="true"></i>
               <span>Quote</span>
             </div>
             </button>
@@ -98,7 +98,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('link')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-link" aria-hidden="true"></i>
               <span>Link</span>
             </div>
             </button>
@@ -106,7 +106,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('chat')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-twitch" aria-hidden="true"></i>
               <span>Chat</span>
             </div>
             </button>
@@ -114,7 +114,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('text')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-headphones" aria-hidden="true"></i>
               <span>Audio</span>
             </div>
             </button>
@@ -122,7 +122,7 @@ class PostButtons extends React.Component {
         <li>
           <button onClick={this.showForm('video')}>
             <div>
-              <i>IMG</i>
+              <i className="fa fa-video-camera fa-video-camera-btn" aria-hidden="true"></i>
               <span>Video</span>
             </div>
             </button>
