@@ -72,17 +72,33 @@ class ImageForm extends React.Component {
   }
 
   render() {
-    let prev;
-    if (this.state.url) {
-      switch(this.state.contentType) {
-        case 'image':
-          prev = ( <img className="file-prev" src={this.state.url} /> );
-          break;
-        case 'video':
-          prev = ( <video className="video-prev" controls src={this.state.url} /> );
-          break;
-      }
+    let prev, uploadBackground;
+
+    switch(this.state.contentType) {
+      case 'image':
+        prev = ( <img className="file-prev" src={this.state.url} /> );
+        uploadBackground = (
+          <div className="img-upload-bg">
+            <i className="fa fa-camera" aria-hidden="true"></i>
+            <p>Upload a photo</p>
+          </div>
+        );
+        break;
+      case 'video':
+        prev = ( <video className="video-prev" controls src={this.state.url} /> );
+        uploadBackground = (
+          <div className="img-upload-bg">
+            <i className="fa fa-video-camera" aria-hidden="true"></i>
+            <p>Upload a video</p>
+          </div>
+        );
+        break;
     }
+
+    if (this.state.contentType === 'video') {
+      prev = null;
+    }
+
 
     return(
       <div className={`form text-form ${this.props.pullUp}`}>
@@ -99,8 +115,17 @@ class ImageForm extends React.Component {
               type="file"
               className="upload-file"
               name="file"
-              id="file" />
+              id="file">
+            </input>
+            {uploadBackground}
           </button>
+          <div className="upload-image">
+            <div className="img-upload-bg">
+              <i className="fa fa-globe" aria-hidden="true"></i>
+              <p>Add from web</p>
+              <p>Coming soon...</p>
+            </div>
+          </div>
         </div>
 
         <div className="text-body">

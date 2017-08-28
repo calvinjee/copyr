@@ -122,15 +122,45 @@ input::placeholder {
   border-top: 2px dashed lightgray;
   border-bottom: 2px dashed lightgray;
   background-color: $lightest-gray;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.upload-image {
+  width: 50%;
+  height: 80%;
+  border-right: 1px solid $very-lightgray;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .upload-file {
   opacity: 0;
   overflow: hidden;
-  z-index: -1;
+  z-index: 3;
   height: 175px;
   border: none;
   cursor: pointer;
+  height: 175px;
+  width: 50%;
+  position: absolute;
+}
+
+.img-upload-bg {
+  position: absolute;
+  font-size: 14px;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-upload-bg p {
+  padding-top: 15px;
 }
 
 .pullDown{
