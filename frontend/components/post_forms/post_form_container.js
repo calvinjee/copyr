@@ -14,7 +14,9 @@ const mapStateToProps = (state, ownProps) => {
       imageUrl: ownProps.post.image_url,
       videoUrl: ownProps.post.video_url,
       audioUrl: ownProps.post.audio_url,
+      linkUrl: ownProps.post.link_url,
       contentType: ownProps.post.content_type,
+
     };
   } else {
     return {
@@ -26,6 +28,7 @@ const mapStateToProps = (state, ownProps) => {
       imageUrl: null,
       videoUrl: null,
       audioUrl: null,
+      linkUrl: null,
       contentType: ownProps.contentType,
     };
   }

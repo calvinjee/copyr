@@ -33,7 +33,7 @@ class PostIndexItem extends React.Component {
           editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='quote' />;
           break;
         case 'link':
-          editForm = <LinkForm post={this.props.post} />;
+          editForm = <LinkForm post={this.props.post} pullUp='pullUp' contentType='link' />;
           break;
         case 'chat':
           editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='chat' />;

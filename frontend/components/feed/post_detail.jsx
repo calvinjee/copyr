@@ -52,6 +52,22 @@ class PostDetail extends React.Component {
     );
   }
 
+  renderLinkPost() {
+    return (
+      <div className={`post ${this.props.hideDetail}`}>
+        <p className="username-head">username</p>
+        <img className="file-post" src={this.props.post.image_url} />
+        <h4 className="title">{this.props.post.link_host}</h4>
+        <h4 className="title">{this.props.post.title}</h4>
+        <h4 className="text-post">{this.props.post.caption}</h4>
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
   renderChatPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
@@ -87,6 +103,8 @@ class PostDetail extends React.Component {
         return this.renderVideoPost();
       case 'quote':
         return this.renderQuotePost();
+      case 'link':
+        return this.renderLinkPost();
       case 'chat':
         return this.renderChatPost();
     }

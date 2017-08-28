@@ -27,14 +27,17 @@ class PostButtons extends React.Component {
       case 'image':
         form = <ImageForm contentType='image' />;
         break;
-      case 'video':
-        form = <ImageForm contentType='video' />;
-        break;
       case 'quote':
-        form = <TextForm contentType='quote' />;
-        break;
+      form = <TextForm contentType='quote' />;
+      break;
+      case 'link':
+      form = <LinkForm contentType='link' />;
+      break;
       case 'chat':
         form = <TextForm contentType='chat' />;
+        break;
+      case 'video':
+        form = <ImageForm contentType='video' />;
         break;
     }
 
@@ -92,7 +95,7 @@ class PostButtons extends React.Component {
             </button>
         </li>
         <li>
-          <button onClick={this.showForm('text')}>
+          <button onClick={this.showForm('link')}>
             <div>
               <i>IMG</i>
               <span>Link</span>

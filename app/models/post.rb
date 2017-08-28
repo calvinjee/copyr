@@ -22,6 +22,8 @@
 #  audio_content_type :string
 #  audio_file_size    :integer
 #  audio_updated_at   :datetime
+#  link_url           :string
+#  link_host          :string
 #
 
 class Post < ActiveRecord::Base
