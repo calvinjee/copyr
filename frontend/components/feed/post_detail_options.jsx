@@ -26,7 +26,7 @@ class PostDetailOptions extends React.Component {
     return (e) => {
       e.stopPropagation();
       this.props.dropdownModal(dropdown, this.props.post.id);
-      debugger
+      // debugger
       document.addEventListener('click', this.closeModal);
     };
   }
@@ -36,7 +36,7 @@ class PostDetailOptions extends React.Component {
     // if (this.node.contains(e.target)) {
     //   return;
     // }
-    debugger
+    // debugger
     this.props.closeModal();
     document.removeEventListener('click', this.closeModal);
   }
@@ -63,9 +63,7 @@ class PostDetailOptions extends React.Component {
           <div
             className="options-dropdown">
             <ul
-              onClick={(e) => {
-                debugger
-                e.stopPropagation()}}
+              onClick={(e) => e.stopPropagation()}
               className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
                 "edit-options" :
                 "hidden"}>
