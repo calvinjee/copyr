@@ -45,7 +45,7 @@ class MainNav extends React.Component {
     return (
       <div className={`main-nav ${formOpen}`}>
         <h3 className="nav-logo main-logo">c</h3>
-        <p>icon</p>
+        <i className="fa fa-search fa-lg" aria-hidden="true"></i>
         <input
             type="text"
             className="search"
@@ -53,21 +53,25 @@ class MainNav extends React.Component {
             value={this.state.search}
             onChange={this.handleChange('search')} />
         <div className="main-nav-icons">
+
           <Link to="/dashboard">
-            <p>Home</p>
+            <i className="fa fa-home" aria-hidden="true"></i>
             </Link>
+          <i className="fa fa-compass" aria-hidden="true"></i>
+          <i className="fa fa-envelope" aria-hidden="true"></i>
+          <i className="fa fa-bolt" aria-hidden="true"></i>
           <RecentActivity />
           <div
             onClick={this.showDropdown('accountinfo')}
             className="ai">
-            AI
+            <i className="fa fa-user" aria-hidden="true"></i>
           </div>
           <div
             ref={node => { this.node = node; }}
             className="ai-dropdown">
             <AccountInfo dropdown={this.props.dropdown} />
           </div>
-          <p>compose</p>
+          <i className="fa fa-pencil-square" aria-hidden="true"></i>
         </div>
 
       </div>

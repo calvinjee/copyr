@@ -53,6 +53,10 @@
   position: absolute;
   right: 100px;
   top: 20px;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  bottom: 1em;
 }
 
 .ai {
@@ -61,8 +65,8 @@
 
 .ai-dropdown {
   position: absolute;
-  top: 30px;
-  left: -70px;
+  top: 35px;
+  right: -20px;
 }
 
 .account-info {

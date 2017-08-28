@@ -39,12 +39,12 @@ class PostDetailOptions extends React.Component {
   }
 
   render () {
-    let lastButton = <button>HEART</button>;
+    let lastButton = <i className="fa fa-heart-o" aria-hidden="true"></i>;
     if (this.props.post.author_id === this.props.currentUser.id) {
       lastButton = (
         <button
           onClick={this.showDropdown('postEdit')}>
-          <span>Gear</span>
+          <i className="fa fa-cog" aria-hidden="true"></i>
         </button>
       );
     }
@@ -52,21 +52,22 @@ class PostDetailOptions extends React.Component {
     // <li onClick={this.handleOption('edit')}><span>Edit</span></li>
 
     return (
-      <div className="post-options">
-        <p>b1</p>
-        <p>b2</p>
-        <p>b3</p>
-        { lastButton }
-        <div
-          className="options-dropdown"
-          ref={node => { this.node = node; }}>
-          <ul
-            className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
-              "edit-options" :
-              "hidden"}>
-            <Link to={`/edit/${this.props.post.id}`} onClick={this.handleOption('edit')}><li><span>Edit</span></li></Link>
-            <li onClick={this.handleOption('delete')}><span>Delete</span></li>
-          </ul>
+      <div className="post-footer">
+        <div>Notes</div>
+        <div className="post-options">
+          <i className="fa fa-retweet" aria-hidden="true"></i>
+          { lastButton }
+          <div
+            className="options-dropdown"
+            ref={node => { this.node = node; }}>
+            <ul
+              className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
+                "edit-options" :
+                "hidden"}>
+              <Link to={`/edit/${this.props.post.id}`} onClick={this.handleOption('edit')}><li><span>Edit</span></li></Link>
+              <li onClick={this.handleOption('delete')}><span>Delete</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     );
