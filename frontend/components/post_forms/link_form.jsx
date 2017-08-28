@@ -55,7 +55,7 @@ class LinkForm extends React.Component {
         <div className="text-body">
           <ReactQuill
             theme="bubble"
-            placeholder="what do you have to say about this link"
+            placeholder="Comment"
             defaultValue={this.state.text_content}
             onChange={this.handleEditor} />
         </div>
