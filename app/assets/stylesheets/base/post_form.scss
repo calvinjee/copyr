@@ -68,6 +68,19 @@ input::placeholder {
   color: $placeholder-color;
 }
 
+.link-box {
+  height: 100px;
+  border-top: 2px dashed lightgray;
+  border-bottom: 2px dashed lightgray;
+  background-color: $lightest-gray;
+}
+
+.link-url {
+  background-color: inherit;
+  border: none;
+  font-size: 14px;
+}
+
 .form-footer {
   display: flex;
   justify-content: space-between;
@@ -105,8 +118,8 @@ input::placeholder {
 
 .upload-box {
   height: 175px;
-  border-top: 1px dashed lightgray;
-  border-bottom: 1px dashed lightgray;
+  border-top: 2px dashed lightgray;
+  border-bottom: 2px dashed lightgray;
   background-color: $lightest-gray;
 }
 

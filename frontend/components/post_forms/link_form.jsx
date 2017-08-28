@@ -44,11 +44,13 @@ class LinkForm extends React.Component {
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
+        <div className="link-box">
         <input
-          className="text-box text-title"
+          className="text-body link-url"
           placeholder="Type or paste a URL"
           value={this.state.link_url}
           onChange={this.handleChange('link_url')} />
+        </div>
 
         <div className="text-body">
           <ReactQuill
