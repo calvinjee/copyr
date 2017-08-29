@@ -1,9 +1,5 @@
 @import 'base/colors.scss';
 
-// font-family: 'Pragati Narrow', sans-serif;
-// font-family: 'Asap Condensed', sans-serif;
-// font-family: 'Alfa Slab One', cursive;
-
 .main-nav {
   display: flex;
   align-items: center;
@@ -12,7 +8,7 @@
   z-index: 10;
   background-color: $dark-blue;
   width: 100%;
-  border-bottom: 1px solid #6D7480;
+  // border-bottom: 1px solid #6D7480;
   // z-index: 25;
 }
 
@@ -35,17 +31,17 @@
   border: none;
   background-color: $search-blue;
   color: $very-very-lightgray;
-  height: 30px;
-  padding: 1;
+  height: 34px;
   text-indent: 5px;
   font-size: 14px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  padding: 1px 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .search:focus {
   background-color: white;
-  color: black;
+  color: $charcoal;
 }
 
 .main-nav-icons {

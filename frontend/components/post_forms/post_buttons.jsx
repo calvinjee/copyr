@@ -1,10 +1,8 @@
 import React from 'react';
 import TextForm from './text_form';
 import ImageForm from './image_form';
-import VideoForm from './video_form';
-import QuoteForm from './quote_form';
-import ChatForm from './chat_form';
 import LinkForm from './link_form';
+import AudioForm from './audio_form';
 
 
 class PostButtons extends React.Component {
@@ -29,36 +27,21 @@ class PostButtons extends React.Component {
         form = <ImageForm contentType='image' />;
         break;
       case 'quote':
-      form = <TextForm contentType='quote' />;
-      break;
+        form = <TextForm contentType='quote' />;
+        break;
       case 'link':
-      form = <LinkForm contentType='link' />;
-      break;
+        form = <LinkForm contentType='link' />;
+        break;
       case 'chat':
         form = <TextForm contentType='chat' />;
+        break;
+      case 'audio':
+        form = <AudioForm contentType='audio' />;
         break;
       case 'video':
         form = <ImageForm contentType='video' />;
         break;
     }
-
-    // switch(this.props.postType) {
-    //   case 'text':
-    //     form = <TextForm contentType='text' />;
-    //     break;
-    //   case 'image':
-    //     form = <ImageForm />;
-    //     break;
-    //   case 'video':
-    //     form = <VideoForm />;
-    //     break;
-    //   case 'quote':
-    //     form = <QuoteForm contentType='text' />;
-    //     break;
-    //   case 'chat':
-    //     form = <ChatForm contentType='text' />;
-    //     break;
-    // }
 
     if (form && !this.props.editPostId) {
       return  (
@@ -112,7 +95,7 @@ class PostButtons extends React.Component {
             </button>
         </li>
         <li>
-          <button onClick={this.showForm('text')}>
+          <button onClick={this.showForm('audio')}>
             <div>
               <i className="fa fa-headphones" aria-hidden="true"></i>
               <span>Audio</span>

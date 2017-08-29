@@ -6,19 +6,19 @@ import ReactQuill from 'react-quill';
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
-    let url;
+    let previewUrl;
     switch(this.props.contentType) {
       case 'image':
-        url = this.props.imageUrl;
+        previewUrl = this.props.imageUrl;
         break;
       case 'video':
-        url = this.props.videoUrl;
+        previewUrl = this.props.videoUrl;
         break;
     }
     this.state = {
       id: this.props.id,
       file: null,
-      url: url,
+      previewUrl: previewUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
       authorId: this.props.currentUser.id
@@ -63,7 +63,7 @@ class ImageForm extends React.Component {
     const file = e.target.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ file: file, url: fileReader.result });
+      this.setState({ file: file, previewUrl: fileReader.result });
     };
 
     if (file) {
@@ -76,7 +76,7 @@ class ImageForm extends React.Component {
 
     switch(this.state.contentType) {
       case 'image':
-        prev = ( <img className="file-prev" src={this.state.url} /> );
+        prev = ( <img className="file-prev" src={this.state.previewUrl} /> );
         uploadBackground = (
           <div className="img-upload-bg">
             <i className="fa fa-camera" aria-hidden="true"></i>
@@ -85,7 +85,6 @@ class ImageForm extends React.Component {
         );
         break;
       case 'video':
-        prev = ( <video className="video-prev" controls src={this.state.url} /> );
         uploadBackground = (
           <div className="img-upload-bg">
             <i className="fa fa-video-camera" aria-hidden="true"></i>
@@ -95,10 +94,9 @@ class ImageForm extends React.Component {
         break;
     }
 
-    if (this.state.contentType === 'video') {
-      prev = null;
+    if (this.state.previewUrl) {
+      prev = ( <video className="video-prev" controls src={this.state.previewUrl} /> );
     }
-
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>

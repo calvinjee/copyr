@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class MainNav extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { search: '' };
+    this.state = { search: '', searchIcon: ''};
     this.handleChange = this.handleChange.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -34,15 +34,16 @@ class MainNav extends React.Component {
     return (
       <div className={`main-nav ${formOpen}`}>
         <h3 className="nav-logo main-logo">c</h3>
-        <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+        <i className={`fa fa-search ${this.state.searchIcon}`} aria-hidden="true"></i>
         <input
             type="text"
             className="search"
             placeholder="Search Copyr"
             value={this.state.search}
+            onFocus={() => this.setState({ searchIcon: 'fa-search-focus' })}
+            onBlur={() => this.setState({ searchIcon: '' })}
             onChange={this.handleChange('search')} />
         <div className="main-nav-icons">
-
           <Link to="/dashboard">
             <i className="fa fa-home" aria-hidden="true"></i>
             </Link>
@@ -51,7 +52,7 @@ class MainNav extends React.Component {
           <i className="fa fa-bolt" aria-hidden="true"></i>
           <RecentActivity />
           <div
-            onClick={this.showDropdown('accountinfo')}
+            onBlur={this.showDropdown('accountinfo')}
             className="ai">
             <i className="fa fa-user" aria-hidden="true"></i>
           </div>

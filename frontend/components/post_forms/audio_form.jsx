@@ -1,19 +1,23 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
 
-class TextForm extends React.Component {
+class AudioForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.post.title,
-      text_content: this.props.post.title,
-      content_type: 'text',
-      author_id: this.props.currentUser.id
+      id: this.props.id,
+      file: null,
+      previewUrl: this.props.audioUrl,
+      textContent: this.props.textContent,
+      contentType: this.props.contentType,
+      authorId: this.props.currentUser.id
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   handleChange(input) {
@@ -24,38 +28,79 @@ class TextForm extends React.Component {
   }
 
   handleEditor(value) {
-    this.setState({ text_content: value });
+    this.setState({ textContent: value });
   }
 
   handleClick(formAction) {
-    let postData = { post: this.state };
+    const postData = new FormData();
+
+    if (this.state.file) {
+      postData.append(`post[${this.state.contentType}]`, this.state.file);
+    }
+    postData.append("post[text_content]", this.state.textContent);
+    postData.append("post[content_type]", this.state.contentType);
+    postData.append("post[author_id]", this.state.authorId);
+    postData.append("post[id]", this.state.id);
+
     return (e) => {
       e.preventDefault();
-      formAction === 'post' ?
+      formAction === 'action' ?
         this.props.action(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
 
+  updateFile (e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ file: file, previewUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
   render() {
+    let prev;
+    if (this.state.previewUrl) {
+      prev = ( <audio className="" controls src={this.state.previewUrl} /> );
+    }
 
     return(
-      <div className="form text-form stretchDown">
+      <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
-        <textarea
-          className="text-box text-title"
-          placeholder="Title"
-          value={this.state.title}
-          onChange={this.handleChange('title')} />
+
+        { prev }
+
+        <div className="audio-box">
+          <i className="fa fa-search fa-search-audio" aria-hidden="true"></i>
+          <input className="audio-search" placeholder="Search coming soon..."/>
+          <button
+            htmlFor="file"
+            className="upload-audio"
+            onChange={this.updateFile}>
+            <input
+              type="file"
+              className="upload-file"
+              name="file"
+              id="file">
+            </input>
+            <div className="img-upload-bg">
+              <i className="fa fa-camera" aria-hidden="true"></i>
+              <p>Upload a photo</p>
+            </div>
+          </button>
+        </div>
 
         <div className="text-body">
           <ReactQuill
             theme="bubble"
-            placeholder="Body"
-            defaultValue={this.state.text_content}
+            placeholder="Caption"
+            defaultValue={this.state.textContent}
             onChange={this.handleEditor} />
         </div>
-
         <div className="form-footer">
           <button
             className="form-butt form-close-butt"
@@ -71,4 +116,4 @@ class TextForm extends React.Component {
   }
 }
 
-export default PostFormContainer(TextForm);
+export default withRouter(PostFormContainer(AudioForm));

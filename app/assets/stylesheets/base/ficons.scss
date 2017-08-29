@@ -2338,13 +2338,27 @@
   clip: auto;
 }
 
-
-.search-change {
-
-}
-
 .fa-search {
   color: $very-lightgray;
+  height: 34px;
+  background-color: $search-blue;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  padding: 1px 10px 1px 15px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.fa-search-focus {
+  background-color: white;
+  color: $charcoal;
+}
+
+.fa-search-audio {
+  color: $very-lightgray;
+  background-color: white;
+  padding-right: 10px
 }
 
 .fa-home {
