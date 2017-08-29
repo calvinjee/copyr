@@ -12,10 +12,8 @@ class AccountInfo extends React.Component {
 
   handleLogout(e) {
     e.preventDefault();
-    this.props.logout().then(() => {
-      debugger
-      this.props.history.push("/");
-    });
+    this.props.logout();
+    this.props.history.push("/");
   }
 
   render () {
