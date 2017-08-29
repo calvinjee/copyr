@@ -66,6 +66,21 @@ class Api::PostsController < ApplicationController
     render json: @post
   end
 
+  def like
+    @like = Like.new(post_id: params[:post_id], user_id: current_user.id)
+    if @like.save
+      render json: @like
+    else
+      render json: @like.errors.full_messages, status: 422
+    end
+  end
+
+  def unlike
+    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @like.destroy
+    render json: @like
+  end
+
   private
 
   def post_params
