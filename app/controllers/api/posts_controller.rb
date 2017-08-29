@@ -1,8 +1,11 @@
+require 'byebug'
 require 'metainspector'
 
 class Api::PostsController < ApplicationController
   def index
-    @posts = Post.all.includes(:author).order(created_at: :desc)
+    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:author)
+    @current_user_posts = Post.where(author_id: current_user.id).includes(:author)
+    # debugger
     render 'api/posts/index'
   end
 

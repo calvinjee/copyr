@@ -1,4 +1,4 @@
-json.set! :post do
+json.post do
   json.extract! post, :id, :author_id, :title, :text_content, :content_type
   case post.content_type
   when 'link'
@@ -15,8 +15,9 @@ json.set! :post do
   end
 end
 
-json.set! :user do
+json.user do
   json.id post.author.id
   json.username post.author.username
   json.avatar_url asset_path(post.author.image.url)
+  json.followee
 end

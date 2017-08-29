@@ -32,6 +32,26 @@ class User < ActiveRecord::Base
     foreign_key: :author_id,
     dependent: :destroy
 
+  has_many :follows,
+    class_name: :Follow,
+    primary_key: :id,
+    foreign_key: :followee_id,
+    dependent: :destroy
+
+  has_many :followers,
+    through: :follows,
+    source: :follower
+
+  has_many :followings,
+    class_name: :Follow,
+    primary_key: :id,
+    foreign_key: :follower_id,
+    dependent: :destroy
+
+  has_many :followed_users,
+    through: :followings,
+    source: :followee
+
   attr_reader :password
 
   after_initialize :ensure_session_token

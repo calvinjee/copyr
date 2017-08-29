@@ -15,7 +15,8 @@
 
   // margin: auto;
   // border-top: .5px solid #4C4C4D;
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 60px;
   // width: 546px;
 }
 
@@ -123,12 +124,31 @@
   width: 546px;
 }
 
+.post-det-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .username-head {
   font-family: 'Biryani', sans-serif;
   font-size: 11px;
   padding: 20px 20px 0 20px;
   margin-bottom: 13px;
 }
+
+.follow {
+  color: skyblue;
+  font-size: 11px;
+  margin-right: 20px;
+}
+
+.unfollow {
+  color: red;
+  font-size: 11px;
+  margin-right: 20px;
+}
+
 
 .title {
   font-size: 24px;

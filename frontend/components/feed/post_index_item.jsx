@@ -56,8 +56,8 @@ class PostIndexItem extends React.Component {
           <div className="avatar-img"
             style={avatar} />
         </div>
-        <Route path="/dashboard" component={(props) => <PostDetail post={this.props.post} />} />
-        <Route path="/edit/:id" component={(props) => <PostDetail post={this.props.post} hideDetail={hideDetail} />} />
+        <Route path="/dashboard" component={(props) => <PostDetail post={this.props.post} user={this.props.user} />} />
+        <Route path="/edit/:id" component={(props) => <PostDetail post={this.props.post} user={this.props.user} hideDetail={hideDetail} />} />
         { editForm }
         <div className={formModal} />
       </li>

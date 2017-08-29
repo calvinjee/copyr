@@ -14,17 +14,22 @@ class Api::UsersController < ApplicationController
     render 'api/users/show'
   end
 
-  # def update
-  #   if current_user
-  #     if current_user.update(user_params)
-  #       render json: current_user
-  #     else
-  #       render json: current_user.errors.full_messages, status: 422
-  #     end
-  #   else
-  #     render json: ['Need to be logged in to update'], status: 422
-  #   end
-  # end
+
+  def follow
+    @follow = Follow.new(followee_id: params[:user_id], follower_id: current_user.id)
+    if @follow.save
+      render json: @follow
+    else
+      render json: @follow.errors.full_messages, status: 422
+    end
+  end
+
+  def unfollow
+    @follow = Follow.find_by(followee_id: params[:user_id], follower_id: current_user.id)
+    @follow.destroy
+    render json: @follow
+  end
+
 
   private
 
