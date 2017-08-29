@@ -101,7 +101,7 @@ class ImageForm extends React.Component {
 
 
     return(
-      <div className={`form text-form ${this.props.pullUp}`}>
+      <div className={`form text-form pullDown${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
 
         { prev }

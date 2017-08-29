@@ -14,10 +14,8 @@ class PostDetailOptions extends React.Component {
     return (e) => {
       if (option === 'delete') {
         this.props.deletePost(this.props.post.id);
-        document.removeEventListener('click', this.closeModal);
       } else {
         this.props.postFormModal(this.props.post.content_type, this.props.post.id);
-        document.removeEventListener('click', this.closeModal);
       }
     };
   }
@@ -26,33 +24,23 @@ class PostDetailOptions extends React.Component {
     return (e) => {
       e.stopPropagation();
       this.props.dropdownModal(dropdown, this.props.post.id);
-      // debugger
-      document.addEventListener('click', this.closeModal);
     };
   }
 
   closeModal(e) {
-    // debugger
-    // if (this.node.contains(e.target)) {
-    //   return;
-    // }
-    // debugger
     this.props.closeModal();
-    document.removeEventListener('click', this.closeModal);
   }
 
   render () {
     let lastButton = <i className="fa fa-heart-o" aria-hidden="true"></i>;
     if (this.props.post.author_id === this.props.currentUser.id) {
       lastButton = (
-        <button
-          onClick={this.showDropdown('postEdit')}>
-          <i className="fa fa-cog" aria-hidden="true"></i>
-        </button>
+          <button
+            onClick={this.showDropdown('postEdit')}>
+            <i className="fa fa-cog" aria-hidden="true"></i>
+          </button>
       );
     }
-
-    // <li onClick={this.handleOption('edit')}><span>Edit</span></li>
 
     return (
       <div className="post-footer">
@@ -72,6 +60,11 @@ class PostDetailOptions extends React.Component {
             </ul>
           </div>
         </div>
+        <div
+          className={(this.props.dropdown === 'postEdit' && this.props.editPostId === this.props.post.id) ?
+            "dropdown-modal" :
+            "hidden"}
+          onClick={this.closeModal} />
       </div>
     );
   }

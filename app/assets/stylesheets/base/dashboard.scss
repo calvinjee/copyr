@@ -211,6 +211,7 @@
 
 .options-dropdown {
   position: absolute;
+  z-index: 4;
   top: 45px;
   right: -25px;
   box-shadow: -7px 9px 21px -7px rgba(125,125,125,0.61);
@@ -263,4 +264,13 @@
   background-color: $hover-blue;
   cursor: pointer;
   margin-top: 2px;
+}
+
+.dropdown-modal {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
