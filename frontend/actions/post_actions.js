@@ -8,6 +8,7 @@ export const REMOVE_POST = 'REMOVE_POST';
 
 // regular actions
 export const receiveAllPosts = (payLoad) => {
+  
   return {
     type: RECEIVE_ALL_POSTS,
     posts: payLoad.posts,

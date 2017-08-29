@@ -13,7 +13,7 @@ class AccountInfo extends React.Component {
   handleLogout(e) {
     e.preventDefault();
     this.props.logout().then(() => {
-      // clear state;
+      debugger
       this.props.history.push("/");
     });
   }

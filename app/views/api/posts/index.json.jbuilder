@@ -1,4 +1,4 @@
-json.set! :posts do
+json.posts do
   @posts.each do |post|
     json.set!(post.id) do
       json.extract! post, :id, :author_id, :text_content, :title, :content_type
@@ -19,7 +19,7 @@ json.set! :posts do
   end
 end
 
-json.set! :users do
+json.users do
   @posts.each do |post|
     json.set!(post.author.id) do
       json.id post.author.id
