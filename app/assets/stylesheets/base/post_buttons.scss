@@ -1,1 +1,82 @@
 @import 'base/colors.scss';
+.fa-font {
+  color: #555555;
+  font-size: 2em;
+  top: 5px;
+}
+
+.fa-font:hover {
+  top: 3px;
+}
+
+.fa-camera-btn {
+  color: #DD6E53;
+  font-size: 2.1em;
+  top: 6px;
+}
+.fa-camera-btn:hover {
+  top: 4px;
+}
+
+.fa-quote-left {
+  color: #F3A343;
+  font-size: 2.2em;
+  top: 6px;
+}
+.fa-quote-left:hover {
+  top: 4px;
+}
+
+.fa-link {
+  color: white;
+  background-color: #67C396;
+  height: 37px;
+  width: 37px;
+  border-radius: 100px;
+  font-size: 1.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 2px;
+}
+.fa-link:hover{
+  top: 0;
+}
+
+.fa-twitch {
+  color: #64A8D1;
+  font-size: 2.2em;
+  top: 7px;
+}
+.fa-twitch:hover {
+  top: 5px;
+}
+
+.fa-headphones {
+  color :#B08AC8;
+  font-size: 2.5em;
+  top: 3px;
+}
+.fa-headphones:hover {
+  top: 1px;
+}
+
+.fa-video-camera-btn {
+  color: #828D95;
+  font-size: 2.2em;
+  top: 6px;
+}
+.fa-video-camera-btn:hover {
+  top: 4px;
+}
+
+.post-buttons div {
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.post-buttons i {
+  position: relative;
+}
