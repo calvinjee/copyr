@@ -65,7 +65,7 @@ class AudioForm extends React.Component {
   render() {
     let prev;
     if (this.state.previewUrl) {
-      prev = ( <audio className="" controls src={this.state.previewUrl} /> );
+      prev = ( <audio className="audio-prev" controls src={this.state.previewUrl} /> );
     }
 
     return(

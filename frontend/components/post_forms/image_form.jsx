@@ -94,7 +94,7 @@ class ImageForm extends React.Component {
         break;
     }
 
-    if (this.state.previewUrl) {
+    if (this.state.previewUrl && this.state.contentType === 'video') {
       prev = ( <video className="video-prev" controls src={this.state.previewUrl} /> );
     }
 
