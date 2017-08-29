@@ -58,4 +58,10 @@ class Post < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :author_id
 
+  has_many :likes
+
+  has_many :liked_users,
+    through: :likes,
+    source: :user
+
 end

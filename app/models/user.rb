@@ -52,6 +52,12 @@ class User < ActiveRecord::Base
     through: :followings,
     source: :followee
 
+  has_many :likes
+
+  has_many :liked_posts,
+    through: :likes,
+    source: :post
+
   attr_reader :password
 
   after_initialize :ensure_session_token
