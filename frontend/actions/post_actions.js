@@ -13,6 +13,7 @@ export const receiveAllPosts = (payLoad) => {
     type: RECEIVE_ALL_POSTS,
     posts: payLoad.posts,
     users: payLoad.users,
+    feedPostIds: payLoad.feedPostIds,
   };
 };
 

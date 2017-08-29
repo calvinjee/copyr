@@ -16,8 +16,8 @@ class Api::UsersController < ApplicationController
 
 
   def follow
-    @follow = Follow.new(follow_params)
-    if @follow.follower_id == current_user.id && @follow.save
+    @follow = Follow.new(followee_id: params[:id], follower_id: current_user.id)
+    if @follow.save
       render json: @follow
     else
       render json: @follow.errors.full_messages, status: 422
@@ -42,10 +42,6 @@ class Api::UsersController < ApplicationController
       :last_name,
       :bio
     )
-  end
-
-  def follow_params
-    params.require(:user).permit(:follower_id, :followee_id)
   end
 
 end

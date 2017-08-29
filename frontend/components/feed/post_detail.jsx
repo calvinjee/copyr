@@ -15,7 +15,7 @@ class PostDetail extends React.Component {
   renderTextPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
+        <p className="username-head">{this.props.user.username}</p>
         <h4 className="title">{this.props.post.title}</h4>
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
@@ -28,7 +28,7 @@ class PostDetail extends React.Component {
   renderImagePost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
+        <p className="username-head">{this.props.user.username}</p>
         <img className="file-post" src={this.props.post.image_url} />
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
@@ -42,7 +42,7 @@ class PostDetail extends React.Component {
     // <p className="text-post">{this.props.post.text_content}</p>
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
+        <p className="username-head">{this.props.user.username}</p>
         <h4 className="title">{this.props.post.title}</h4>
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
@@ -56,7 +56,7 @@ class PostDetail extends React.Component {
     return (
       <div className={`post ${this.props.hideDetail}`}>
         <a className="post-link link-bg" href={this.props.post.link_url} target="_blank">
-          <p className="username-head">username</p>
+          <p className="username-head">{this.props.user.username}</p>
           <p className="link-host">{this.props.post.link_host.slice(4)}</p>
           <img className="file-post" src={this.props.post.image_url} />
           <h4 className="title link-bg">{this.props.post.title}</h4>
@@ -73,7 +73,7 @@ class PostDetail extends React.Component {
   renderChatPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
+        <p className="username-head">{this.props.user.username}</p>
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
         </div>
@@ -85,7 +85,7 @@ class PostDetail extends React.Component {
   renderVideoPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
-        <p className="username-head">username</p>
+        <p className="username-head">{this.props.user.username}</p>
         <video className="file-post" controls src={this.props.post.video_url} />
         <div className="text-post">
           { renderHTML(this.props.post.text_content) }
