@@ -13,19 +13,6 @@ const sessionReducer = (state = defaultState, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, { currentUser: action.currentUser, errors: [] } );
-    case RECEIVE_ALL_POSTS:
-      return merge({}, state, { feedPostIds: action.feedPostIds });
-    case RECEIVE_SINGLE_POST:
-      newState = merge({}, state);
-      newState.feedPostIds.push(action.post.id);
-      return newState;
-    case REMOVE_POST:
-      newState = merge({}, state);
-      let idx = newState.feedPostIds.indexOf(action.post.id);
-      if (idx > -1) {
-        newState.feedPostIds.splice(idx, 1);
-      }
-      return newState;
     case RECEIVE_ERRORS:
       return merge({}, state, { errors: action.errors} );
     case RESET_ERRORS:

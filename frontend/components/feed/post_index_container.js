@@ -6,9 +6,10 @@ import PostIndex from './post_index';
 import { postsArray } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
+  
   return {
     currentUser: state.session.currentUser,
-    posts: postsArray(state.entities.posts, state.session.feedPostIds),
+    posts: postsArray(state.entities.posts, state.dashboard),
     users: state.entities.users,
     postType: state.ui.postType,
     editPostId: state.ui.editPostId,

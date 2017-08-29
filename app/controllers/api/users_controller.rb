@@ -16,7 +16,7 @@ class Api::UsersController < ApplicationController
 
 
   def follow
-    @follow = Follow.new(followee_id: params[:id], follower_id: current_user.id)
+    @follow = Follow.new(followee_id: params[:user_id], follower_id: current_user.id)
     if @follow.save
       render json: @follow
     else
@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
   end
 
   def unfollow
-    @follow = Follow.find_by(followee_id: params[:id], follower_id: current_user.id)
+    @follow = Follow.find_by(followee_id: params[:user_id], follower_id: current_user.id)
     @follow.destroy
     render json: @follow
   end
