@@ -1,5 +1,6 @@
+posts = @followed_users_posts.concat(@current_user_posts)
 json.posts do
-  @posts.each do |post|
+  posts.each do |post|
     json.set!(post.id) do
       json.extract! post, :id, :author_id, :text_content, :title, :content_type
       case post.content_type
@@ -20,11 +21,18 @@ json.posts do
 end
 
 json.users do
-  @posts.each do |post|
+  posts.each do |post|
     json.set!(post.author.id) do
       json.id post.author.id
       json.username post.author.username
       json.avatar_url asset_path(post.author.image.url)
+      json.followedByCurrentUser true
     end
   end
 end
+
+followed_post_ids = @followed_users_posts.nil? ? [] : @followed_users_posts.ids
+current_user_post_ids = @current_user_posts.nil? ? [] : @current_user_posts.ids
+
+json.followedPostIds followed_post_ids
+json.curUserPostIds current_user_post_ids
