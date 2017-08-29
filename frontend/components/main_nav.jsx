@@ -52,7 +52,7 @@ class MainNav extends React.Component {
           <i className="fa fa-bolt" aria-hidden="true"></i>
           <RecentActivity />
           <div
-            onBlur={this.showDropdown('accountinfo')}
+            onClick={this.showDropdown('accountinfo')}
             className="ai">
             <i className="fa fa-user" aria-hidden="true"></i>
           </div>
