@@ -75,21 +75,24 @@ class AudioForm extends React.Component {
         { prev }
 
         <div className="audio-box">
-          <i className="fa fa-search fa-search-audio" aria-hidden="true"></i>
-          <input className="audio-search" placeholder="Search coming soon..."/>
+          <div className="audio-search">
+            <i className="fa fa-search fa-search-audio" aria-hidden="true"></i>
+            <input className="audio-search-box" placeholder="Search coming soon..."/>
+          </div>
+
           <button
             htmlFor="file"
             className="upload-audio"
             onChange={this.updateFile}>
             <input
               type="file"
-              className="upload-file"
+              className="audio-file"
               name="file"
               id="file">
             </input>
-            <div className="img-upload-bg">
-              <i className="fa fa-camera" aria-hidden="true"></i>
-              <p>Upload a photo</p>
+
+            <div className="audio-upload-bg">
+              <i className="fa fa-headphones fa-headphones-upload" aria-hidden="true"></i>
             </div>
           </button>
         </div>

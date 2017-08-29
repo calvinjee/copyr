@@ -2356,9 +2356,11 @@
 }
 
 .fa-search-audio {
+  font-size: .9em;
   color: $very-lightgray;
   background-color: white;
-  padding-right: 10px
+  padding-right: 10px;
+  padding-left: 20px;
 }
 
 .fa-home {

@@ -82,6 +82,57 @@ input::placeholder {
   width: 92%;
 }
 
+.audio-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.audio-search {
+  display: flex;
+  font-family: 'Yantramanav', sans-serif;
+  color: $charcoal;
+}
+
+.audio-search input:placeholder {
+  font-family: 'Yantramanav', sans-serif;
+}
+
+.audio-search-box {
+  border: none;
+  font-size: 14px;
+}
+
+.audio-file {
+  width: 20px;
+  right: 0;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 3;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+.upload-audio {
+  position: absolute;
+  right: 20px;
+  width: 20px;
+  z-index: 2;
+}
+
+.audio-upload-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.audio-upload-bg i {
+  cursor: pointer;
+
+}
+
 .form-footer {
   display: flex;
   justify-content: space-between;
