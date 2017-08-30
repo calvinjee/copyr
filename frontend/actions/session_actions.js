@@ -3,6 +3,7 @@ import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RESET_ERRORS = 'RESET_ERRORS';
+export const CLEAR_ON_LOGOUT = 'CLEAR_ON_LOGOUT';
 
 export const receiveCurrentUser = (currentUser) => {
   return {
@@ -10,6 +11,14 @@ export const receiveCurrentUser = (currentUser) => {
     currentUser: currentUser,
   };
 };
+
+export const clearOnLogout = () => {
+  return {
+    type: CLEAR_ON_LOGOUT,
+  };
+};
+
+
 
 export const receiveErrors = (errors) => {
   return {
@@ -49,7 +58,7 @@ export const logout = () => {
   return (dispatch) => {
     return APIUtil.logout()
       .then(
-        () => { return dispatch(receiveCurrentUser(null)); },
+        () => { return dispatch(clearOnLogout()); },
         (errors) => { return dispatch(receiveErrors(errors)); }
       );
   };

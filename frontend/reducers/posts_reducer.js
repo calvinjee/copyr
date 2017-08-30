@@ -2,6 +2,7 @@ import { RECEIVE_ALL_POSTS,
   RECEIVE_FIVE_POSTS,
   RECEIVE_SINGLE_POST,
   REMOVE_POST } from '../actions/post_actions';
+import { CLEAR_ON_LOGOUT } from '../actions/session_actions';
 import { LIKE_POST, UNLIKE_POST } from '../actions/like_actions';
 import { merge } from 'lodash';
 
@@ -34,6 +35,8 @@ const postsReducer = (state = {}, action) => {
       return newState;
       }
       // TODO: make sure to remove post ids from liked post ids elsewhere in state
+    case CLEAR_ON_LOGOUT:
+      return {};
     default: return state;
   }
 };

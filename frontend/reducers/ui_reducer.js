@@ -1,3 +1,4 @@
+import { CLEAR_ON_LOGOUT } from '../actions/session_actions';
 import {
   CLOSE_MODAL,
   POST_FORM_MODAL,
@@ -24,6 +25,7 @@ const uiReducer = (state = defaultState, action ) => {
         dropdown: action.dropdown,
         editPostId: action.editPostId,
       };
+    case CLEAR_ON_LOGOUT: return defaultState;
     default: return state;
   }
 };
