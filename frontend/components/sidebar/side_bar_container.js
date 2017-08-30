@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
     users: state.entities.users,
     recommendedUserIds: state.dashboard.recommendedUserIds,
     radarPostId: state.dashboard.radarPostId,
+    followedUserIds: state.dashboard.followedUserIds,
   };
 };
 

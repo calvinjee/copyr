@@ -12,7 +12,7 @@ const defaultState = {
   curUserPostIds: [],
   likedPostIds: [],
   followerIds: [],
-  followingUserIds: [],
+  followedUserIds: [],
   recommendedUserIds: [],
   radarPostId: null,
 };
@@ -30,6 +30,8 @@ const dashboardReducer = (state = defaultState, action) => {
         likedPostIds: action.likedPostIds,
         recommendedUserIds: action.recommendedUserIds,
         radarPostId: action.radarPostId,
+        followerIds: action.followerIds,
+        followedUserIds: action.followedUserIds,
       });
     case RECEIVE_SINGLE_POST:
       newState = merge({}, state);

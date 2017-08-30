@@ -3,7 +3,10 @@ import React from 'react';
 class RecommendedUsersIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { followAction: 'Follow' };
+    const followAction = this.props.followedUserIds.includes(this.props.user.id) ?
+      'Unfollow' :
+      'Follow';
+    this.state = { followAction: followAction };
     this.handleFollow = this.handleFollow.bind(this);
   }
 

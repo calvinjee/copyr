@@ -14,7 +14,10 @@ const Radar = (props) => {
     <div className="recommended-blogs">
       <h5>RADAR</h5>
       <ul>
-        <RecommendedUsersIndexItem post={post} user={user} />
+        <RecommendedUsersIndexItem
+          post={post}
+          user={user}
+          followedUserIds={props.followedUserIds} />
       </ul>
       <PostDetail post={post} user={user} miniKlass="detail-mini"/>
     </div>

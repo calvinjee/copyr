@@ -8,7 +8,15 @@ import { followUser, unfollowUser } from '../../actions/follow_actions';
 class PostDetail extends React.Component {
   constructor(props) {
     super(props);
-    let followKlass = this.props.user.id === this.props.currentUser.id ?
+    let followAction, followKlass;
+    if (this.props.followedUserIds.includes(this.props.user.id)) {
+      followAction = 'Unfollow';
+      followKlass = 'unfollow';
+    } else {
+      followAction = 'Follow';
+      followKlass = 'follow';
+    }
+    followKlass = this.props.user.id === this.props.currentUser.id ?
       'hidden' :
       'unfollow';
     this.state = { followAction: 'Unfollow', followKlass: followKlass };
@@ -131,6 +139,7 @@ class PostDetail extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.currentUser,
+    followedUserIds: state.dashboard.followedUserIds,
   };
 };
 

@@ -48,11 +48,10 @@ json.users do
   end
 end
 
-# followed_post_ids = @followed_users_posts.nil? ? [] : @followed_users_posts.ids
-# current_user_post_ids = @current_user_posts.nil? ? [] : @current_user_posts.ids
-
 json.followedPostIds @followed_users_posts.pluck(:id)
 json.curUserPostIds @current_user_posts.pluck(:id)
 json.likedPostIds @current_user_liked_posts
 json.recommendedUserIds @recommended_users.map(&:id)
 json.radarPostId @radar_post.id
+json.followerIds @follower_ids
+json.followedUserIds @followed_user_ids

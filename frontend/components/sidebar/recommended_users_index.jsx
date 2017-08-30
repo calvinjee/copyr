@@ -11,6 +11,7 @@ const RecommendedUsersIndex = (props) => {
         user={props.users[id]}
         followUser={props.followUser}
         unfollowUser={props.unfollowUser}
+        followedUserIds={props.followedUserIds}
        />);
   });
 
