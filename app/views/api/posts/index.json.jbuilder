@@ -16,6 +16,7 @@ json.posts do
       when 'audio'
         json.audio_url asset_path(post.audio.url)
       end
+      json.liked_by post.likes.pluck(:user_id)
     end
   end
 end
@@ -26,13 +27,14 @@ json.users do
       json.id post.author.id
       json.username post.author.username
       json.avatar_url asset_path(post.author.image.url)
-      json.followedByCurrentUser true
+      json.followed post.author.follows.pluck(:follower_id)
     end
   end
 end
 
-followed_post_ids = @followed_users_posts.nil? ? [] : @followed_users_posts.ids
-current_user_post_ids = @current_user_posts.nil? ? [] : @current_user_posts.ids
+# followed_post_ids = @followed_users_posts.nil? ? [] : @followed_users_posts.ids
+# current_user_post_ids = @current_user_posts.nil? ? [] : @current_user_posts.ids
 
-json.followedPostIds followed_post_ids
-json.curUserPostIds current_user_post_ids
+json.followedPostIds @followed_users_posts.pluck(:id)
+json.curUserPostIds @current_user_posts.pluck(:id)
+json.likedPostIds @current_user_liked_posts

@@ -13,11 +13,12 @@ json.post do
   when 'audio'
     json.audio_url asset_path(post.audio.url)
   end
+  json.liked_by post.likes.pluck(:user_id)
 end
 
 json.user do
   json.id post.author.id
   json.username post.author.username
   json.avatar_url asset_path(post.author.image.url)
-  json.followee
+  json.followed_by post.author.follows.pluck(:follower_id)
 end

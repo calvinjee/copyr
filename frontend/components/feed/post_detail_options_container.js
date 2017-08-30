@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PostDetailOptions from './post_detail_options';
 import { deletePost, revisePost  } from '../../actions/post_actions';
 import { dropdownModal, closeModal, postFormModal  } from '../../actions/modal_actions';
+import { likePost, unlikePost  } from '../../actions/like_actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -20,6 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     dropdownModal: (dropdown, editPostId) => dispatch(dropdownModal(dropdown, editPostId)),
     closeModal: (dropdown) => dispatch(closeModal(dropdown)),
     postFormModal: (postType, editPostId) => dispatch(postFormModal(postType, editPostId)),
+    likePost: (postId) => dispatch(likePost(postId)),
+    unlikePost: (postId) => dispatch(unlikePost(postId)),
   };
 };
 

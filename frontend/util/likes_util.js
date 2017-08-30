@@ -1,6 +1,6 @@
 export const likePost = (postId) => {
   return $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: `api/posts/${postId}/likes`
   });
 };

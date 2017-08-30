@@ -2,9 +2,9 @@ require 'metainspector'
 
 class Api::PostsController < ApplicationController
   def index
-    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:author)
-    @current_user_posts = Post.where(author_id: current_user.id).includes(:author)
-    # debugger
+    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes, author: [:likes])
+    @current_user_posts = Post.where(author_id: current_user.id).includes(:likes, author: [:likes])
+    @current_user_liked_posts = current_user.likes.pluck(:post_id)
     render 'api/posts/index'
   end
 
@@ -68,7 +68,8 @@ class Api::PostsController < ApplicationController
   def like
     @like = Like.new(post_id: params[:post_id], user_id: current_user.id)
     if @like.save
-      render json: @like
+      @post = @like.post
+      render 'api/posts/show'
     else
       render json: @like.errors.full_messages, status: 422
     end
@@ -76,8 +77,9 @@ class Api::PostsController < ApplicationController
 
   def unlike
     @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
+    @post = @like.post
     @like.destroy
-    render json: @like
+    render 'api/posts/show'
   end
 
   private

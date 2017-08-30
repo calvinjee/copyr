@@ -4,15 +4,17 @@ import { receiveErrors } from './session_actions';
 export const LIKE_POST = 'LIKE_POST';
 export const UNLIKE_POST = 'UNLIKE_POST';
 
-export const receiveLike = (like) => {
+export const receiveLike = (payLoad) => {
   return {
     type: LIKE_POST,
+    post: payLoad.post,
   };
 };
 
-export const removeLike = (like) => {
+export const removeLike = (payLoad) => {
   return {
     type: UNLIKE_POST,
+    post: payLoad.post,
   };
 };
 
@@ -20,7 +22,7 @@ export const likePost = (postId) => {
   return (dispatch) => {
     return APIUtil.likePost(postId)
       .then(
-        (like) => { return dispatch(receiveLike(like)); },
+        (payLoad) => { return dispatch(receiveLike(payLoad)); },
         (errors) => { return dispatch(receiveErrors(errors)); }
       );
   };
@@ -28,9 +30,9 @@ export const likePost = (postId) => {
 
 export const unlikePost = (postId) => {
   return (dispatch) => {
-    return APIUtil.likePost(postId)
+    return APIUtil.unlikePost(postId)
       .then(
-        (like) => { return dispatch(removeLike(like)); },
+        (payLoad) => { return dispatch(removeLike(payLoad)); },
         (errors) => { return dispatch(receiveErrors(errors)); }
       );
   };

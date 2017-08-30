@@ -22,4 +22,10 @@ class Follow < ActiveRecord::Base
     class_name: :User,
     primary_key: :id,
     foreign_key: :followee_id
+
+  def self.is_followed?(followee_id, current_user_id)
+    Follow.find_by(followee_id: followee_id, follower_id: current_user_id) ?
+      true :
+      false
+  end
 end

@@ -3,6 +3,7 @@ import {
   RECEIVE_ERRORS,
   RESET_ERRORS } from '../actions/session_actions';
 import { RECEIVE_ALL_POSTS, RECEIVE_SINGLE_POST, REMOVE_POST } from '../actions/post_actions';
+import { LIKE_POST, UNLIKE_POST } from '../actions/like_actions';
 import { merge } from 'lodash';
 
 const defaultState = {
@@ -17,7 +18,7 @@ const defaultState = {
 
 const dashboardReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  let newState;
+  let newState, idx;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return state;
@@ -25,14 +26,26 @@ const dashboardReducer = (state = defaultState, action) => {
       return merge({}, state, {
         followedPostIds: action.followedPostIds,
         curUserPostIds: action.curUserPostIds,
+        likedPostIds: action.likedPostIds,
       });
     case RECEIVE_SINGLE_POST:
       newState = merge({}, state);
       newState.curUserPostIds.push(action.post.id);
       return newState;
+    case LIKE_POST:
+      newState = merge({}, state);
+      newState.likedPostIds.push(action.post.id);
+      return newState;
+    case UNLIKE_POST:
+      newState = merge({}, state);
+      idx = newState.likedPostIds.indexOf(action.post.id);
+      if (idx > -1) {
+        newState.likedPostIds.splice(idx, 1);
+      }
+    return newState;
     case REMOVE_POST:
       newState = merge({}, state);
-      let idx = newState.curUserPostIds.indexOf(action.post.id);
+      idx = newState.curUserPostIds.indexOf(action.post.id);
       if (idx > -1) {
         newState.curUserPostIds.splice(idx, 1);
       }

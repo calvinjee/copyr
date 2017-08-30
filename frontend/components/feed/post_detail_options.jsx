@@ -7,7 +7,16 @@ class PostDetailOptions extends React.Component {
     this.handleOption = this.handleOption.bind(this);
     this.showDropdown = this.showDropdown.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleLike = this.handleLike.bind(this);
+  }
 
+  handleLike(action) {
+    return (e) => {
+      e.preventDefault();
+      action == 'like' ?
+        this.props.likePost(this.props.post.id) :
+        this.props.unlikePost(this.props.post.id);
+    };
   }
 
   handleOption(option) {
@@ -32,7 +41,17 @@ class PostDetailOptions extends React.Component {
   }
 
   render () {
-    let lastButton = <i className="fa fa-heart-o" aria-hidden="true"></i>;
+
+    let lastButton = this.props.post.liked_by.includes(this.props.currentUser.id) ?
+      <i
+        className="fa fa-heart"
+        aria-hidden="true"
+        onClick={this.handleLike('unlike')}></i> :
+      <i
+        className="fa fa-heart-o"
+        aria-hidden="true"
+        onClick={this.handleLike('like')}></i>;
+
     if (this.props.post.author_id === this.props.currentUser.id) {
       lastButton = (
           <button

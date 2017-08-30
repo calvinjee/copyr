@@ -14,6 +14,7 @@ export const receiveAllPosts = (payLoad) => {
     users: payLoad.users,
     followedPostIds: payLoad.followedPostIds,
     curUserPostIds: payLoad.curUserPostIds,
+    likedPostIds: payLoad.likedPostIds,
 
   };
 };
