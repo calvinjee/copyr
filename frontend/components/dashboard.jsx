@@ -3,6 +3,7 @@ import MainNavContainer from './main_nav_container';
 import PostButtonsContainer from './post_forms/post_buttons_container';
 import PostIndexContainer from './feed/post_index_container';
 import RecommendedUsersIndex from './sidebar/recommended_users_index';
+import Radar from './sidebar/radar';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Dashboard extends React.Component {
           </div>
           <div className="side-bar">
             <RecommendedUsersIndex />
-            <p>Radar</p>
+            <Radar />
           </div>
         </div>
       </div>

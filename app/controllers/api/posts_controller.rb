@@ -6,6 +6,7 @@ class Api::PostsController < ApplicationController
     @current_user_posts = Post.where(author_id: current_user.id).includes(:likes)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
     @recommended_users = User.order('random()').limit(4)
+    @radar_post = Post.order('random()').limit(1).first
     # @recommended_users = []
     # until @recommended_users.length == 4
     #   user = User.where.not(id: current_user.id).order('RANDOM()').limit(1).first

@@ -4,7 +4,7 @@ import { followUser, unfollowUser } from '../../actions/follow_actions';
 class RecommendedUsersIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { followAction: 'Follow', followKlass: 'rec-follow' };
+    this.state = { followAction: 'Follow' };
     this.handleFollow = this.handleFollow.bind(this);
   }
 
@@ -12,30 +12,36 @@ class RecommendedUsersIndexItem extends React.Component {
     e.preventDefault();
     if (this.state.followAction === 'Unfollow') {
       this.props.unfollowUser(this.props.user.id)
-        .then(() => this.setState({ followAction: 'Follow', followKlass: 'rec-follow' }));
+        .then(() => this.setState({ followAction: 'Follow' }));
     } else {
       this.props.followUser(this.props.user.id)
-        .then(() => this.setState({ followAction: 'Unfollow', followKlass: 'rec-unfollow' }));
+        .then(() => this.setState({ followAction: 'Unfollow' }));
     }
   }
 
   render() {
     const avatar = { backgroundImage: `url(${this.props.user.avatar_url})` };
+    const followButton = this.state.followAction === 'Follow' ?
+      (<i
+        className="fa fa-plus"
+        onClick={this.handleFollow}
+        aria-hidden="true"></i>) :
+      (<i
+        className="fa fa-minus"
+        onClick={this.handleFollow}
+        aria-hidden="true"></i>);
 
     return (
-      <div>
+      <li>
         <div className="avatar-img rec-avatar" style={avatar} />
-        <div>
-          <p className="username-head rec-username">{this.props.user.username}</p>
-          <p>{this.props.user.bio}</p>
+        <div className="username-bio">
+          <p className="username-head username-bio">{this.props.user.username}</p>
+          <span>{this.props.user.bio}</span>
         </div>
-        <div>
-          <i
-            className={`fa fa-plus ${this.state.followKlass}`}
-            onClick={this.handleFollow}
-            aria-hidden="true"></i>
+        <div className="rec-follow">
+          { followButton }
         </div>
-      </div>
+      </li>
     );
   }
 }

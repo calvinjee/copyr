@@ -1,17 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { followUser, unfollowUser } from '../../actions/follow_actions';
+import SideBarContainer from './side_bar_container';
 import RecommendedUsersIndexItem from './recommended_users_index_item';
 
 
 const RecommendedUsersIndex = (props) => {
   const recommendedUsers = props.recommendedUserIds.map((id) => {
-    return (<RecommendedUsersIndexItem user={props.users[id]} />);
+    return (<RecommendedUsersIndexItem key={id} user={props.users[id]} />);
   });
 
   return (
     <div className="recommended-blogs">
-      <h4>RECOMMENDED BLOGS</h4>
+      <h5>RECOMMENDED BLOGS</h5>
       <ul>
         { recommendedUsers }
       </ul>
@@ -20,19 +19,4 @@ const RecommendedUsersIndex = (props) => {
 
 };
 
-
-const mapStateToProps = (state) => {
-  return {
-    users: state.entities.users,
-    recommendedUserIds: state.dashboard.recommendedUserIds,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    followUser: (followeeId) => dispatch(followUser(followeeId)),
-    unfollowUser: (followeeId) => dispatch(unfollowUser(followeeId)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(RecommendedUsersIndex);
+export default SideBarContainer(RecommendedUsersIndex);

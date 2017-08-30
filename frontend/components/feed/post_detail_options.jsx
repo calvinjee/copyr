@@ -68,7 +68,7 @@ class PostDetailOptions extends React.Component {
     notes = notes_count === 1 ? '1 note' : notes;
 
     return (
-      <div className="post-footer">
+      <div className={`post-footer ${this.props.miniKlass}`}>
         <p className="notes">{notes}</p>
         <div className="post-options">
           <i className="fa fa-retweet" aria-hidden="true"></i>

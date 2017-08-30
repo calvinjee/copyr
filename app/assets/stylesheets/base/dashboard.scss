@@ -128,6 +128,8 @@ body {
   width: 546px;
 }
 
+
+
 .post-det-header {
   display: flex;
   align-items: baseline;
@@ -142,6 +144,8 @@ body {
   padding: 20px 20px 0 20px;
   margin-bottom: 13px;
 }
+
+
 
 .follow {
   color: skyblue;
@@ -232,10 +236,6 @@ body {
   color: #9A9A9A;
 }
 
-.hidden {
-  display: none;
-}
-
 .file-post {
   height: 100%;
   width: 100%;
@@ -305,4 +305,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.detail-mini {
+  width: 320px
 }
