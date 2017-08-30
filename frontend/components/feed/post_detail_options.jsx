@@ -61,9 +61,15 @@ class PostDetailOptions extends React.Component {
       );
     }
 
+    let notes_count = this.props.post.liked_by.length;
+    let notes = notes_count === 0 ?
+      '' :
+      `${notes_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} notes`;
+    notes = notes_count === 1 ? '1 note' : notes;
+
     return (
       <div className="post-footer">
-        <div>Notes</div>
+        <p className="notes">{notes}</p>
         <div className="post-options">
           <i className="fa fa-retweet" aria-hidden="true"></i>
           { lastButton }

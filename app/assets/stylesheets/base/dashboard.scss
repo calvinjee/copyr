@@ -1,5 +1,9 @@
 @import 'base/colors.scss';
 
+body {
+  
+}
+
 .everywhere {
   background-color: $dark-blue;
   height: 100vh;
@@ -126,13 +130,15 @@
 
 .post-det-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
 }
 
 .username-head {
-  font-family: 'Biryani', sans-serif;
-  font-size: 11px;
+  // font-family: 'Biryani', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   padding: 20px 20px 0 20px;
   margin-bottom: 13px;
 }
@@ -151,9 +157,11 @@
 
 
 .title {
-  font-size: 24px;
-  font-family: 'Quicksand', sans-serif;
-  padding: 10px 20px 5px 20px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Oxygen', sans-serif;
+  padding: 10px 20px 0 20px;
+  line-height: 1.2;
   // display: inline-block;
 }
 
@@ -173,6 +181,8 @@
 }
 
 
+
+
 .post a {
   cursor: pointer;
   text-decoration: none;
@@ -180,7 +190,7 @@
 }
 
 .link-host {
-  font-family: 'Asap Condensed', sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   font-size: 13px;
   color: white;
   position: absolute;
@@ -198,22 +208,28 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   padding: 20px 10px 20px 20px;
   width: 546px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 
-.post-footer p {
-  padding-top: 10px;
-  padding-left: 10px
-}
+// .post-footer p {
+//   padding-top: 10px;
+//   padding-left: 10px
+// }
 
 .post-options {
   display: flex;
   justify-content: space-around;
   width: 75px;
+}
+
+.notes {
+  font-family: 'Mukta Mahee', sans-serif;
+  font-size: 13px;
+  color: #9A9A9A;
 }
 
 .hidden {

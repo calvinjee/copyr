@@ -41,6 +41,10 @@
   padding: 0 20px;
 }
 
+.text-title {
+  font-family: 'Oxygen', sans-serif;
+}
+
 .quote-title {
 
 }
@@ -149,8 +153,8 @@ input::placeholder {
 .form-butt {
   box-sizing: border-box;
   border-radius: 2px;
-  font-size: 14px;
-  font-family: 'Asap Condensed', sans-serif;
+  font-size: 13px;
+  font-family: 'Catamaran', sans-serif;
   width: 50px;
   height: 30px;
   display: flex;
