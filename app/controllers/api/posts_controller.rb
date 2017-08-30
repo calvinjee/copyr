@@ -1,4 +1,3 @@
-require 'byebug'
 require 'metainspector'
 
 class Api::PostsController < ApplicationController

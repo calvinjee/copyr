@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/follow_util';
+import * as APIUtil from '../util/follows_util';
 import { receiveErrors } from './session_actions';
 
 // export const RECEIVE_FOLLOW = 'RECEIVE_FOLLOW';
