@@ -5,7 +5,13 @@ import RecommendedUsersIndexItem from './recommended_users_index_item';
 
 const RecommendedUsersIndex = (props) => {
   const recommendedUsers = props.recommendedUserIds.map((id) => {
-    return (<RecommendedUsersIndexItem key={id} user={props.users[id]} />);
+    return (
+      <RecommendedUsersIndexItem
+        key={id}
+        user={props.users[id]}
+        followUser={props.followUser}
+        unfollowUser={props.unfollowUser}
+       />);
   });
 
   return (

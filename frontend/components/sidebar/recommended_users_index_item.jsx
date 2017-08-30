@@ -1,5 +1,4 @@
 import React from 'react';
-import { followUser, unfollowUser } from '../../actions/follow_actions';
 
 class RecommendedUsersIndexItem extends React.Component {
   constructor(props) {
