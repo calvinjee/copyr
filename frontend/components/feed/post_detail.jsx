@@ -46,16 +46,22 @@ class PostDetail extends React.Component {
       </div>
     );
 
+    let body = this.props.post.text_content ? (
+      <div className="text-post">
+        { renderHTML(this.props.post.text_content) }
+      </div>) :
+      null;
+
     switch(type) {
       case 'text':
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
             <h4 className="title">{this.props.post.title}</h4>
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'image':
@@ -63,10 +69,10 @@ class PostDetail extends React.Component {
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
             <img className="file-post" src={this.props.post.image_url} />
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'quote':
@@ -74,10 +80,10 @@ class PostDetail extends React.Component {
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
             <h4 className="title">{this.props.post.title}</h4>
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'link':
@@ -88,22 +94,28 @@ class PostDetail extends React.Component {
               <p className="link-host">{this.props.post.link_host.slice(4)}</p>
               <img className="file-post" src={this.props.post.image_url} />
               <h4 className="title link-bg">{this.props.post.title}</h4>
-              <div className="text-post link-bg">{this.props.post.caption}</div>
+              <div className={
+                  this.props.post.caption ?
+                    "text-post link-bg" :
+                    "hidden"
+                }>
+                {this.props.post.caption}
+              </div>
             </a>
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'chat':
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'audio':
@@ -111,10 +123,10 @@ class PostDetail extends React.Component {
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
             <audio className="audio-prev" controls src={this.props.post.audio_url} />
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
       case 'video':
@@ -122,10 +134,10 @@ class PostDetail extends React.Component {
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
             <video className="file-post" controls src={this.props.post.video_url} />
-            <div className="text-post">
-              { renderHTML(this.props.post.text_content) }
-            </div>
-            <PostDetailOptionsContainer post={this.props.post} miniKlass={this.props.miniKlass} />
+            { body }
+            <PostDetailOptionsContainer
+              post={this.props.post}
+              miniKlass={this.props.miniKlass} />
           </div>
         );
     }

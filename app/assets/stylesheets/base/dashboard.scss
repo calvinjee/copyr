@@ -13,20 +13,20 @@ body {
 .main-content {
   position: relative;
   display: flex;
-  justify-content: center;
   top: 60px;
   background-color: $dark-blue;
 
+
   // margin: auto;
   // border-top: .5px solid #4C4C4D;
-  padding-top: 30px;
-  padding-bottom: 60px;
+  padding: 30px 30px 60px 30px;
   // width: 546px;
 }
 
 .feed {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
   // align-items: flex-end;
   // margin: auto;
 }
