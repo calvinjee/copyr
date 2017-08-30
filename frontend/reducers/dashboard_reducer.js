@@ -30,7 +30,10 @@ const dashboardReducer = (state = defaultState, action) => {
       });
     case RECEIVE_SINGLE_POST:
       newState = merge({}, state);
-      newState.curUserPostIds.push(action.post.id);
+      idx = newState.curUserPostIds.indexOf(action.post.id);
+      if (idx === -1) {
+        newState.curUserPostIds.push(action.post.id);
+      }
       return newState;
     case LIKE_POST:
       newState = merge({}, state);

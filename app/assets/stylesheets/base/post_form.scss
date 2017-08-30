@@ -96,7 +96,7 @@ input::placeholder {
   width: 100%;
   display: flex;
   font-family: 'Yantramanav', sans-serif;
-  color: $charcoal;
+  color: dimgray;
 }
 
 .audio-search input:placeholder {
@@ -104,6 +104,7 @@ input::placeholder {
 }
 
 .audio-search-box {
+  color: dimgray;
   border: none;
   font-size: 14px;
   width: 100%;

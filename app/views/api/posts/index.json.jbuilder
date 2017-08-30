@@ -27,7 +27,7 @@ json.users do
       json.id post.author.id
       json.username post.author.username
       json.avatar_url asset_path(post.author.image.url)
-      json.followed post.author.follows.pluck(:follower_id)
+      json.followed_by post.author.follows.pluck(:follower_id)
     end
   end
 end

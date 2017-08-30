@@ -126,6 +126,25 @@ class PostDetail extends React.Component {
     );
   }
 
+  renderAudioPost() {
+    return (
+      <div className={`post ${this.props.hideDetail}`}>
+        <div className="post-det-header">
+            <p className="username-head">{this.props.user.username}</p>
+            <button
+              className={this.state.followKlass}
+              onClick={this.handleFollow}>{this.state.followAction}
+            </button>
+        </div>
+        <audio className="audio-prev" controls src={this.props.post.audio_url} />
+        <div className="text-post">
+          { renderHTML(this.props.post.text_content) }
+        </div>
+        <PostDetailOptionsContainer post={this.props.post} />
+      </div>
+    );
+  }
+
   renderVideoPost() {
     return (
       <div className={`post ${this.props.hideDetail}`}>
@@ -151,14 +170,16 @@ class PostDetail extends React.Component {
         return this.renderTextPost();
       case 'image':
         return this.renderImagePost();
-      case 'video':
-        return this.renderVideoPost();
       case 'quote':
         return this.renderQuotePost();
       case 'link':
         return this.renderLinkPost();
       case 'chat':
         return this.renderChatPost();
+      case 'audio':
+        return this.renderAudioPost();
+      case 'video':
+        return this.renderVideoPost();
     }
   }
 }

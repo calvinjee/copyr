@@ -2,8 +2,8 @@ require 'metainspector'
 
 class Api::PostsController < ApplicationController
   def index
-    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes, author: [:likes])
-    @current_user_posts = Post.where(author_id: current_user.id).includes(:likes, author: [:likes])
+    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes, author: [:follows])
+    @current_user_posts = Post.where(author_id: current_user.id).includes(:likes)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
     render 'api/posts/index'
   end
@@ -32,7 +32,7 @@ class Api::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:author).find(params[:id])
+    @post = Post.find(params[:id])
     render 'api/posts/show'
   end
 

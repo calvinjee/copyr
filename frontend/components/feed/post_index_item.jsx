@@ -38,7 +38,7 @@ class PostIndexItem extends React.Component {
           editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='chat' />;
           break;
         case 'audio':
-          editForm = <AudioForm post={this.props.post} pullUp='pullUp' contentType='chat' />;
+          editForm = <AudioForm post={this.props.post} pullUp='pullUp' contentType='audio' />;
           break;
         case 'video':
           editForm = <ImageForm post={this.props.post} pullUp='pullUp' contentType='video' />;

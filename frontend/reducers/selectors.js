@@ -5,12 +5,8 @@ export const postsArray = (posts, dashboard) => {
   // if (feedPostIds === undefined) {
   //   return [];
   // } else {
-    const feedPostIds = dashboard.followedPostIds.concat(dashboard.curUserPostIds).sort().reverse();
+    const feedPostIds = dashboard.followedPostIds.concat(dashboard.curUserPostIds).sort((a, b) => b - a);
     const feedPosts = [];
-
-    
-
-
     feedPostIds.forEach((id) => {
       feedPosts.push(posts[id]);
     });
