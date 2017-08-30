@@ -27,7 +27,15 @@ json.users do
       json.id post.author.id
       json.username post.author.username
       json.avatar_url asset_path(post.author.image.url)
+      json.bio post.author.bio
       json.followed_by post.author.follows.pluck(:follower_id)
+    end
+  end
+  @recommended_users.each do |user|
+    json.set!(user.id) do
+      json.username user.username
+      json.avatar_url asset_path(user.image.url)
+      json.bio user.bio
     end
   end
 end
@@ -38,3 +46,4 @@ end
 json.followedPostIds @followed_users_posts.pluck(:id)
 json.curUserPostIds @current_user_posts.pluck(:id)
 json.likedPostIds @current_user_liked_posts
+json.recommendedUserIds (@recommended_users.map(&:id))

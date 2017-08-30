@@ -16,7 +16,7 @@ import { receiveErrors } from './session_actions';
 //   };
 // };
 
-export const createFollow = (followeeId) => {
+export const followUser = (followeeId) => {
   return (dispatch) => {
     return APIUtil.createFollow(followeeId)
       .then(
@@ -26,7 +26,7 @@ export const createFollow = (followeeId) => {
   };
 };
 
-export const deleteFollow = (followeeId) => {
+export const unfollowUser = (followeeId) => {
   return (dispatch) => {
     return APIUtil.destroyFollow(followeeId)
       .then(

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostDetailOptionsContainer from './post_detail_options_container';
 import renderHTML from 'react-render-html';
-import { createFollow, deleteFollow } from '../../actions/follow_actions';
+import { followUser, unfollowUser } from '../../actions/follow_actions';
 
 
 class PostDetail extends React.Component {
@@ -18,10 +18,10 @@ class PostDetail extends React.Component {
   handleFollow(e) {
     e.preventDefault();
     if (this.state.followAction === 'Unfollow') {
-      this.props.removeFollow(this.props.user.id)
+      this.props.unfollowUser(this.props.user.id)
         .then(() => this.setState({ followAction: 'Follow', followKlass: 'follow' }));
     } else {
-      this.props.createFollow(this.props.user.id)
+      this.props.followUser(this.props.user.id)
         .then(() => this.setState({ followAction: 'Unfollow', followKlass: 'unfollow' }));
     }
   }
@@ -192,8 +192,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createFollow: (followeeId) => dispatch(createFollow(followeeId)),
-    removeFollow: (followeeId) => dispatch(deleteFollow(followeeId)),
+    followUser: (followeeId) => dispatch(followUser(followeeId)),
+    unfollowUser: (followeeId) => dispatch(unfollowUser(followeeId)),
   };
 };
 

@@ -28,6 +28,7 @@ const dashboardReducer = (state = defaultState, action) => {
         followedPostIds: action.followedPostIds,
         curUserPostIds: action.curUserPostIds,
         likedPostIds: action.likedPostIds,
+        recommendedUserIds: action.recommendedUserIds,
       });
     case RECEIVE_SINGLE_POST:
       newState = merge({}, state);

@@ -2,9 +2,19 @@ require 'metainspector'
 
 class Api::PostsController < ApplicationController
   def index
-    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes, author: [:follows])
+    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes)
     @current_user_posts = Post.where(author_id: current_user.id).includes(:likes)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
+    @recommended_users = User.order('random()').limit(4)
+    # @recommended_users = []
+    # until @recommended_users.length == 4
+    #   user = User.where.not(id: current_user.id).order('RANDOM()').limit(1).first
+    #   if !Follow.where(follower_id: current_user.id, followee_id: user.id).exists? && !@recommended_users.include?(user)
+    #     @recommended_users.push(user)
+    #   else
+    #     next
+    #   end
+    # end
     render 'api/posts/index'
   end
 
