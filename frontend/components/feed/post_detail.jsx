@@ -89,11 +89,12 @@ class PostDetail extends React.Component {
           </div>
         );
       case 'link':
+        const hostStartIdx = this.props.link_host.indexOf('.') + 1
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             <a className="post-link link-bg" href={this.props.post.link_url} target="_blank">
               { header }
-              <p className="link-host">{this.props.post.link_host.slice(4)}</p>
+              <p className="link-host">{this.props.post.link_host.slice(hostStartIdx)}</p>
               <img className="file-post" src={this.props.post.image_url} />
               <h4 className="title link-bg">{this.props.post.title}</h4>
               <div className={
