@@ -7,17 +7,24 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('users')
-
-user1 = User.create!(email: 'calvin', password: 'password', username: 'cj')
-user2 = User.create!(email: 'tester1', password: 'password', username: 'tester1')
-user3 = User.create!(email: 'tester2', password: 'password', username: 'tester2')
-user4 = User.create!(email: 'tester3', password: 'password', username: 'tester3')
-
 Post.destroy_all
-ActiveRecord::Base.connection.reset_pk_sequence!('posts')
+Like.destroy_all
+Follow.destroy_all
 
-# text posts
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('posts')
+ActiveRecord::Base.connection.reset_pk_sequence!('follows')
+ActiveRecord::Base.connection.reset_pk_sequence!('likes')
+
+
+User.create!(email: 'clavinjee', password: 'password', username: 'clavinjee')
+
+30.times do
+  User.create!(email: Faker::Internet.unique.email, password: 'password', username: Faker::Name.unique.name)
+
+
+
+
 10.times do
   Post.create!(
     author_id: User.all.sample.id,
