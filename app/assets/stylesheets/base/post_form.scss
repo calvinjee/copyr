@@ -84,6 +84,12 @@ input::placeholder {
   border: none;
   font-size: 14px;
   width: 92%;
+  color: $charcoal;
+}
+
+.video-url {
+  margin: 10px 0;
+  width: 95%;
 }
 
 .audio-box {
@@ -184,7 +190,7 @@ input::placeholder {
 }
 
 .upload-box {
-  height: 175px;
+  height: 150px;
   border-top: 2px dashed lightgray;
   border-bottom: 2px dashed lightgray;
   background-color: $lightest-gray;
@@ -207,10 +213,10 @@ input::placeholder {
   opacity: 0;
   overflow: hidden;
   z-index: 3;
-  height: 175px;
+  height: 150px;
   border: none;
   cursor: pointer;
-  height: 175px;
+  height: 150px;
   width: 50%;
   position: absolute;
 }

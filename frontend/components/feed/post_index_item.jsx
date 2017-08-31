@@ -6,6 +6,7 @@ import TextForm from '../post_forms/text_form';
 import ImageForm from '../post_forms/image_form';
 import LinkForm from '../post_forms/link_form';
 import AudioForm from '../post_forms/audio_form';
+import VideoForm from '../post_forms/video_form';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class PostIndexItem extends React.Component {
           editForm = <AudioForm post={this.props.post} pullUp='pullUp' contentType='audio' />;
           break;
         case 'video':
-          editForm = <ImageForm post={this.props.post} pullUp='pullUp' contentType='video' />;
+          editForm = <VideoForm post={this.props.post} pullUp='pullUp' contentType='video' />;
           break;
       }
     }

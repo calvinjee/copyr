@@ -1,8 +1,7 @@
 json.post do
-  json.extract! post, :id, :author_id, :title, :text_content, :content_type
+  json.extract! post, :id, :author_id, :title, :text_content, :content_type, :link_url
   case post.content_type
   when 'link'
-    json.link_url post.link_url
     json.image_url post.image_file_name
     json.link_host post.link_host
     json.caption post.caption

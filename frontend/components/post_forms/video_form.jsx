@@ -2,38 +2,65 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
+import YouTube from 'react-youtube';
+import { youtubeGetID } from '../../util/helpers';
 
-class ImageForm extends React.Component {
+class VideoForm extends React.Component {
   constructor(props) {
     super(props);
-    let previewUrl;
-    switch(this.props.contentType) {
-      case 'image':
-        previewUrl = this.props.imageUrl;
-        break;
-      case 'video':
-        previewUrl = this.props.videoUrl;
-        break;
-    }
+    // let previewUrl = this.props.videoUrl || this.props.linkUrl;
     this.state = {
       id: this.props.id,
-      file: null,
-      previewUrl: previewUrl,
+      // previewUrl: previewUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
-      authorId: this.props.currentUser.id
+      authorId: this.props.currentUser.id,
+      file: null,
+      videoUrl: this.props.videoUrl,
+      filePreviewUrl: this.props.videoUrl,
+      linkUrl: this.props.linkUrl,
+      youtubePreviewUrl: this.props.linkUrl,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.previewYoutube= this.previewYoutube.bind(this);
   }
+
 
   handleChange(input) {
     return (e) => {
       // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
+  }
+
+  previewYoutube () {
+    this.setState({
+      youtubePreviewUrl: this.state.linkUrl,
+      file: null,
+      videoUrl: null,
+      filePreviewUrl: null,
+     });
+  }
+
+  updateFile (e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({
+        file: file,
+        filePreviewUrl: fileReader.result,
+        videoUrl: fileReader.result ,
+        linkUrl: null,
+        youtubePreviewUrl: null,
+      });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   handleEditor(value) {
@@ -45,6 +72,9 @@ class ImageForm extends React.Component {
 
     if (this.state.file) {
       postData.append(`post[${this.state.contentType}]`, this.state.file);
+      postData.append("post[link_url]", '');
+    } else if (this.state.linkUrl) {
+      postData.append("post[link_url]", this.state.linkUrl);
     }
     postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
@@ -59,51 +89,27 @@ class ImageForm extends React.Component {
     };
   }
 
-  updateFile (e) {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ file: file, previewUrl: fileReader.result });
-    };
-
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-  }
-
   render() {
-    let prev, uploadBackground;
+    let preview;
+    if (this.state.youtubePreviewUrl) {
+      const opts = {
+        width: '546',
+        playerVars: {
+          autoplay: 0
+        }
+      };
 
-    switch(this.state.contentType) {
-      case 'image':
-        prev = ( <img className="file-prev" src={this.state.previewUrl} /> );
-        uploadBackground = (
-          <div className="img-upload-bg">
-            <i className="fa fa-camera" aria-hidden="true"></i>
-            <p>Upload a photo</p>
-          </div>
-        );
-        break;
-      case 'video':
-        uploadBackground = (
-          <div className="img-upload-bg">
-            <i className="fa fa-video-camera" aria-hidden="true"></i>
-            <p>Upload a video</p>
-          </div>
-        );
-        break;
-    }
-
-    if (this.state.previewUrl && this.state.contentType === 'video') {
-      prev = ( <video className="video-prev" controls src={this.state.previewUrl} /> );
+      preview = (<YouTube
+        videoId={youtubeGetID(this.state.youtubePreviewUrl)}
+        opts={opts} />);
+    } else if (this.state.filePreviewUrl) {
+      preview = (<video className="video-prev" controls src={this.state.filePreviewUrl} />);
     }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
-
-        { prev }
-
+        { preview }
         <div className="upload-box">
           <button
             htmlFor="file"
@@ -115,13 +121,22 @@ class ImageForm extends React.Component {
               name="file"
               id="file">
             </input>
-            {uploadBackground}
+            <div className="img-upload-bg">
+              <i className="fa fa-video-camera" aria-hidden="true"></i>
+              <p>Upload a video</p>
+            </div>
           </button>
           <div className="upload-image">
             <div className="img-upload-bg">
-              <i className="fa fa-globe" aria-hidden="true"></i>
-              <p>Add from web</p>
-              <p>Coming soon...</p>
+              <i className="fa fa-youtube-square" aria-hidden="true"></i>
+              <input
+                className="link-url video-url"
+                onChange={this.handleChange('linkUrl')}
+                placeholder="Paste Youtube link..."></input>
+              <button
+                onClick={this.previewYoutube}>
+                Preview
+              </button>
             </div>
           </div>
         </div>
@@ -148,4 +163,4 @@ class ImageForm extends React.Component {
   }
 }
 
-export default withRouter(PostFormContainer(ImageForm));
+export default withRouter(PostFormContainer(VideoForm));

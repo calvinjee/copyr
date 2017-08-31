@@ -27,7 +27,7 @@ class Api::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
 
-    if params[:post][:link_url]
+    if params[:post][:link_url] && params[:post][:content_type] == 'link'
       begin
         page = MetaInspector.new(params[:post][:link_url])
       rescue MetaInspector::TimeoutError, MetaInspector::RequestError, MetaInspector::ParserError => e

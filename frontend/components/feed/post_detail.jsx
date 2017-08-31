@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PostDetailOptionsContainer from './post_detail_options_container';
 import renderHTML from 'react-render-html';
 import { followUser, unfollowUser } from '../../actions/follow_actions';
+import YouTube from 'react-youtube';
+import { youtubeGetID } from '../../util/helpers';
 
 
 class PostDetail extends React.Component {
@@ -130,10 +132,30 @@ class PostDetail extends React.Component {
           </div>
         );
       case 'video':
+        let player;
+        if (this.props.post.link_url) {
+          const opts = {
+            width: '546',
+            playerVars: {
+              autoplay: 0
+            }
+          };
+          player = (<YouTube
+            videoId={youtubeGetID(this.props.post.link_url)}
+            opts={opts} />);
+        } else {
+          player = (
+            <video
+              className="file-post"
+              src={this.props.post.video_url}
+              controls
+            />);
+        }
+
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
-            <video className="file-post" controls src={this.props.post.video_url} />
+            { player }
             { body }
             <PostDetailOptionsContainer
               post={this.props.post}

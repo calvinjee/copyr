@@ -3,6 +3,7 @@ import TextForm from './text_form';
 import ImageForm from './image_form';
 import LinkForm from './link_form';
 import AudioForm from './audio_form';
+import VideoForm from './video_form';
 
 
 class PostButtons extends React.Component {
@@ -39,7 +40,7 @@ class PostButtons extends React.Component {
         form = <AudioForm contentType='audio' />;
         break;
       case 'video':
-        form = <ImageForm contentType='video' />;
+        form = <VideoForm contentType='video' />;
         break;
     }
 

@@ -4,6 +4,7 @@
   width: 320px;
   margin-right: auto;
   margin-left: 45px;
+  color: $bg-gray;
 }
 
 .recommended-blogs {
@@ -11,14 +12,15 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
+
 }
 
 .recommended-blogs h5 {
-  color: $very-lightgray;
+  color: $bg-gray;
   font-family: 'Mukta Mahee', sans-serif;
   font-size: 13px;
-  color: $very-lightgray;
-  border-bottom: 2px solid $very-lightgray;
+  border-bottom: 2px solid $bg-gray;
+  padding-left: 15px;
   padding-bottom: 10px;
   width: 100%;
 }
@@ -34,7 +36,7 @@
   height: auto;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #777777;
+  box-shadow: 0 -0.5px 0 $bg-gray;
   padding: 9px 10px;
 }
 
@@ -50,19 +52,21 @@
   flex-direction: column;
   padding: 0 0 0 5px;
   width: auto;
+  color: $bg-gray;
 }
 
 .username-bio p {
   color: $very-lightgray;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: normal;
   margin-bottom: 0;
 }
 
 .username-bio span{
-  padding: 5px 0 0 5px;
-  font-size: 12px;
+  padding: 3px 0 0 5px;
+  font-size: 14px;
   color: #777777;
+  color: $bg-gray;
 
 }
 
