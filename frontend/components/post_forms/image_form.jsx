@@ -24,14 +24,19 @@ class ImageForm extends React.Component {
   }
 
   checkImage(url) {
-    debugger
-    // $.ajax({
-    //   method: 'GET',
-    //   url: `api/posts/prefetch/?image_url=${url}`
-    // }).then(
-    //   (res) => this.setState({ response: res }),
-    //   (error) => this.setState({ response: `error: ${error}`})
-    // );
+    return (e) => {
+      $.ajax({
+        method: 'GET',
+        url: `api/prefetch/?image_url=${url}`
+      }).then(
+        (res) => {
+          this.setState({ response: res });
+        },
+        (error) => {
+          this.setState({ response: `error: ${error}`});
+        }
+      );
+    };
   }
 
   handleChange(input) {
@@ -117,7 +122,6 @@ class ImageForm extends React.Component {
                 onClick={this.checkImage(this.state.linkUrl)}>
                 Preview
               </button>
-              <p>{this.state.response}</p>
             </div>
           </div>
         </div>

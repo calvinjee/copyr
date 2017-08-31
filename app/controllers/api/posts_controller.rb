@@ -1,4 +1,5 @@
 require 'metainspector'
+require 'open-uri'
 
 class Api::PostsController < ApplicationController
 
@@ -104,11 +105,10 @@ class Api::PostsController < ApplicationController
   def prefetch
     url = params[:image_url]
     str = open(url)
-    debugger
-    if IMAGE_TYPES.includes?(str.content_type)
-      return url
+    if IMAGE_TYPES.include?(str.content_type)
+      render plain: url, status: 202
     else
-      return false
+      render plain: false, status: 422
     end
   end
 

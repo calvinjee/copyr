@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       delete '/likes', to: 'posts#unlike'
     end
 
-    get '/posts/prefetch', to: 'posts#prefetch'
+    get '/prefetch', to: 'posts#prefetch'
   end
 
   root to: 'static_pages#root'
