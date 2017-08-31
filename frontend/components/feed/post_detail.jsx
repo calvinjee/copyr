@@ -81,7 +81,7 @@ class PostDetail extends React.Component {
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
-            <h4 className="title">{this.props.post.title}</h4>
+            <h4 className="title quote">{this.props.post.title}</h4>
             { body }
             <PostDetailOptionsContainer
               post={this.props.post}
@@ -89,7 +89,7 @@ class PostDetail extends React.Component {
           </div>
         );
       case 'link':
-        const hostStartIdx = this.props.link_host.indexOf('.') + 1
+        const hostStartIdx = this.props.post.link_host.indexOf('.') + 1;
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             <a className="post-link link-bg" href={this.props.post.link_url} target="_blank">

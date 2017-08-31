@@ -4,6 +4,7 @@ import ImageForm from './image_form';
 import LinkForm from './link_form';
 import AudioForm from './audio_form';
 import VideoForm from './video_form';
+import QuoteForm from './quote_form';
 
 
 class PostButtons extends React.Component {
@@ -28,7 +29,7 @@ class PostButtons extends React.Component {
         form = <ImageForm contentType='image' />;
         break;
       case 'quote':
-        form = <TextForm contentType='quote' />;
+        form = <QuoteForm contentType='quote' />;
         break;
       case 'link':
         form = <LinkForm contentType='link' />;

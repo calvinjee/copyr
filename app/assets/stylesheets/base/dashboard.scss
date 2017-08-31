@@ -169,6 +169,18 @@ body {
   // display: inline-block;
 }
 
+.quote {
+  font-family: 'Jacques Francois', serif;
+  font-size: 27px
+}
+
+.quote:before {
+  content: '"'
+}
+.quote:after {
+  content: '"'
+}
+
 .text-post {
   font-size: 15px;
   padding: 15px 20px;

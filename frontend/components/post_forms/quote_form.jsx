@@ -1,27 +1,26 @@
 import React from 'react';
 import PostFormContainer from './post_form_container';
+import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 
 class QuoteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      text_content: '',
-      content_type: 'quote',
-      author_id: this.props.currentUser.id
+      id: this.props.id,
+      title: this.props.title,
+      text_content: this.props.textContent,
+      content_type: this.props.contentType,
+      author_id: this.props.currentUser.id,
+      width: 10,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.handleReset = this.handleReset.bind(this);
   }
 
-  handleChange(input) {
-    return (e) => {
-      // e.preventDefault();
-      this.setState({ [input]: e.currentTarget.value });
-    };
+  handleChange(e) {
+    this.setState({ title: e.target.textContent });
   }
 
   handleEditor(value) {
@@ -32,36 +31,28 @@ class QuoteForm extends React.Component {
     let postData = { post: this.state };
     return (e) => {
       e.preventDefault();
-      formAction === 'post' ?
-        this.props.addPost(postData).then(() => this.props.closeModal()) :
+      formAction === 'action' ?
+        this.props.action(postData).then(() => this.props.closeModal()) :
         this.props.closeModal();
     };
   }
 
-  // handleReset(e) {
-  //   this.setState({ title: '' });
-  // }
-
   render() {
-    // ORIGINAL BODY FORM
-    // <textarea
-    //   className="text-box text-body"
-    //   placeholder="Body"
-    //   value={this.state.text_content}
-    //   onChange={this.handleChange('text_content')} />
-    // <div className="quote-box">
-    // <span>{"\u0022"}</span>
-    // </div>
-
+    // className="text-box quote-title"
+    // <input
+    //   style={{width:this.state.width + 'px'}}
+    //   placeholder='Quote'
+    //   value={this.state.title}
+    //   onChange={this.handleChange} />
     return(
-      <div className="form text-form stretchDown">
+      <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
-
-      <textarea
-          className="text-box quote-title"
-          placeholder='"Quote"'
-          value={this.state.title}
-          onChange={this.handleChange('title')} />
+          <div
+            className="quote-title"
+            placeholder='"Quote'
+            contentEditable='true'
+            value={this.state.title}
+            onInput={this.handleChange} />
 
         <div className="text-body quote-body">
           <p className="quote-caption">{"\u2014"}</p>
@@ -81,7 +72,7 @@ class QuoteForm extends React.Component {
             <span>Close</span></button>
           <button
             className="form-butt form-post-butt"
-            onClick={this.handleClick('post')}>
+            onClick={this.handleClick('action')}>
             <span>Post</span></button>
         </div>
       </div>
@@ -89,4 +80,4 @@ class QuoteForm extends React.Component {
   }
 }
 
-export default PostFormContainer(QuoteForm);
+export default withRouter(PostFormContainer(QuoteForm));

@@ -46,7 +46,20 @@
 }
 
 .quote-title {
+  font-size: 28px;
+  max-width: 500px;
+  padding-left: 20px;
+  font-family: 'Jacques Francois', serif;
+}
+.quote-title:before {
+  content: '"'
+}
+.quote-title:after {
+  content: '"'
+}
 
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
 }
 
 .text-body {
