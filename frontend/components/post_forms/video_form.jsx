@@ -37,6 +37,7 @@ class VideoForm extends React.Component {
   }
 
   previewYoutube () {
+    debugger
     this.setState({
       youtubePreviewUrl: this.state.linkUrl,
       file: null,

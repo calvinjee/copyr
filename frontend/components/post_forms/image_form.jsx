@@ -6,30 +6,36 @@ import ReactQuill from 'react-quill';
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
-    let previewUrl;
-    switch(this.props.contentType) {
-      case 'image':
-        previewUrl = this.props.imageUrl;
-        break;
-      case 'video':
-        previewUrl = this.props.videoUrl;
-        break;
-    }
     this.state = {
       id: this.props.id,
       file: null,
-      previewUrl: previewUrl,
+      previewUrl: this.props.imageUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
-      authorId: this.props.currentUser.id
+      authorId: this.props.currentUser.id,
+      linkUrl: '',
+      response: 'no res yet',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.checkImage = this.checkImage.bind(this);
+  }
+
+  checkImage(url) {
+    debugger
+    // $.ajax({
+    //   method: 'GET',
+    //   url: `api/posts/prefetch/?image_url=${url}`
+    // }).then(
+    //   (res) => this.setState({ response: res }),
+    //   (error) => this.setState({ response: `error: ${error}`})
+    // );
   }
 
   handleChange(input) {
+
     return (e) => {
       // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
@@ -72,37 +78,16 @@ class ImageForm extends React.Component {
   }
 
   render() {
-    let prev, uploadBackground;
-
-    switch(this.state.contentType) {
-      case 'image':
-        prev = ( <img className="file-prev" src={this.state.previewUrl} /> );
-        uploadBackground = (
-          <div className="img-upload-bg">
-            <i className="fa fa-camera" aria-hidden="true"></i>
-            <p>Upload a photo</p>
-          </div>
-        );
-        break;
-      case 'video':
-        uploadBackground = (
-          <div className="img-upload-bg">
-            <i className="fa fa-video-camera" aria-hidden="true"></i>
-            <p>Upload a video</p>
-          </div>
-        );
-        break;
-    }
-
-    if (this.state.previewUrl && this.state.contentType === 'video') {
-      prev = ( <video className="video-prev" controls src={this.state.previewUrl} /> );
+    let preview;
+    if (this.state.previewUrl) {
+      preview = ( <img className="file-prev" src={this.state.previewUrl} /> );
     }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
 
-        { prev }
+        { preview }
 
         <div className="upload-box">
           <button
@@ -115,13 +100,24 @@ class ImageForm extends React.Component {
               name="file"
               id="file">
             </input>
-            {uploadBackground}
+            <div className="img-upload-bg">
+              <i className="fa fa-camera" aria-hidden="true"></i>
+              <p>Upload a photo</p>
+            </div>
           </button>
           <div className="upload-image">
             <div className="img-upload-bg">
               <i className="fa fa-globe" aria-hidden="true"></i>
               <p>Add from web</p>
-              <p>Coming soon...</p>
+              <input
+                className="link-url video-url"
+                onChange={this.handleChange('linkUrl')}
+                placeholder="Paste link here..."></input>
+              <button
+                onClick={this.checkImage(this.state.linkUrl)}>
+                Preview
+              </button>
+              <p>{this.state.response}</p>
             </div>
           </div>
         </div>

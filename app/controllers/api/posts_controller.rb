@@ -1,9 +1,12 @@
 require 'metainspector'
 
 class Api::PostsController < ApplicationController
+
+  IMAGE_TYPES = ['image/gif', 'image/jpeg', 'image/png']
+
   def index
-    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes)
-    @current_user_posts = Post.where(author_id: current_user.id).includes(:likes)
+    @followed_users_posts = Post.where(author_id: current_user.followed_users).includes(:likes).order(created_at: :desc).limit(20)
+    @current_user_posts = Post.where(author_id: current_user.id).includes(:likes).order(created_at: :desc).limit(10)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
     @follower_ids = current_user.followers.pluck(:id)
     @followed_user_ids = current_user.followed_users.pluck(:id)
@@ -98,6 +101,18 @@ class Api::PostsController < ApplicationController
     render 'api/posts/show'
   end
 
+  def prefetch
+    url = params[:image_url]
+    str = open(url)
+    debugger
+    if IMAGE_TYPES.includes?(str.content_type)
+      return url
+    else
+      return false
+    end
+  end
+
+
   private
 
   def post_params
@@ -113,4 +128,6 @@ class Api::PostsController < ApplicationController
       :link_url
     )
   end
+
+
 end
