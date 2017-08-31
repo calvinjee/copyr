@@ -8,13 +8,14 @@ class ImageForm extends React.Component {
     super(props);
     this.state = {
       id: this.props.id,
-      file: null,
-      previewUrl: this.props.imageUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
       authorId: this.props.currentUser.id,
-      linkUrl: '',
-      response: 'no res yet',
+      file: null,
+      imageUrl: this.props.imageUrl,
+      filePreviewUrl: this.props.imageUrl,
+      linkUrl: this.props.linkUrl,
+      linkPreviewUrl: this.props.linkUrl,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -23,26 +24,8 @@ class ImageForm extends React.Component {
     this.checkImage = this.checkImage.bind(this);
   }
 
-  checkImage(url) {
-    return (e) => {
-      $.ajax({
-        method: 'GET',
-        url: `api/prefetch/?image_url=${url}`
-      }).then(
-        (res) => {
-          this.setState({ response: res });
-        },
-        (error) => {
-          this.setState({ response: `error: ${error}`});
-        }
-      );
-    };
-  }
-
   handleChange(input) {
-
     return (e) => {
-      // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
   }
@@ -51,17 +34,60 @@ class ImageForm extends React.Component {
     this.setState({ textContent: value });
   }
 
+  checkImage(url) {
+    return (e) => {
+      $.ajax({
+        method: 'GET',
+        url: `api/prefetch/?image_url=${url}`
+      }).then(
+        (linkUrl) => {
+          this.setState({
+            linkPreviewUrl: linkUrl,
+            file: null,
+            imageUrl: null,
+            filePreviewUrl: null,
+           });
+        }
+        // (error) => {
+        //   this.setState({ response: `error: ${error}`});
+        // }
+      );
+    };
+  }
+
+  updateFile (e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({
+        file: file,
+        filepreviewUrl: fileReader.result,
+        imageUrl: fileReader.result,
+        linkUrl: null,
+        linkPreviewUrl: null,
+      });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
   handleClick(formAction) {
+    // debugger
     const postData = new FormData();
 
     if (this.state.file) {
       postData.append(`post[${this.state.contentType}]`, this.state.file);
+      postData.append(`post[link_url]`, '');
+    } else {
+      postData.append(`post[link_url]`, this.state.linkUrl);
     }
     postData.append("post[text_content]", this.state.textContent);
     postData.append("post[content_type]", this.state.contentType);
     postData.append("post[author_id]", this.state.authorId);
     postData.append("post[id]", this.state.id);
-
+    // debugger
     return (e) => {
       e.preventDefault();
       formAction === 'action' ?
@@ -70,30 +96,18 @@ class ImageForm extends React.Component {
     };
   }
 
-  updateFile (e) {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ file: file, previewUrl: fileReader.result });
-    };
-
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
-  }
-
   render() {
     let preview;
-    if (this.state.previewUrl) {
-      preview = ( <img className="file-prev" src={this.state.previewUrl} /> );
+    if (this.state.linkPreviewUrl) {
+      preview = ( <img className="file-prev" src={this.state.linkPreviewUrl} /> );
+    } else if (this.state.filePreviewUrl) {
+      preview = ( <img className="file-prev" src={this.state.filePreviewUrl} /> );
     }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
-
         { preview }
-
         <div className="upload-box">
           <button
             htmlFor="file"
@@ -125,7 +139,6 @@ class ImageForm extends React.Component {
             </div>
           </div>
         </div>
-
         <div className="text-body">
           <ReactQuill
             theme="bubble"

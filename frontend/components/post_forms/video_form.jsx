@@ -8,10 +8,8 @@ import { youtubeGetID } from '../../util/helpers';
 class VideoForm extends React.Component {
   constructor(props) {
     super(props);
-    // let previewUrl = this.props.videoUrl || this.props.linkUrl;
     this.state = {
       id: this.props.id,
-      // previewUrl: previewUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
       authorId: this.props.currentUser.id,
@@ -28,12 +26,14 @@ class VideoForm extends React.Component {
     this.previewYoutube= this.previewYoutube.bind(this);
   }
 
-
   handleChange(input) {
     return (e) => {
-      // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
+  }
+
+  handleEditor(value) {
+    this.setState({ textContent: value });
   }
 
   previewYoutube () {
@@ -63,9 +63,6 @@ class VideoForm extends React.Component {
     }
   }
 
-  handleEditor(value) {
-    this.setState({ textContent: value });
-  }
 
   handleClick(formAction) {
     const postData = new FormData();

@@ -67,10 +67,14 @@ class PostDetail extends React.Component {
           </div>
         );
       case 'image':
+        let image = this.props.post.link_url ?
+          this.props.post.link_url :
+          this.props.post.image_url;
+
         return (
           <div className={`post ${this.props.miniKlass} ${this.props.hideDetail}`}>
             { header }
-            <img className="file-post" src={this.props.post.image_url} />
+            <img className="file-post" src={image} />
             { body }
             <PostDetailOptionsContainer
               post={this.props.post}
