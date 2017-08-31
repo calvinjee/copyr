@@ -2,31 +2,42 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
+import YouTube from 'react-youtube';
 
 class ImageForm extends React.Component {
   constructor(props) {
     super(props);
-    let previewUrl;
-    switch(this.props.contentType) {
-      case 'image':
-        previewUrl = this.props.imageUrl;
-        break;
-      case 'video':
-        previewUrl = this.props.videoUrl;
-        break;
-    }
+    let previewUrl = this.props.videoUrl || this.props.inkUrl;
     this.state = {
       id: this.props.id,
       file: null,
       previewUrl: previewUrl,
+      previewYT: null,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
-      authorId: this.props.currentUser.id
+      authorId: this.props.currentUser.id,
+      linkUrl: this.props.linkUrl,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.previewVideo= this.previewVideo.bind(this);
+  }
+
+  previewVideo () {
+    const opts = {
+      width: '546',
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+        autoplay: 1
+      }
+    };
+
+    this.setState({
+      previewYT: (<YouTube
+        videoId={this.state.linkUrl}
+        opts={opts} />)
+    });
   }
 
   handleChange(input) {
@@ -103,6 +114,7 @@ class ImageForm extends React.Component {
         <p className="username-head">{this.props.currentUser.username}</p>
 
         { prev }
+        { this.state.previewYT }
 
         <div className="upload-box">
           <button
@@ -121,7 +133,13 @@ class ImageForm extends React.Component {
             <div className="img-upload-bg">
               <i className="fa fa-globe" aria-hidden="true"></i>
               <p>Add from web</p>
-              <p>Coming soon...</p>
+              <input
+                onChange={this.handleChange('linkUrl')}
+                placeholder="Youtube link"></input>
+              <button
+                onClick={this.previewVideo}>
+                Go
+              </button>
             </div>
           </div>
         </div>

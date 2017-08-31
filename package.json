@@ -38,6 +38,7 @@
     "react-redux": "^5.0.6",
     "react-render-html": "^0.5.0",
     "react-router-dom": "^4.1.2",
+    "react-youtube": "^7.4.0",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
