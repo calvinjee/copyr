@@ -12,7 +12,7 @@ class Api::PostsController < ApplicationController
     @follower_ids = current_user.followers.pluck(:id)
     @followed_user_ids = current_user.followed_users.pluck(:id)
 
-    @recommended_users = User.order('RANDOM()').limit(4)
+    @recommended_users = User.where.not(id: current_user.id).order('RANDOM()').limit(4)
     @radar_post = Post.where.not(author_id: current_user.id).order('RANDOM()').limit(1).first
 
     # @recommended_users = []

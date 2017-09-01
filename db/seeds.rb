@@ -26,16 +26,13 @@ time = Time.new
 end
 
 User.create!(email: 'clavinjee@gmail.com', password: 'password', username: 'clavinjee')
-
-7.times do
-  User.create!(
-    email: Faker::Internet.unique.safe_email,
-    password: 'password',
-    username: Faker::Name.unique.name,
-    bio: Faker::Hipster.words(2).join(' ')
-    # image: Faker::Avatar.image
-  )
-end
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/abott@adorablasdfsadaae.io.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/fa.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/faasdfsd.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/calvasdfvwwa.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/owqiffc.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/98ds00-72fcadf.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/asdfkjsahp.png")
 
 images = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/pics.txt').readlines
 ytvids = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/ytvids.txt').readlines
@@ -95,86 +92,86 @@ ytvids.each do |video|
     created_at: time_array.sample
   )
 end
-# 
-# links.each do |link|
-#   post = link.strip
-#   content_type = 'link'
-#   author_id = User.all.sample.id
-#   link_url = post
-#   page = MetaInspector.new(link_url)
-#   image_file_name = page.images.best
-#   link_host = page.host
-#   title = page.best_title
-#   caption = page.best_description
-#
-#   Post.create!(
-#     author_id: author_id,
-#     link_url: link_url,
-#     content_type: content_type,
-#     image_file_name: image_file_name,
-#     link_host: link_host,
-#     title: title,
-#     caption: caption,
-#     created_at: time_array.sample
-#   )
-# end
-#
-# 2.times do
-#   title = Faker::Seinfeld.quote
-#   text_content = Faker::Seinfeld.character
-#   author_id = User.all.sample.id
-#   content_type = 'quote'
-#
-#   Post.create!(
-#     author_id: author_id,
-#     content_type: content_type,
-#     title: title,
-#     text_content: text_content,
-#     created_at: time_array.sample
-#   )
-# end
-# 2.times do
-#   title = Faker::RickAndMorty.quote
-#   text_content = Faker::RickAndMorty.character
-#   author_id = User.all.sample.id
-#   content_type = 'quote'
-#
-#   Post.create!(
-#     author_id: author_id,
-#     content_type: content_type,
-#     title: title,
-#     text_content: text_content,
-#     created_at: time_array.sample
-#   )
-# end
-# 2.times do
-#   title = Faker::FamilyGuy.quote
-#   text_content = Faker::FamilyGuy.character
-#   author_id = User.all.sample.id
-#   content_type = 'quote'
-#
-#   Post.create!(
-#     author_id: author_id,
-#     content_type: content_type,
-#     title: title,
-#     text_content: text_content,
-#     created_at: time_array.sample
-#   )
-# end
-# 2.times do
-#   title = Faker::MostInterestingManInTheWorld.quote
-#   text_content = 'The most interesting man in the world'
-#   author_id = User.all.sample.id
-#   content_type = 'quote'
-#
-#   Post.create!(
-#     author_id: author_id,
-#     content_type: content_type,
-#     title: title,
-#     text_content: text_content,
-#     created_at: time_array.sample
-#   )
-# end
+
+links.each do |link|
+  post = link.strip
+  content_type = 'link'
+  author_id = User.all.sample.id
+  link_url = post
+  page = MetaInspector.new(link_url)
+  image_file_name = page.images.best
+  link_host = page.host
+  title = page.best_title
+  caption = page.best_description
+
+  Post.create!(
+    author_id: author_id,
+    link_url: link_url,
+    content_type: content_type,
+    image_file_name: image_file_name,
+    link_host: link_host,
+    title: title,
+    caption: caption,
+    created_at: time_array.sample
+  )
+end
+
+2.times do
+  title = Faker::Seinfeld.quote
+  text_content = Faker::Seinfeld.character
+  author_id = User.all.sample.id
+  content_type = 'quote'
+
+  Post.create!(
+    author_id: author_id,
+    content_type: content_type,
+    title: title,
+    text_content: text_content,
+    created_at: time_array.sample
+  )
+end
+2.times do
+  title = Faker::RickAndMorty.quote
+  text_content = Faker::RickAndMorty.character
+  author_id = User.all.sample.id
+  content_type = 'quote'
+
+  Post.create!(
+    author_id: author_id,
+    content_type: content_type,
+    title: title,
+    text_content: text_content,
+    created_at: time_array.sample
+  )
+end
+2.times do
+  title = Faker::FamilyGuy.quote
+  text_content = Faker::FamilyGuy.character
+  author_id = User.all.sample.id
+  content_type = 'quote'
+
+  Post.create!(
+    author_id: author_id,
+    content_type: content_type,
+    title: title,
+    text_content: text_content,
+    created_at: time_array.sample
+  )
+end
+2.times do
+  title = Faker::MostInterestingManInTheWorld.quote
+  text_content = 'The most interesting man in the world'
+  author_id = User.all.sample.id
+  content_type = 'quote'
+
+  Post.create!(
+    author_id: author_id,
+    content_type: content_type,
+    title: title,
+    text_content: text_content,
+    created_at: time_array.sample
+  )
+end
 
 15.times do
   Follow.create(followee_id: User.all.sample.id, follower_id: User.all.sample.id)
