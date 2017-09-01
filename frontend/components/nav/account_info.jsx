@@ -30,15 +30,48 @@ class AccountInfo extends React.Component {
             Log out</button>
         </div>
         <ul className="ai-list">
-          <li><span>Likes</span></li>
-          <li><span>Following</span></li>
-          <li><span>My Posts</span></li>
-          <li><span>My Followers</span></li>
+          <li>
+            <i className="fa fa-heart fa-heart-ai" aria-hidden="true"></i>
+            <span>Likes</span>
+            <div className="ai-count">
+              <span>{this.props.likedPostIds.length}</span>
+            </div>
+          </li>
+          <li>
+            <i className="fa fa-address-book" aria-hidden="true"></i>
+            <span>Following</span>
+            <div className="ai-count">
+              <span>{this.props.followedUserIds.length}</span>
+            </div>
+          </li>
+          <li>
+            <i className="fa fa-sticky-note" aria-hidden="true"></i>
+            <span>My Posts</span>
+            <div className="ai-count">
+              <span>{this.props.curUserPostIds.length}</span>
+            </div>
+          </li>
+          <li>
+            <i className="fa fa-user-plus" aria-hidden="true"></i>
+            <span>My Followers</span>
+            <div className="ai-count">
+              <span>{this.props.followerIds.length}</span>
+            </div>
+          </li>
         </ul>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    likedPostIds: state.dashboard.likedPostIds,
+    followedUserIds: state.dashboard.followedUserIds,
+    curUserPostIds: state.dashboard.curUserPostIds,
+    followerIds: state.dashboard.followerIds,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -46,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(AccountInfo));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountInfo));

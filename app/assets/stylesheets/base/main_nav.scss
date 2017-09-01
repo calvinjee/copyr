@@ -84,14 +84,14 @@
 }
 
 .aiheader p {
-  color: darkgray;
-  font-weight: 600;
+  color: #777777;
+  font-family: 'Mukta Mahee', sans-serif;
 }
 
 .aiheader button {
   position: absolute;
   right: 15px;
-  color: $very-lightgray;
+  color: #666666;
 }
 
 .logout {
@@ -104,8 +104,23 @@
   align-items: center;
   height: 30px;
   box-sizing: border-box;
-  padding: 15px 20px 15px 20px;
+  padding: 17px 15px 17px 15px;
   font-size: 15px;
+}
+
+.account-info i {
+  padding: none;
+  font-size: 1em;
+  margin-right: 10px;
+  height: auto;
+}
+
+.ai-count {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  font-size: 12px;
+
 }
 
 .ai-list > :first-child {
