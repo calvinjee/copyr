@@ -96,6 +96,7 @@ class ImageForm extends React.Component {
           .then(() => {
             this.setState({ loader: false });
             this.props.closeModal();
+            this.props.history.push('/dashboard');
           });
       } else {
         this.props.closeModal();

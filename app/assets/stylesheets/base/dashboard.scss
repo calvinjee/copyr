@@ -248,6 +248,7 @@ body {
   text-decoration: none;
   color: inherit;
   padding-top: 10px;
+  margin-top: 2px;
 }
 
 .edit-options li {
@@ -257,6 +258,10 @@ body {
   font-size: 14px;
   padding-left: 15px;
   margin-top: 0;
+}
+
+.edit-options li:hover {
+
 }
 
 .edit-options > :first-child {
@@ -278,7 +283,7 @@ body {
 .edit-options a:hover {
   background-color: $hover-blue;
   cursor: pointer;
-  margin-top: 2px;
+
 }
 
 .dropdown-modal {
