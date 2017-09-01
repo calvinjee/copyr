@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
 import PostButtons from './post_buttons';
 import { postFormModal } from '../../actions/modal_actions';
 

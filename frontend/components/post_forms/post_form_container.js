@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addPost, revisePost } from '../../actions/post_actions';
-import { closeModal, showLoader, removeLoader } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   if (ownProps.post) {
@@ -38,12 +38,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   let action = ownProps.post ? revisePost : addPost;
 
   return {
-    // addPost: (post) => dispatch(addPost(post)),
-    // revisePost: (post) => dispatch(revisePost(post)),
     action: (post) => dispatch(action(post)),
     closeModal: () => dispatch(closeModal()),
-    showLoader: () => dispatch(showLoader()),
-    removeLoader: () => dispatch(removeLoader()),
   };
 };
 

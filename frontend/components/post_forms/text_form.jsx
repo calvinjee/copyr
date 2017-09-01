@@ -48,10 +48,6 @@ class TextForm extends React.Component {
 
       this.setState({ loader: true });
     };
-    //   formAction === 'action' ?
-    //     this.props.action(postData).then(() => this.props.closeModal()) :
-    //     this.props.closeModal();
-    // };
   }
 
   render() {

@@ -21,7 +21,6 @@ class LinkForm extends React.Component {
 
   handleChange(input) {
     return (e) => {
-      // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
   }

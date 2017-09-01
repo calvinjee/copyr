@@ -74,7 +74,6 @@ class ImageForm extends React.Component {
   }
 
   handleClick(formAction) {
-    // debugger
     const postData = new FormData();
 
     if (this.state.file) {
@@ -87,7 +86,7 @@ class ImageForm extends React.Component {
     postData.append("post[content_type]", this.state.contentType);
     postData.append("post[author_id]", this.state.authorId);
     postData.append("post[id]", this.state.id);
-    // debugger
+
     return (e) => {
       e.preventDefault();
       formAction === 'action' ?
