@@ -326,6 +326,11 @@ input::placeholder {
 	-webkit-transform-origin: 50% 100%;
 }
 
+.loader {
+  position: relative;
+  bottom: 20px;
+}
+
 @keyframes pullUp {
 	0% {
 		transform: scaleY(0.1);

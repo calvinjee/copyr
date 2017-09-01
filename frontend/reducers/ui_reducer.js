@@ -2,9 +2,7 @@ import { CLEAR_ON_LOGOUT } from '../actions/session_actions';
 import {
   CLOSE_MODAL,
   POST_FORM_MODAL,
-  DROPDOWN_MODAL,
-  SHOW_LOADER,
-  REMOVE_LOADER } from '../actions/modal_actions';
+  DROPDOWN_MODAL } from '../actions/modal_actions';
 import { merge } from 'lodash';
 
 
@@ -27,10 +25,6 @@ const uiReducer = (state = defaultState, action ) => {
         dropdown: action.dropdown,
         editPostId: action.editPostId,
       };
-    case SHOW_LOADER:
-      return { loader: true };
-    case REMOVE_LOADER:
-      return { loader: false };
     case CLEAR_ON_LOGOUT: return defaultState;
     default: return state;
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import PostFormContainer from './post_form_container';
 import { withRouter } from 'react-router-dom';
 import ReactQuill from 'react-quill';
+import ReactLoading from 'react-loading';
 
 class TextForm extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class TextForm extends React.Component {
       title: this.props.title,
       text_content: this.props.textContent,
       content_type: this.props.contentType,
-      author_id: this.props.currentUser.id
+      author_id: this.props.currentUser.id,
+      loader: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -30,12 +32,26 @@ class TextForm extends React.Component {
 
   handleClick(formAction) {
     let postData = { post: this.state };
+    delete postData['loader'];
     return (e) => {
       e.preventDefault();
-      formAction === 'action' ?
-        this.props.action(postData).then(() => this.props.closeModal()) :
+
+      if (formAction === 'action') {
+        this.props.action(postData)
+          .then(() => {
+            this.setState({ loader: false });
+            this.props.closeModal();
+          });
+      } else {
         this.props.closeModal();
+      }
+
+      this.setState({ loader: true });
     };
+    //   formAction === 'action' ?
+    //     this.props.action(postData).then(() => this.props.closeModal()) :
+    //     this.props.closeModal();
+    // };
   }
 
   render() {
@@ -87,6 +103,7 @@ Muhammad: “No thanks.”`
         </div>);
     }
 
+    let loader = this.state.loader ? 'loader' : 'hidden';
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -104,6 +121,7 @@ Muhammad: “No thanks.”`
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
+          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

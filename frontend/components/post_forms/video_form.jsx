@@ -4,6 +4,7 @@ import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
 import YouTube from 'react-youtube';
 import { youtubeGetID } from '../../util/helpers';
+import ReactLoading from 'react-loading';
 
 class VideoForm extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class VideoForm extends React.Component {
       filePreviewUrl: this.props.videoUrl,
       linkUrl: this.props.linkUrl,
       youtubePreviewUrl: this.props.linkUrl,
+      loader: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -80,9 +82,17 @@ class VideoForm extends React.Component {
 
     return (e) => {
       e.preventDefault();
-      formAction === 'action' ?
-        this.props.action(postData).then(() => this.props.closeModal()) :
+      if (formAction === 'action') {
+        this.props.action(postData)
+          .then(() => {
+            this.setState({ loader: false });
+            this.props.closeModal();
+          });
+      } else {
         this.props.closeModal();
+      }
+
+      this.setState({ loader: true });
     };
   }
 
@@ -102,6 +112,8 @@ class VideoForm extends React.Component {
     } else if (this.state.filePreviewUrl) {
       preview = (<video className="video-prev" controls src={this.state.filePreviewUrl} />);
     }
+
+    let loader = this.state.loader ? 'loader' : 'hidden';
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -150,6 +162,7 @@ class VideoForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
+          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

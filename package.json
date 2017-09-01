@@ -34,7 +34,7 @@
     "lodash": "^4.17.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-loader": "^2.4.2",
+    "react-loading": "^0.1.4",
     "react-quill": "^1.1.0",
     "react-redux": "^5.0.6",
     "react-render-html": "^0.5.0",
