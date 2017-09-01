@@ -8,14 +8,12 @@ class Home extends React.Component {
     this.state = { form: '' };
     this.handleClick = this.handleClick.bind(this);
     this.handleGuestLogin = this.handleGuestLogin.bind(this);
-
   }
 
   handleClick(form) {
     return (e) => {
       e.preventDefault();
       this.setState({ form: form });
-      // this.props.openModal();
     };
   }
 
@@ -24,7 +22,6 @@ class Home extends React.Component {
   }
 
   render () {
-    // debugger
     let form, signupChange, signupColor, loginChange;
     if (this.state.form !== '') {
       form = <SessionFormContainer form={this.state.form} />;
@@ -47,8 +44,8 @@ class Home extends React.Component {
         <div><h3 className="nav-logo">c</h3></div>
         <div className="home-mid">
           <h2 className="home-logo">copyr.</h2>
-          <p className="home-desc">Put some text here.</p>
-          <p className="home-desc">And some more text down here.</p>
+          <p className="home-desc">If you're looking for original content</p>
+          <p className="home-desc">This is the place.</p>
           { form }
           <button
             className={`home-butt signup ${signupChange}`}

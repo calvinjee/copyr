@@ -1,5 +1,5 @@
 import React from 'react';
-import { signup, login, resetErrors } from '../actions/session_actions';
+import { signup, login, resetErrors } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SessionForm from './session_form';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
-import HomeContainer from './home_container';
+import HomeContainer from './session/home_container';
 import DashboardContainer from './dashboard_container';
-import SessionFormContainer from './session_form_container';
+import SessionFormContainer from './session/session_form_container';
 import { AuthRoute } from '../util/route_util';
 
 const App = (props) => {
@@ -16,7 +16,3 @@ const App = (props) => {
 };
 
 export default App;
-
-
-// <AuthRoute path="/login" component={SessionFormContainer} />
-// <AuthRoute path="/signup" component={SessionFormContainer} />
