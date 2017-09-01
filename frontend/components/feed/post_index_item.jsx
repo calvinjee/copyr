@@ -15,7 +15,11 @@ class PostIndexItem extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return _.isEqual(this.props, nextProps) ? false : true;
+    if (_.isEqual(this.props.post, nextProps.post) && !_.isEqual(this.props.editPostId, nextProps.editPostId)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   render () {
@@ -51,10 +55,6 @@ class PostIndexItem extends React.Component {
           break;
       }
     }
-
-
-    // <PostDetail post={this.props.post} hideDetail={hideDetail} />
-
 
     return (
       <li>
