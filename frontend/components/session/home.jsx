@@ -50,12 +50,14 @@ class Home extends React.Component {
       <div className="home-main">
         <div className="home-nav">
           <h3 className="nav-logo">c</h3>
-          <i className='fa fa-search home-search-icon' aria-hidden="true"></i>
+          <i className={`fa fa-search home-search-icon ${this.state.searchIcon}`} aria-hidden="true"></i>
           <input
             type="text"
-            id="home-search"
+            className="home-search"
             placeholder="Search Copyr"
             value={this.state.search}
+            onFocus={() => this.setState({ searchIcon: 'home-search-focus' })}
+            onBlur={() => this.setState({ searchIcon: '' })}
             onChange={this.handleChange('search')} />
         </div>
         <div className="home-mid">

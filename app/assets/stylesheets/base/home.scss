@@ -24,12 +24,12 @@ body {
   margin-bottom: 15px
 }
 
-#home-search {
+.home-search {
   z-index: 2;
   max-width: 475px;
   width: 475px;
   border: none;
-  background-color: white;
+  opacity: .3;
   color: $charcoal;
   height: 34px;
   text-indent: 5px;
@@ -37,6 +37,16 @@ body {
   padding: 1px 0;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+.home-search:focus {
+  background-color: white;
+  opacity: 1;
+  color: $charcoal;
+}
+
+.home-search::-webkit-input-placeholder {
+  color: $charcoal;
 }
 
 .home-main {

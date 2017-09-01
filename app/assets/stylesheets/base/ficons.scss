@@ -2358,6 +2358,7 @@
 .home-search-icon {
   background-color: white;
   color: $charcoal;
+  opacity: .3;
   height: 34px;
   font-size: 1.1em;
   display: flex;
@@ -2365,6 +2366,10 @@
   padding: 1px 10px 1px 15px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+}
+
+.home-search-focus {
+  opacity: 1;
 }
 
 .fa-search-audio {
