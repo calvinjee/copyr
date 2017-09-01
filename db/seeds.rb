@@ -33,10 +33,10 @@ User.create!(email: Faker::Internet.unique.safe_email, password: 'password', use
 User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/98ds00-72fcadf.png")
 User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/asdfkjsahp.png")
 
-images = File.open('./sample/pics.txt').readlines
-ytvids = File.open('./sample/ytvids.txt').readlines
-links = File.open('./sample/links.txt').readlines
-gifs = File.open('./sample/gifs.txt').readlines
+images = File.open('./db/sample/pics.txt').readlines
+ytvids = File.open('./db/sample/ytvids.txt').readlines
+links = File.open('./db/sample/links.txt').readlines
+gifs = File.open('./db/sample/gifs.txt').readlines
 
 images.each do |image|
   post = image.strip.split(",")
