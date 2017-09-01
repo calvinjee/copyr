@@ -1,6 +1,6 @@
 import React from 'react';
 import RecentActivity from './recent_activity';
-import AccountInfo from './nav/account_info';
+import AccountInfo from './account_info';
 import { Link } from 'react-router-dom';
 
 class MainNav extends React.Component {

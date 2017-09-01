@@ -7,6 +7,7 @@ import ImageForm from '../post_forms/image_form';
 import LinkForm from '../post_forms/link_form';
 import AudioForm from '../post_forms/audio_form';
 import VideoForm from '../post_forms/video_form';
+import QuoteForm from '../post_forms/quote_form';
 import _ from 'lodash';
 
 class PostIndexItem extends React.Component {
@@ -14,10 +15,12 @@ class PostIndexItem extends React.Component {
     super(props);
   }
 
-  shouldComponentUpdate(nextProps) {
-    return _.isEqual(this.props.post, nextProps.post) ? false : true;
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   debugger
+  //   return _.isEqual(this.props.post, nextProps.post) ? false : true;
+  // }
   //
+
   //   if (_.isEqual(this.props.post, nextProps.post) && !_.isEqual(this.props.editPostId, nextProps.editPostId)) {
   //     return false;
   //   } else {
@@ -42,7 +45,7 @@ class PostIndexItem extends React.Component {
           editForm = <ImageForm post={this.props.post} pullUp='pullUp' contentType='image' />;
           break;
         case 'quote':
-          editForm = <TextForm post={this.props.post} pullUp='pullUp' contentType='quote' />;
+          editForm = <QuoteForm post={this.props.post} pullUp='pullUp' contentType='quote' />;
           break;
         case 'link':
           editForm = <LinkForm post={this.props.post} pullUp='pullUp' contentType='link' />;

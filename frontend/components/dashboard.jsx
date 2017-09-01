@@ -1,5 +1,5 @@
 import React from 'react';
-import MainNavContainer from './main_nav_container';
+import MainNavContainer from './nav/main_nav_container';
 import PostButtonsContainer from './post_forms/post_buttons_container';
 import PostIndexContainer from './feed/post_index_container';
 import RecommendedUsersIndex from './sidebar/recommended_users_index';

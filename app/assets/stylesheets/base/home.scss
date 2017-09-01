@@ -38,13 +38,10 @@ body {
   right: 0;
 
   margin: auto;
-  // position: fixed;
-  // margin: 50% 50%;
 }
 
 .home-logo {
   font-size: 55px;
-  // font-weight: 400;
   margin-bottom: 15px;
   font-family: 'Alfa Slab One', cursive;
 }
@@ -69,19 +66,16 @@ button {
 
 .signup {
   background-color: $sky-blue;
-  // margin-top: 10px;
 }
 
 .login {
   background-color: white;
   color: $charcoal;
-  // margin-top: 10px;
 }
 
 .guest-login {
   background-color: $purple-rain;
   color: white;
-  // margin-top: 10px;
   margin-bottom: 10px;
 }
 

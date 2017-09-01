@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { dropdownModal, closeModal } from '../actions/modal_actions';
+import { dropdownModal, closeModal } from '../../actions/modal_actions';
 import MainNav from './main_nav';
 
 const mapStateToProps = (state) => {

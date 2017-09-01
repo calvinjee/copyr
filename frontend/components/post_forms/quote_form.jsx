@@ -12,7 +12,6 @@ class QuoteForm extends React.Component {
       text_content: this.props.textContent,
       content_type: this.props.contentType,
       author_id: this.props.currentUser.id,
-      width: 10,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -38,18 +37,13 @@ class QuoteForm extends React.Component {
   }
 
   render() {
-    // className="text-box quote-title"
-    // <input
-    //   style={{width:this.state.width + 'px'}}
-    //   placeholder='Quote'
-    //   value={this.state.title}
-    //   onChange={this.handleChange} />
+    let quote = this.state.title ? `"${this.state.title}` : '"Quote';
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
         <p className="username-head">{this.props.currentUser.username}</p>
           <div
             className="quote-title"
-            placeholder='"Quote'
+            placeholder={quote}
             contentEditable='true'
             value={this.state.title}
             onInput={this.handleChange} />

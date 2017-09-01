@@ -17,6 +17,8 @@ const Radar = (props) => {
         <RecommendedUsersIndexItem
           post={post}
           user={user}
+          followUser={props.followUser}
+          unfollowUser={props.unfollowUser}
           followedUserIds={props.followedUserIds} />
       </ul>
       <PostDetail post={post} user={user} miniKlass="detail-mini"/>

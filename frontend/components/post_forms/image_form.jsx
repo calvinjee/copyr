@@ -61,7 +61,7 @@ class ImageForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         file: file,
-        filepreviewUrl: fileReader.result,
+        filePreviewUrl: fileReader.result,
         imageUrl: fileReader.result,
         linkUrl: null,
         linkPreviewUrl: null,
@@ -97,6 +97,7 @@ class ImageForm extends React.Component {
   }
 
   render() {
+
     let preview;
     if (this.state.linkPreviewUrl) {
       preview = ( <img className="file-prev" src={this.state.linkPreviewUrl} /> );

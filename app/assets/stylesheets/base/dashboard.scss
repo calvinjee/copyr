@@ -15,20 +15,13 @@ body {
   display: flex;
   top: 60px;
   background-color: $dark-blue;
-
-
-  // margin: auto;
-  // border-top: .5px solid #4C4C4D;
   padding: 30px 30px 60px 30px;
-  // width: 546px;
 }
 
 .feed {
   display: flex;
   flex-direction: column;
   margin-left: auto;
-  // align-items: flex-end;
-  // margin: auto;
 }
 
 .post-bar {
@@ -63,13 +56,6 @@ body {
   overflow: visible;
   background: $dark-blue 50% 50% no-repeat;
   border-radius: 3px;
-  // position: absolute;
-  // top: 0;
-  // left: 0;
-  // width: 100%;
-  // width: 100%;
-  // height: 100%;
-  // border-radius: 3px;
 }
 
 .post-buttons {
@@ -77,7 +63,6 @@ body {
   border-radius: 3px;
   display: flex;
   justify-content: flex-end;
-  // width: 546px;
   height: 100px;
 }
 
@@ -85,7 +70,6 @@ body {
   box-sizing: border-box;
   margin: auto;
   min-width: 78px;
-  // height: 100px;
   display: flex;
   justify-content: center;
   border-right: 1px solid $lightest-gray
@@ -124,7 +108,6 @@ body {
   box-sizing: border-box;
   background-color: white;
   border-radius: 3px;
-  // padding: 20px;
   width: 546px;
 }
 
@@ -137,7 +120,6 @@ body {
 }
 
 .username-head {
-  // font-family: 'Biryani', sans-serif;
   font-family: 'Mukta Mahee', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -166,7 +148,6 @@ body {
   font-family: 'Oxygen', sans-serif;
   padding: 10px 20px 0 20px;
   line-height: 1.2;
-  // display: inline-block;
 }
 
 .quote {
@@ -183,7 +164,7 @@ body {
 
 .text-post {
   font-size: 15px;
-  padding: 12px 20px 0 20px;
+  padding: 12px 20px 12px 20px;
 }
 
 .text-post h1 {
@@ -222,16 +203,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 10px 12px 20px;
+  padding: 11px 10px 11px 20px;
   width: 546px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-
-// .post-footer p {
-//   padding-top: 10px;
-//   padding-left: 10px
-// }
 
 .post-options {
   display: flex;
@@ -284,8 +260,6 @@ body {
 }
 
 .edit-options > :first-child {
-  // margin-top: 2px;
-  // padding-top: 10px;
   padding-bottom: 10px;
 }
 
