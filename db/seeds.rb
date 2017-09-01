@@ -25,13 +25,13 @@ time = Time.new
 end
 
 User.create!(email: 'clavinjee@gmail.com', password: 'password', username: 'clavinjee')
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/abott@adorablasdfsadaae.io.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/fa.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/faasdfsd.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/calvasdfvwwa.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/owqiffc.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/98ds00-72fcadf.png")
-User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/asdfkjsahp.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/abott@adorablasdfsadaae.io.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/fa.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/faasdfsd.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/calvasdfvwwa.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/owqiffc.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/98ds00-72fcadf.png")
+User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::Name.unique.name, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/asdfkjsahp.png")
 
 images = File.open('./db/sample/pics.txt').readlines
 ytvids = File.open('./db/sample/ytvids.txt').readlines
