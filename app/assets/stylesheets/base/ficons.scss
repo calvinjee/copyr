@@ -2355,6 +2355,18 @@
   color: $charcoal;
 }
 
+.home-search-icon {
+  background-color: white;
+  color: $charcoal;
+  height: 34px;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  padding: 1px 10px 1px 15px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
 .fa-search-audio {
   font-size: .9em;
   color: $very-lightgray;

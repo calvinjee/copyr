@@ -8,14 +8,35 @@ body {
   color: white;
   font-size: 40px;
   font-family: 'Alfa Slab One', cursive;
-  position: absolute;
-  top: 5px;
-  left: 160px;
+  position: relative;
+  top: -3px;
+  left: 20px;
+  margin-right: 40px;
+}
+
+.home-nav {
+  display: flex;
+  padding-top: 7px;
 }
 
 .home-logo {
   font-size: 55px;
   margin-bottom: 15px
+}
+
+#home-search {
+  z-index: 2;
+  max-width: 475px;
+  width: 475px;
+  border: none;
+  background-color: white;
+  color: $charcoal;
+  height: 34px;
+  text-indent: 5px;
+  font-size: 14px;
+  padding: 1px 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 .home-main {

@@ -5,15 +5,22 @@ import { Link } from 'react-router-dom';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { form: '' };
+    this.state = { form: '', search: '', searchIcon: ''};
     this.handleClick = this.handleClick.bind(this);
     this.handleGuestLogin = this.handleGuestLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick(form) {
     return (e) => {
       e.preventDefault();
       this.setState({ form: form });
+    };
+  }
+
+  handleChange(input) {
+    return (e) => {
+      this.setState({ [input]: e.currentTarget.value });
     };
   }
 
@@ -41,7 +48,16 @@ class Home extends React.Component {
 
     return (
       <div className="home-main">
-        <div><h3 className="nav-logo">c</h3></div>
+        <div className="home-nav">
+          <h3 className="nav-logo">c</h3>
+          <i className='fa fa-search home-search-icon' aria-hidden="true"></i>
+          <input
+            type="text"
+            id="home-search"
+            placeholder="Search Copyr"
+            value={this.state.search}
+            onChange={this.handleChange('search')} />
+        </div>
         <div className="home-mid">
           <h2 className="home-logo">copyr.</h2>
           <p className="home-desc">If you're looking for original content</p>
