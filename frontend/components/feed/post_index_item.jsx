@@ -7,10 +7,15 @@ import ImageForm from '../post_forms/image_form';
 import LinkForm from '../post_forms/link_form';
 import AudioForm from '../post_forms/audio_form';
 import VideoForm from '../post_forms/video_form';
+import _ from 'lodash';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return _.isEqual(this.props, nextProps) ? false : true;
   }
 
   render () {

@@ -21,8 +21,8 @@ const postsReducer = (state = {}, action) => {
       return newState;
     case LIKE_POST:
       post = action.post;
-      newState = merge({}, state);
-      newState[post.id] = post;
+      newState = merge({}, state, {[action.post.id]: action.post});
+      // newState[post.id] = post;
       return newState;
     case UNLIKE_POST:
       post = action.post;

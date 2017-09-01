@@ -12,6 +12,7 @@
 class Follow < ActiveRecord::Base
   validates :follower, :followee, presence: true
   validates :followee, uniqueness: { scope: :follower }
+  validate :check_followee_follower
 
   belongs_to :follower,
     class_name: :User,
@@ -28,4 +29,9 @@ class Follow < ActiveRecord::Base
       true :
       false
   end
+
+  def check_followee_follower
+    errors.add(:follower, "can't follow self") if follower_id == followee_id
+  end
+
 end

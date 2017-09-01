@@ -20,7 +20,7 @@ class Home extends React.Component {
   }
 
   handleGuestLogin(e) {
-    this.props.login({email: 'calvin', password: 'password'});
+    this.props.login({email: 'clavinjee@gmail.com', password: 'password'});
   }
 
   render () {

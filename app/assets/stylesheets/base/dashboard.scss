@@ -183,7 +183,7 @@ body {
 
 .text-post {
   font-size: 15px;
-  padding: 15px 20px;
+  padding: 12px 20px 0 20px;
 }
 
 .text-post h1 {
@@ -195,9 +195,6 @@ body {
   font-size: 18px;
   font-weight: 400px;
 }
-
-
-
 
 .post a {
   cursor: pointer;
@@ -225,7 +222,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10px 20px 20px;
+  padding: 12px 10px 12px 20px;
   width: 546px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;

@@ -54,6 +54,8 @@ class PostDetail extends React.Component {
       </div>) :
       null;
 
+    let videoSize = this.props.miniKlass ? '320' : '546';
+
     switch(type) {
       case 'text':
         return (
@@ -140,7 +142,7 @@ class PostDetail extends React.Component {
         let player;
         if (this.props.post.link_url) {
           const opts = {
-            width: '546',
+            width: `${videoSize}`,
             playerVars: {
               autoplay: 0
             }

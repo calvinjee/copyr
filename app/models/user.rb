@@ -52,7 +52,8 @@ class User < ActiveRecord::Base
     through: :followings,
     source: :followee
 
-  has_many :likes
+  has_many :likes,
+    dependent: :destroy
 
   has_many :liked_posts,
     through: :likes,

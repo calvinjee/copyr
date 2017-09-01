@@ -19,7 +19,7 @@
   color: $bg-gray;
   font-family: 'Mukta Mahee', sans-serif;
   font-size: 13px;
-  border-bottom: 2px solid $bg-gray;
+  box-shadow: 0 1.8px 0 $bg-gray;
   padding-left: 15px;
   padding-bottom: 10px;
   width: 100%;
@@ -36,15 +36,15 @@
   height: auto;
   display: flex;
   align-items: center;
-  box-shadow: 0 -0.5px 0 $bg-gray;
+  box-shadow: 0 0.4px 0 $bg-gray;
   padding: 9px 10px;
 }
 
 .rec-avatar {
   background-size: contain;
   // width: 38px;
-  height: 39px;
-  width: 39px
+  height: 40px;
+  width: 40px
 }
 
 .username-bio {
