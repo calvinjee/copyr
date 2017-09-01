@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
+import ReactLoading from 'react-loading';
 
 class ImageForm extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class ImageForm extends React.Component {
       filePreviewUrl: this.props.imageUrl,
       linkUrl: this.props.linkUrl,
       linkPreviewUrl: this.props.linkUrl,
+      loader: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -89,9 +91,17 @@ class ImageForm extends React.Component {
 
     return (e) => {
       e.preventDefault();
-      formAction === 'action' ?
-        this.props.action(postData).then(() => this.props.closeModal()) :
+      if (formAction === 'action') {
+        this.props.action(postData)
+          .then(() => {
+            this.setState({ loader: false });
+            this.props.closeModal();
+          });
+      } else {
         this.props.closeModal();
+      }
+
+      this.setState({ loader: true });
     };
   }
 
@@ -103,6 +113,7 @@ class ImageForm extends React.Component {
     } else if (this.state.filePreviewUrl) {
       preview = ( <img className="file-prev" src={this.state.filePreviewUrl} /> );
     }
+    let loader = this.state.loader ? 'loader' : 'hidden';
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -151,6 +162,7 @@ class ImageForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
+          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

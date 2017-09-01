@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PostFormContainer from './post_form_container';
 import ReactQuill from 'react-quill';
+import ReactLoading from 'react-loading';
 
 class AudioForm extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class AudioForm extends React.Component {
       previewUrl: this.props.audioUrl,
       textContent: this.props.textContent,
       contentType: this.props.contentType,
-      authorId: this.props.currentUser.id
+      authorId: this.props.currentUser.id,
+      loader: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleEditor = this.handleEditor.bind(this);
@@ -22,13 +24,24 @@ class AudioForm extends React.Component {
 
   handleChange(input) {
     return (e) => {
-      // e.preventDefault();
       this.setState({ [input]: e.currentTarget.value });
     };
   }
 
   handleEditor(value) {
     this.setState({ textContent: value });
+  }
+
+  updateFile (e) {
+    const file = e.target.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ file: file, previewUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
   }
 
   handleClick(formAction) {
@@ -44,22 +57,18 @@ class AudioForm extends React.Component {
 
     return (e) => {
       e.preventDefault();
-      formAction === 'action' ?
-        this.props.action(postData).then(() => this.props.closeModal()) :
+      if (formAction === 'action') {
+        this.props.action(postData)
+          .then(() => {
+            this.setState({ loader: false });
+            this.props.closeModal();
+          });
+      } else {
         this.props.closeModal();
-    };
-  }
+      }
 
-  updateFile (e) {
-    const file = e.target.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ file: file, previewUrl: fileReader.result });
+      this.setState({ loader: true });
     };
-
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
   }
 
   render() {
@@ -67,6 +76,7 @@ class AudioForm extends React.Component {
     if (this.state.previewUrl) {
       prev = ( <audio className="audio-prev" controls src={this.state.previewUrl} /> );
     }
+    let loader = this.state.loader ? 'loader' : 'hidden';
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -109,6 +119,7 @@ class AudioForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
+          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>
