@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'metainspector'
-require 'byebug'
 
 User.destroy_all
 Post.destroy_all
@@ -34,10 +33,10 @@ User.create!(email: Faker::Internet.unique.safe_email, password: 'password', use
 User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/98ds00-72fcadf.png")
 User.create!(email: Faker::Internet.unique.safe_email, password: 'password', username: Faker::HeyArnold.character, bio: Faker::Hipster.words(2).join(' '), image: "https://api.adorable.io/avatars/65/asdfkjsahp.png")
 
-images = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/pics.txt').readlines
-ytvids = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/ytvids.txt').readlines
-links = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/links.txt').readlines
-gifs = File.open('/Users/Calvin/Desktop/appacademy/fullstack/seeds/gifs.txt').readlines
+images = File.open('./sample/pics.txt').readlines
+ytvids = File.open('./sample/ytvids.txt').readlines
+links = File.open('./sample/links.txt').readlines
+gifs = File.open('./sample/gifs.txt').readlines
 
 images.each do |image|
   post = image.strip.split(",")
