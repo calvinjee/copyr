@@ -15,26 +15,26 @@ class PostIndexItem extends React.Component {
     super(props);
   }
 
-  // shouldComponentUpdate(nextProps) {
-  // //
-  // //   return _.isEqual(this.props.post, nextProps.post) ? false : true;
-  // // }
+  shouldComponentUpdate(nextProps) {
   //
-  //   if (this.props.editPostId && _.isEqual(this.props.editPostId, nextProps.editPostId)) {
-  //     return true;
-  //   } else if (_.isEqual(this.props.post, nextProps.post)) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  //
-  //
-  //   // if (_.isEqual(this.props.post, nextProps.post) && !_.isEqual(this.props.editPostId, nextProps.editPostId)) {
-  //   //   return false;
-  //   // } else {
-  //   //   return true;
-  //   // }
+  //   return _.isEqual(this.props.post, nextProps.post) ? false : true;
   // }
+
+    if (this.props.editPostId && _.isEqual(this.props.editPostId, nextProps.editPostId)) {
+      return true;
+    } else if (_.isEqual(this.props.post, nextProps.post)) {
+      return false;
+    } else {
+      return true;
+    }
+
+
+    // if (_.isEqual(this.props.post, nextProps.post) && !_.isEqual(this.props.editPostId, nextProps.editPostId)) {
+    //   return false;
+    // } else {
+    //   return true;
+    // }
+  }
 
   render () {
     const avatar = { backgroundImage: `url(${this.props.user.avatar_url})` };

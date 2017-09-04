@@ -11,6 +11,7 @@ There are seven types of posts available to the user, all of which are held in a
 Forms for each type are necessary to take in user input. A form is rendered by its own presentational component but share one `PostFormContainer` as each need access to the same props from state as well as the same dispatch functions. Once the form is submitted, a post is automatically rendered on the user's dashboard through the `PostDetail` component. This component is responsible for handling what parts of the `posts` table to render based on the type.
 
 ### Likes
-
+As with many social media websites, users have the ability to 'like' other posts directly on the feed. Liking a post will increase that individual post's 'note' count, which represents the total number of 'likes' and 'reblogs' (to come). If the post belongs to the logged in user, the user will have the ability to edit or delete the post rather than to like it.
 
 ### Follows
+Following users is also an integral part of any social platform. Users can be followed 

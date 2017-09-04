@@ -45,19 +45,20 @@ class AudioForm extends React.Component {
   }
 
   handleClick(formAction) {
-    const postData = new FormData();
-
-    if (this.state.file) {
-      postData.append(`post[${this.state.contentType}]`, this.state.file);
-    }
-    postData.append("post[text_content]", this.state.textContent);
-    postData.append("post[content_type]", this.state.contentType);
-    postData.append("post[author_id]", this.state.authorId);
-    postData.append("post[id]", this.state.id);
-
     return (e) => {
       e.preventDefault();
+      const postData = new FormData();
+
+      if (this.state.file) {
+        postData.append(`post[${this.state.contentType}]`, this.state.file);
+      }
+      postData.append("post[text_content]", this.state.textContent);
+      postData.append("post[content_type]", this.state.contentType);
+      postData.append("post[author_id]", this.state.authorId);
+      postData.append("post[id]", this.state.id);
+
       if (formAction === 'action') {
+        this.setState({ loader: true });
         this.props.action(postData)
           .then(() => {
             this.setState({ loader: false });
@@ -67,8 +68,6 @@ class AudioForm extends React.Component {
       } else {
         this.props.closeModal();
       }
-
-      this.setState({ loader: true });
     };
   }
 

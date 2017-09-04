@@ -31,12 +31,13 @@ class TextForm extends React.Component {
   }
 
   handleClick(formAction) {
-    let postData = { post: this.state };
-    delete postData['loader'];
     return (e) => {
       e.preventDefault();
+      let postData = { post: this.state };
+      delete postData['loader'];
 
       if (formAction === 'action') {
+        this.setState({ loader: true });
         this.props.action(postData)
           .then(() => {
             this.setState({ loader: false });
@@ -47,7 +48,7 @@ class TextForm extends React.Component {
         this.props.closeModal();
       }
 
-      this.setState({ loader: true });
+
     };
   }
 
