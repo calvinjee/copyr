@@ -1,5 +1,6 @@
 require 'metainspector'
 require 'open-uri'
+require 'byebug'
 
 class Api::PostsController < ApplicationController
 
@@ -48,6 +49,7 @@ class Api::PostsController < ApplicationController
       render 'api/posts/show'
     else
       render json: @post.errors.full_messages, status: 422
+      debugger
     end
   end
 

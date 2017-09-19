@@ -1,17 +1,68 @@
-# [Copyr][heroku]
+# copyr
+
+[Trello link][trello]
+
 [heroku]: http://www.herokuapp.com
+[trello]: https://trello.com/b/3tWNvmkN/aafullstacktumblrclone
 
-Inspired by the microblogging and social networking website Tumblr, Copyr is a full stack web application built using Ruby on Rails, a PostgreSQL database, and the React and Redux open-source libraries. Copyr allows users to share all forms of content through seven different types of posts. Posts are primarily viewed on the user's dashboard where he/she can 'like' posts as well as 'follow' other users.
+## Minimum Viable Product
 
-## Features & Implementation
+copyr is a web application inspired by tumblr built using Ruby on Rails
+and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
+following criteria with smooth, bug-free navigation, adequate seed data and
+sufficient CSS styling:
 
-### Posts
-There are seven types of posts available to the user, all of which are held in a single table and identified by that post's content type: `text`, `image`, `quote`, `link`, `chat`, `audio`, and `video`. Some attributes in the table are shared while others remain unique to the type of post. For example `text_body`, is shared across all posts which represents any (rich) text commentary the user would like to add to his/her post. Additionally with the help of the `paperclip` gem, `image`, `audio`, and `video` each hold their own columns for file uploads.
+- [ ] Hosting on Heroku
+- [ ] New account creation, login, and guest/demo login
+- [ ] Posts by type: text, photo, quote, link, chat, audio, video
+- [ ] Likes
+- [ ] Follows
+- [ ] Infinite Scroll
 
-Forms for each type are necessary to take in user input. A form is rendered by its own presentational component but share one `PostFormContainer` as each need access to the same props from state as well as the same dispatch functions. Once the form is submitted, a post is automatically rendered on the user's dashboard through the `PostDetail` component. This component is responsible for handling what parts of the `posts` table to render based on the type.
+## Design Docs
+* [View Wireframes][wireframes]
+* [React Components][components]
+* [API endpoints][api-endpoints]
+* [DB schema][schema]
+* [Sample State][sample-state]
 
-### Likes
-As with many social media websites, users have the ability to 'like' other posts directly on the feed. Liking a post will increase that individual post's 'note' count, which represents the total number of 'likes' and 'reblogs' (to come). If the post belongs to the logged in user, the user will have the ability to edit or delete the post rather than to like it.
+[wireframes]: docs/wireframes
+[components]: docs/component-hierarchy.md
+[sample-state]: docs/sample-state.md
+[api-endpoints]: docs/api-endpoints.md
+[schema]: docs/schema.md
 
-### Follows
-Following users is also an integral part of any social platform. Users can be followed 
+## Implementation Timeline
+
+### Phase 1: Backend setup and Front End User Authentication (2 days)
+
+**Objective:** Functioning rails project with front-end Authentication
+
+### Phase 2: Posts Model, API, and components (4 days)
+
+**Objective:** All types of posts can be created, read, edited and destroyed through
+the API.
+
+### Phase 3: Follows (1 day)
+
+**Objective:** Users can follow and unfollow other users through the API.
+
+### Phase 4: Likes (1 day)
+
+**Objective:** Users can like and unlike posts through the API.
+
+### Phase 5: - Infinite scroll for PostsIndex/Dashboard and polished styling (1)
+
+**Objective:** Add infinite scroll to PostsIndex/Dashboard and polish styling.
+
+### Phase 6: - Refactoring (1)
+
+**Objective:** Refactor and optimize code i.e rid of n + 1 queries.
+
+### Bonus Features (TBD)
+- [ ] Reblogging
+- [ ] Components for exploring all posts and specific types of posts
+- [ ] Component for a user show page
+- [ ] Comments
+- [ ] Allow ability for complex posts (multiple types) and rich text editing
+- [ ] Tags

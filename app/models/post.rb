@@ -32,6 +32,7 @@ class Post < ActiveRecord::Base
     in: %w(text image quote link chat audio video),
     message: "%{value} is not a valid content type"
   }
+  validates :text_content, present: true, if: :is_type?('text')
 
   # custom validation for requiring a file if they click on img/audio/video
   # custom validation for text... require at least 1 character when content type is text
@@ -63,5 +64,9 @@ class Post < ActiveRecord::Base
   has_many :liked_users,
     through: :likes,
     source: :user
+
+  def is_type?(content)
+    self.content_type == content
+  end
 
 end

@@ -65,7 +65,6 @@ class VideoForm extends React.Component {
     }
   }
 
-
   handleClick(formAction) {
     return (e) => {
       e.preventDefault();
@@ -88,11 +87,11 @@ class VideoForm extends React.Component {
           .then(() => {
             this.setState({ loader: false });
             this.props.closeModal();
-            this.props.history.push('/dashboard');
           });
       } else {
         this.props.closeModal();
       }
+      this.props.history.push('/dashboard');
     };
   }
 
