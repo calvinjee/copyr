@@ -32,7 +32,11 @@ class Post < ActiveRecord::Base
     in: %w(text image quote link chat audio video),
     message: "%{value} is not a valid content type"
   }
-  validates :text_content, present: true, if: :is_type?('text')
+  validate :has_body, if: :is_type_text?
+  validate :has_quote, if: :is_type_quote?
+  validate :has_link, if: :is_type_link?
+  validate :has_file, if: :is_type_audio?
+  validate :has_link_or_file, if: :is_type_image_or_video?
 
   # custom validation for requiring a file if they click on img/audio/video
   # custom validation for text... require at least 1 character when content type is text
@@ -65,8 +69,60 @@ class Post < ActiveRecord::Base
     through: :likes,
     source: :user
 
-  def is_type?(content)
-    self.content_type == content
+  private
+
+  def has_body
+    errors.add(:base, "Body can't be blank") if self.text_content.empty?
+  end
+
+  def has_quote
+    errors.add(:base, "Quote can't be blank") if self.title.empty?
+  end
+
+  def has_link
+    errors.add(:base, "Cannot post without a link") if self.link_url.empty?
+  end
+
+  def has_file
+    if self.audio.url.include?('missing')
+      errors.add(:base, "Cannot post without file")
+    end
+  end
+
+  def has_link_or_file
+    if self.link_url.nil? &&
+      self.image.url.include?('missing') &&
+      self.video.url.include?('missing')
+        errors.add(:base, "Cannot post without link/file")
+    end
+  end
+
+  def is_type_text?
+    self.content_type == 'text'
+  end
+
+  def is_type_quote?
+    self.content_type == 'quote'
+  end
+
+  def is_type_image_or_video?
+    self.content_type == 'image' || self.content_type == 'video'
+  end
+
+  def is_type_image?
+    self.content_type == 'image'
+  end
+
+  def is_type_video?
+    self.content_type == 'video'
+  end
+
+  def is_type_audio?
+    self.content_type == 'audio'
+  end
+
+  def is_type_link?
+    self.content_type == 'link'
   end
 
 end

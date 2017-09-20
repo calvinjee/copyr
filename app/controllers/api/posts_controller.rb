@@ -1,6 +1,5 @@
 require 'metainspector'
 require 'open-uri'
-require 'byebug'
 
 class Api::PostsController < ApplicationController
 
@@ -31,17 +30,19 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    if params[:post][:content_type] == 'link'
+      if !params[:post][:link_url].empty?
 
-    if params[:post][:link_url] && params[:post][:content_type] == 'link'
-      begin
-        page = MetaInspector.new(params[:post][:link_url])
-      rescue MetaInspector::TimeoutError, MetaInspector::RequestError, MetaInspector::ParserError => e
-        render json: @post.errors[:base] < 'Error fetching link.'
-      else
-        @post.image_file_name = page.images.best
-        @post.link_host = page.host
-        @post.title = page.best_title
-        @post.caption = page.best_description
+        begin
+          page = MetaInspector.new(params[:post][:link_url])
+        rescue MetaInspector::TimeoutError, MetaInspector::RequestError, MetaInspector::ParserError => e
+          render json: @post.errors[:base] < 'Error fetching link.'
+        else
+          @post.image_file_name = page.images.best
+          @post.link_host = page.host
+          @post.title = page.best_title
+          @post.caption = page.best_description
+        end
       end
     end
 
@@ -49,7 +50,6 @@ class Api::PostsController < ApplicationController
       render 'api/posts/show'
     else
       render json: @post.errors.full_messages, status: 422
-      debugger
     end
   end
 
@@ -114,7 +114,6 @@ class Api::PostsController < ApplicationController
     end
   end
 
-
   private
 
   def post_params
@@ -130,6 +129,4 @@ class Api::PostsController < ApplicationController
       :link_url
     )
   end
-
-
 end

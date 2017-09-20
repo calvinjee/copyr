@@ -34,6 +34,7 @@ class QuoteForm extends React.Component {
       let postData = { post: this.state };
       delete postData['loader'];
 
+      this.props.resetErrors();
       if (formAction === 'action') {
         this.setState({ loader: true });
         this.props.action(postData)
@@ -51,6 +52,16 @@ class QuoteForm extends React.Component {
   render() {
     let quote = this.state.title ? `"${this.state.title}` : '"Quote';
     let loader = this.state.loader ? 'loader' : 'hidden';
+    let indicator = <p className="form-error">{this.props.errors[0]}</p>;
+    if (this.props.errors.length === 0) {
+      indicator = (<ReactLoading
+        className={loader}
+        type='cylon'
+        height='25'
+        color='#36465d'
+        width='75'
+        delay={10} />);
+    }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -78,7 +89,7 @@ class QuoteForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
-          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
+          { indicator }
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

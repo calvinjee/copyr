@@ -18,8 +18,6 @@ export const clearOnLogout = () => {
   };
 };
 
-
-
 export const receiveErrors = (errors) => {
   return {
     type: RECEIVE_ERRORS,

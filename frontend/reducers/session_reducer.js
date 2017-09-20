@@ -13,13 +13,13 @@ const sessionReducer = (state = defaultState, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, { currentUser: action.currentUser, errors: [] } );
+      return Object.assign({}, state, { currentUser: action.currentUser, errors: [] });
     case CLEAR_ON_LOGOUT:
         return defaultState;
     case RECEIVE_ERRORS:
-      return merge({}, state, { errors: action.errors} );
+      return merge({}, state, { errors: action.errors});
     case RESET_ERRORS:
-      return merge({}, state, { errors: [] });
+      return Object.assign({}, state, { errors: [] });
     default: return state;
   }
 };

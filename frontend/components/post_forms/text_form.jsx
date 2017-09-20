@@ -36,6 +36,7 @@ class TextForm extends React.Component {
       let postData = { post: this.state };
       delete postData['loader'];
 
+      this.props.resetErrors();
       if (formAction === 'action') {
         this.setState({ loader: true });
         this.props.action(postData)
@@ -46,7 +47,9 @@ class TextForm extends React.Component {
       } else {
         this.props.closeModal();
       }
+
       this.props.history.push('/dashboard');
+
     };
   }
 
@@ -66,22 +69,22 @@ class TextForm extends React.Component {
           </div>
         );
         break;
-      case 'quote':
-        titleClass = 'quote-title';
-        titlePlaceholder = '"Quote"';
-        bodyInput = (
-          <div className="text-body quote-body">
-            <p className="quote-caption">{"\u2014"}</p>
-            <div className="quote-editor">
-              <ReactQuill
-                theme="bubble"
-                placeholder="Source"
-                defaultValue={this.state.text_content}
-                onChange={this.handleEditor} />
-            </div>
-          </div>
-        );
-        break;
+      // case 'quote':
+      //   titleClass = 'quote-title';
+      //   titlePlaceholder = '"Quote"';
+      //   bodyInput = (
+      //     <div className="text-body quote-body">
+      //       <p className="quote-caption">{"\u2014"}</p>
+      //       <div className="quote-editor">
+      //         <ReactQuill
+      //           theme="bubble"
+      //           placeholder="Source"
+      //           defaultValue={this.state.text_content}
+      //           onChange={this.handleEditor} />
+      //       </div>
+      //     </div>
+      //   );
+      //   break;
       case 'chat':
         titleClass = 'hidden';
         titlePlaceholder = '';
@@ -99,7 +102,17 @@ Muhammad: “No thanks.”`
         </div>);
     }
 
+    let indicator = <p className="form-error">{this.props.errors[0]}</p>;
     let loader = this.state.loader ? 'loader' : 'hidden';
+    if (this.props.errors.length === 0) {
+      indicator = (<ReactLoading
+        className={loader}
+        type='cylon'
+        height='25'
+        color='#36465d'
+        width='75'
+        delay={10} />);
+    }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -117,7 +130,8 @@ Muhammad: “No thanks.”`
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
-          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
+
+          { indicator }
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

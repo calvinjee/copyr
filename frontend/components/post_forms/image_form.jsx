@@ -82,15 +82,16 @@ class ImageForm extends React.Component {
 
       if (this.state.file) {
         postData.append(`post[${this.state.contentType}]`, this.state.file);
-        postData.append(`post[link_url]`, '');
-      } else {
-        postData.append(`post[link_url]`, this.state.linkUrl);
+        postData.append("post[link_url]", '');
+      } else if (this.state.linkUrl) {
+        postData.append("post[link_url]", this.state.linkUrl);
       }
       postData.append("post[text_content]", this.state.textContent);
       postData.append("post[content_type]", this.state.contentType);
       postData.append("post[author_id]", this.state.authorId);
       postData.append("post[id]", this.state.id);
 
+      this.props.resetErrors();
       if (formAction === 'action') {
         this.setState({ loader: true });
         this.props.action(postData)
@@ -114,6 +115,16 @@ class ImageForm extends React.Component {
       preview = ( <img className="file-prev" src={this.state.filePreviewUrl} /> );
     }
     let loader = this.state.loader ? 'loader' : 'hidden';
+    let indicator = <p className="form-error">{this.props.errors[0]}</p>;
+    if (this.props.errors.length === 0) {
+      indicator = (<ReactLoading
+        className={loader}
+        type='cylon'
+        height='25'
+        color='#36465d'
+        width='75'
+        delay={10} />);
+    }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -162,7 +173,7 @@ class ImageForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
-          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
+          { indicator }
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

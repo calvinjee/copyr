@@ -57,6 +57,7 @@ class AudioForm extends React.Component {
       postData.append("post[author_id]", this.state.authorId);
       postData.append("post[id]", this.state.id);
 
+      this.props.resetErrors();
       if (formAction === 'action') {
         this.setState({ loader: true });
         this.props.action(postData)
@@ -77,6 +78,16 @@ class AudioForm extends React.Component {
       prev = ( <audio className="audio-prev" controls src={this.state.previewUrl} /> );
     }
     let loader = this.state.loader ? 'loader' : 'hidden';
+    let indicator = <p className="form-error">{this.props.errors[0]}</p>;
+    if (this.props.errors.length === 0) {
+      indicator = (<ReactLoading
+        className={loader}
+        type='cylon'
+        height='25'
+        color='#36465d'
+        width='75'
+        delay={10} />);
+    }
 
     return(
       <div className={`form text-form pullDown ${this.props.pullUp}`}>
@@ -119,7 +130,7 @@ class AudioForm extends React.Component {
             className="form-butt form-close-butt"
             onClick={this.handleClick('close')}>
             <span>Close</span></button>
-          <ReactLoading className={loader} type='cylon' height='25' color='#36465d' width='75' delay={10} />
+          { indicator }
           <button
             className="form-butt form-post-butt"
             onClick={this.handleClick('action')}>

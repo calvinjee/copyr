@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addPost, revisePost } from '../../actions/post_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { resetErrors } from '../../actions/session_actions';
 
 const mapStateToProps = (state, ownProps) => {
   if (ownProps.post) {
     return {
       currentUser: state.session.currentUser,
+      errors: state.session.errors,
       modalOpen: state.ui.modalOpen,
       id: parseInt(ownProps.match.params.id),
       title: ownProps.post.title,
@@ -21,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
   } else {
     return {
       currentUser: state.session.currentUser,
+      errors: state.session.errors,
       modalOpen: state.ui.modalOpen,
       id: null,
       title: '',
@@ -40,6 +43,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     action: (post) => dispatch(action(post)),
     closeModal: () => dispatch(closeModal()),
+    resetErrors: () => dispatch(resetErrors()),
   };
 };
 

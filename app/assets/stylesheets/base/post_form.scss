@@ -329,6 +329,12 @@ input::placeholder {
   bottom: 20px;
 }
 
+.form-error {
+  position: relative;
+  top: 7.5px;
+  color: red;
+}
+
 @keyframes pullUp {
 	0% {
 		transform: scaleY(0.1);
