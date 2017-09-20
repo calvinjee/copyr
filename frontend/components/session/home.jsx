@@ -13,6 +13,7 @@ class Home extends React.Component {
 
   handleClick(form) {
     return (e) => {
+      this.props.resetErrors();
       e.preventDefault();
       this.setState({ form: form });
     };
