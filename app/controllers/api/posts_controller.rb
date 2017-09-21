@@ -9,11 +9,11 @@ class Api::PostsController < ApplicationController
     @followed_users_posts = Post.includes(:likes).where(author_id: current_user.followed_users).order(created_at: :desc).limit(20)
     @current_user_posts = Post.includes(:likes).where(author_id: current_user.id).order(created_at: :desc).limit(10)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
-    @follower_ids = current_user.followers.pluck(:id)
-    @followed_user_ids = current_user.followed_users.pluck(:id)
+    # @follower_ids = current_user.followers.pluck(:id)
+    # @followed_user_ids = current_user.followed_users.pluck(:id)
 
-    @recommended_users = User.where.not(id: current_user.id).order('RANDOM()').limit(4)
-    @radar_post = Post.where.not(author_id: current_user.id).order('RANDOM()').limit(1).first
+    # @recommended_users = User.where.not(id: current_user.id).order('RANDOM()').limit(4)
+    # @radar_post = Post.where.not(author_id: current_user.id).order('RANDOM()').limit(1).first
 
     # @recommended_users = []
     # 4.times do

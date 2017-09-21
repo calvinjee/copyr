@@ -1,5 +1,8 @@
 posts = @followed_users_posts.concat(@current_user_posts)
 # .push(@radar_post)
+
+
+
 json.posts do
   posts.each do |post|
     json.set!(post.id) do
@@ -19,7 +22,6 @@ json.posts do
       liked_by = []
       post.likes.each { |like| liked_by.push(like.user_id) }
       json.liked_by liked_by
-      # post.likes.pluck(:user_id)
     end
   end
 end
@@ -56,5 +58,5 @@ json.curUserPostIds @current_user_posts.pluck(:id)
 json.likedPostIds @current_user_liked_posts
 # json.recommendedUserIds @recommended_users.map(&:id)
 # json.radarPostId @radar_post.id
-json.followerIds @follower_ids
-json.followedUserIds @followed_user_ids
+# json.followerIds @follower_ids
+# json.followedUserIds @followed_user_ids
