@@ -61,11 +61,11 @@ class PostDetailOptions extends React.Component {
       );
     }
 
-    let notes_count = this.props.post.liked_by.length;
-    let notes = notes_count === 0 ?
+    let notesCount = this.props.post.liked_by.length;
+    let notes = notesCount === 0 ?
       '' :
-      `${notes_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} notes`;
-    notes = notes_count === 1 ? '1 note' : notes;
+      `${notesCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} notes`;
+    notes = notesCount === 1 ? '1 note' : notes;
 
     return (
       <div className={`post-footer ${this.props.miniKlass}`}>

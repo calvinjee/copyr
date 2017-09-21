@@ -61,13 +61,3 @@ export const logout = () => {
       );
   };
 };
-
-// export const updateUser = (currentUser) => {
-//   return (dispatch) => {
-//     return APIUtil.updateUser(currentUser)
-//       .then(
-//         (updatedUser) => { return dispatch(receiveCurrentUser(updatedUser)); },
-//         (errors) => { return dispatch(receiveErrors(errors)); }
-//       );
-//   };
-// };

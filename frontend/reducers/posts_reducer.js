@@ -14,7 +14,6 @@ const postsReducer = (state = {}, action) => {
     case RECEIVE_ALL_POSTS:
       return merge({}, state, action.posts);
     case RECEIVE_SINGLE_POST:
-      // return merge({}, state, { action.post.id: action.post })
       post = action.post;
       newState = merge({}, state);
       newState[post.id] = post;
@@ -22,7 +21,6 @@ const postsReducer = (state = {}, action) => {
     case LIKE_POST:
       post = action.post;
       newState = merge({}, state, {[action.post.id]: action.post});
-      // newState[post.id] = post;
       return newState;
     case UNLIKE_POST:
       post = action.post;
@@ -34,7 +32,6 @@ const postsReducer = (state = {}, action) => {
       delete newState[action.post.id];
       return newState;
       }
-      // TODO: make sure to remove post ids from liked post ids elsewhere in state
     case CLEAR_ON_LOGOUT:
       return {};
     default: return state;

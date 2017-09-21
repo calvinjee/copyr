@@ -22,13 +22,6 @@ export const receiveAllPosts = (payLoad) => {
   };
 };
 
-// export const receiveFivePosts = (posts) => {
-//   return {
-//     type: RECEIVE_FIVE_POSTS,
-//     posts: posts,
-//   };
-// };
-
 export const receiveSinglePost = (payLoad) => {
   return {
     type: RECEIVE_SINGLE_POST,

@@ -1,4 +1,3 @@
-
 const RecentActivity = (props) => {
   return null;
 };

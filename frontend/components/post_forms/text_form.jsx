@@ -68,22 +68,6 @@ class TextForm extends React.Component {
           </div>
         );
         break;
-      // case 'quote':
-      //   titleClass = 'quote-title';
-      //   titlePlaceholder = '"Quote"';
-      //   bodyInput = (
-      //     <div className="text-body quote-body">
-      //       <p className="quote-caption">{"\u2014"}</p>
-      //       <div className="quote-editor">
-      //         <ReactQuill
-      //           theme="bubble"
-      //           placeholder="Source"
-      //           defaultValue={this.state.text_content}
-      //           onChange={this.handleEditor} />
-      //       </div>
-      //     </div>
-      //   );
-      //   break;
       case 'chat':
         titleClass = 'hidden';
         titlePlaceholder = '';
