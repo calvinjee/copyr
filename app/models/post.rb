@@ -40,7 +40,6 @@ class Post < ActiveRecord::Base
 
   # custom validation for requiring a file if they click on img/audio/video
   # custom validation for text... require at least 1 character when content type is text
-  # rails conditional validation
 
   has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
