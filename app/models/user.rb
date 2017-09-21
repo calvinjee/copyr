@@ -63,6 +63,21 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  def self.follower_ids(user)
+    user.followers.pluck(:id)
+  end
+
+  def self.followed_user_ids(user)
+    user.followed_users.pluck(:id)
+  end
+
+  def self.recommended_users(user)
+    User
+      .where.not(id: user.id)
+      .where.not(id: user.followed_users)
+      .order('RANDOM()').limit(4)
+  end
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user && user.is_password?(password) ? user : nil

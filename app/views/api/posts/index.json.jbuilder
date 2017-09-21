@@ -1,7 +1,4 @@
-posts = @followed_users_posts.concat(@current_user_posts)
-# .push(@radar_post)
-
-
+posts = @followed_users_posts.concat(@current_user_posts).push(@radar_post)
 
 json.posts do
   posts.each do |post|
@@ -19,9 +16,10 @@ json.posts do
       when 'audio'
         json.audio_url asset_path(post.audio.url)
       end
-      liked_by = []
-      post.likes.each { |like| liked_by.push(like.user_id) }
-      json.liked_by liked_by
+      liked_by = {}
+      post.likes.each { |like| liked_by[like.user_id] = true }
+      json.liked_by liked_by.keys
+      # json.liked_by post.likes.pluck(:user_id)
     end
   end
 end
@@ -36,27 +34,27 @@ json.users do
       json.followed_by post.author.follows.pluck(:follower_id)
     end
   end
-  # @recommended_users.each do |user|
-  #   json.set!(user.id) do
-  #     json.id user.id
-  #     json.username user.username
-  #     json.avatar_url asset_path(user.image.url)
-  #     json.bio user.bio
-  #   end
-  # end
-  # radar_author = @radar_post.author
-  # json.set!(radar_author.id) do
-  #   json.id radar_author.id
-  #   json.username radar_author.username
-  #   json.avatar_url asset_path(radar_author.image.url)
-  #   json.bio radar_author.bio
-  # end
+  @recommended_users.each do |user|
+    json.set!(user.id) do
+      json.id user.id
+      json.username user.username
+      json.avatar_url asset_path(user.image.url)
+      json.bio user.bio
+    end
+  end
+  radar_author = @radar_post.author
+  json.set!(radar_author.id) do
+    json.id radar_author.id
+    json.username radar_author.username
+    json.avatar_url asset_path(radar_author.image.url)
+    json.bio radar_author.bio
+  end
 end
 
-json.followedPostIds @followed_users_posts.pluck(:id)
-json.curUserPostIds @current_user_posts.pluck(:id)
-json.likedPostIds @current_user_liked_posts
-# json.recommendedUserIds @recommended_users.map(&:id)
-# json.radarPostId @radar_post.id
-# json.followerIds @follower_ids
-# json.followedUserIds @followed_user_ids
+json.followedPostIds @followed_users_posts.pluck(:id).uniq
+json.curUserPostIds @current_user_posts.pluck(:id).uniq
+json.likedPostIds @current_user_liked_post_ids
+json.recommendedUserIds @recommended_users.map(&:id)
+json.radarPostId @radar_post.id
+json.followerIds @follower_ids
+json.followedUserIds @followed_user_ids

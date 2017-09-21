@@ -6,24 +6,14 @@ class Api::PostsController < ApplicationController
   IMAGE_TYPES = ['image/gif', 'image/jpeg', 'image/png']
 
   def index
-    @followed_users_posts = Post.includes(:likes).where(author_id: current_user.followed_users).order(created_at: :desc).limit(20)
-    @current_user_posts = Post.includes(:likes).where(author_id: current_user.id).order(created_at: :desc).limit(10)
-    @current_user_liked_posts = current_user.likes.pluck(:post_id)
-    # @follower_ids = current_user.followers.pluck(:id)
-    # @followed_user_ids = current_user.followed_users.pluck(:id)
+    @followed_users_posts = Post.followed_users_posts(current_user)
+    @current_user_posts = Post.current_user_posts(current_user)
+    @current_user_liked_post_ids = Post.liked_post_ids(current_user)
+    @follower_ids = User.follower_ids(current_user)
+    @followed_user_ids = User.followed_user_ids(current_user)
 
-    # @recommended_users = User.where.not(id: current_user.id).order('RANDOM()').limit(4)
-    # @radar_post = Post.where.not(author_id: current_user.id).order('RANDOM()').limit(1).first
-
-    # @recommended_users = []
-    # 4.times do
-    #   user = User.where.not(id: current_user.id).order('RANDOM()').limit(1).first
-    #   if !Follow.where(follower_id: current_user.id, followee_id: user.id).exists? && @recommended_users.exclude?(user)
-    #     @recommended_users.push(user)
-    #   else
-    #     next
-    #   end
-    # end
+    @recommended_users = User.recommended_users(current_user)
+    @radar_post = Post.radar_post(current_user)
 
     render 'api/posts/index'
   end

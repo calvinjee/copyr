@@ -41,11 +41,12 @@ class QuoteForm extends React.Component {
           .then(() => {
             this.setState({ loader: false });
             this.props.closeModal();
+            this.props.history.push('/dashboard');
           });
       } else {
         this.props.closeModal();
+        this.props.history.push('/dashboard');
       }
-      this.props.history.push('/dashboard');
     };
   }
 

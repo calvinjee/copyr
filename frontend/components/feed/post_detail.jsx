@@ -37,7 +37,6 @@ class PostDetail extends React.Component {
   }
 
   renderPost(type) {
-
     let header = this.props.miniKlass ? null : (
       <div className="post-det-header">
           <p className="username-head">{this.props.user.username}</p>

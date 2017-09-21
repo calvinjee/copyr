@@ -50,9 +50,6 @@ class ImageForm extends React.Component {
             filePreviewUrl: null,
            });
         }
-        // (error) => {
-        //   this.setState({ response: `error: ${error}`});
-        // }
       );
     };
   }

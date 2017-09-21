@@ -38,9 +38,6 @@ class Post < ActiveRecord::Base
   validate :has_file, if: :is_type_audio?
   validate :has_link_or_file, if: :is_type_image_or_video?
 
-  # custom validation for requiring a file if they click on img/audio/video
-  # custom validation for text... require at least 1 character when content type is text
-
   has_attached_file :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_attachment :image,
@@ -67,6 +64,30 @@ class Post < ActiveRecord::Base
   has_many :liked_users,
     through: :likes,
     source: :user
+
+  def self.followed_users_posts(user)
+    Post.includes(:likes)
+      .where(author_id: user.followed_users)
+      .order(created_at: :desc)
+  end
+
+  def self.current_user_posts(user)
+    Post.includes(:likes)
+      .where(author_id: user.id)
+      .order(created_at: :desc)
+  end
+
+  def self.liked_post_ids(user)
+    user.likes.pluck(:post_id)
+  end
+
+  def self.radar_post(user)
+    Post
+      .where.not(author_id: user.id)
+      .where.not(id: user.followed_users)
+      .order('RANDOM()')
+      .limit(1).first
+  end
 
   private
 
