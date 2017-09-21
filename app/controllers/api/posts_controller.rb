@@ -6,7 +6,11 @@ class Api::PostsController < ApplicationController
   IMAGE_TYPES = ['image/gif', 'image/jpeg', 'image/png']
 
   def index
-    @followed_users_posts = Post.followed_users_posts(current_user)
+    if current_user.followed_users.empty?
+      @followed_users_posts = Post.all.includes(:likes).order(created_at: :desc).limit(10)
+    else
+      @followed_users_posts = Post.followed_users_posts(current_user)
+    end
     @current_user_posts = Post.current_user_posts(current_user)
     @current_user_liked_post_ids = Post.liked_post_ids(current_user)
     @follower_ids = User.follower_ids(current_user)

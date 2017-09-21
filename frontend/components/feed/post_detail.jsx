@@ -20,8 +20,8 @@ class PostDetail extends React.Component {
     }
     followKlass = this.props.user.id === this.props.currentUser.id ?
       'hidden' :
-      'unfollow';
-    this.state = { followAction: 'Unfollow', followKlass: followKlass };
+      followKlass;
+    this.state = { followAction: followAction, followKlass: followKlass };
     this.handleFollow = this.handleFollow.bind(this);
   }
 
