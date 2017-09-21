@@ -6,8 +6,8 @@ class Api::PostsController < ApplicationController
   IMAGE_TYPES = ['image/gif', 'image/jpeg', 'image/png']
 
   def index
-    @followed_users_posts = Post.where(author_id: current_user.followed_users).order(created_at: :desc).limit(20)
-    @current_user_posts = Post.where(author_id: current_user.id).order(created_at: :desc).limit(10)
+    @followed_users_posts = Post.includes(:likes).where(author_id: current_user.followed_users).order(created_at: :desc).limit(20)
+    @current_user_posts = Post.includes(:likes).where(author_id: current_user.id).order(created_at: :desc).limit(10)
     @current_user_liked_posts = current_user.likes.pluck(:post_id)
     @follower_ids = current_user.followers.pluck(:id)
     @followed_user_ids = current_user.followed_users.pluck(:id)
