@@ -67,11 +67,13 @@ class PostDetailOptions extends React.Component {
       `${notesCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} notes`;
     notes = notesCount === 1 ? '1 note' : notes;
 
+    const divStyle = {display: 'none'};
+
     return (
       <div className={`post-footer ${this.props.miniKlass}`}>
         <p className="notes">{notes}</p>
         <div className="post-options">
-          <i className="fa fa-retweet" aria-hidden="true"></i>
+          <i className="fa fa-retweet" aria-hidden="true" style={divStyle}></i>
           { lastButton }
           <div
             className="options-dropdown">

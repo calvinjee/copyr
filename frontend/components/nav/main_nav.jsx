@@ -30,6 +30,7 @@ class MainNav extends React.Component {
 
   render () {
     const formOpen = this.props.formOpen ? 'nav-nofix' : null;
+    const divStyle = {display: 'none'};
 
     return (
       <div className={`main-nav ${formOpen}`}>
@@ -45,11 +46,11 @@ class MainNav extends React.Component {
             onChange={this.handleChange('search')} />
         <div className="main-nav-icons">
           <Link to="/dashboard">
-            <i className="fa fa-home" aria-hidden="true"></i>
+            <i className="fa fa-home" aria-hidden="true" style={divStyle}></i>
             </Link>
-          <i className="fa fa-compass" aria-hidden="true"></i>
-          <i className="fa fa-envelope" aria-hidden="true"></i>
-          <i className="fa fa-bolt" aria-hidden="true"></i>
+          <i className="fa fa-compass" aria-hidden="true" style={divStyle}></i>
+          <i className="fa fa-envelope" aria-hidden="true" style={divStyle}></i>
+          <i className="fa fa-bolt" aria-hidden="true" style={divStyle}></i>
           <RecentActivity />
           <div
             onClick={this.showDropdown('accountinfo')}
@@ -59,7 +60,7 @@ class MainNav extends React.Component {
           <div className="ai-dropdown">
             <AccountInfo dropdown={this.props.dropdown} />
           </div>
-          <i className="fa fa-pencil" aria-hidden="true"></i>
+          <i className="fa fa-pencil" aria-hidden="true" style={divStyle}></i>
         </div>
         <div
           className={(this.props.dropdown === 'accountinfo') ?

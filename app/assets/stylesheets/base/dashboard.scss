@@ -211,7 +211,8 @@ body {
 
 .post-options {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  // justify-content: space-around;
   width: 75px;
 }
 
